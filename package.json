@@ -1,0 +1,33 @@
+{
+  "name": "rogue-like-game",
+  "version": "1.0.0",
+  "description": "A rogue-like game implementation",
+  "main": "game.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:tdd": "jest __tests__/tdd",
+    "test:bdd": "jest __tests__/bdd",
+    "test:edd": "jest __tests__/edd",
+    "test:all": "jest"
+  },
+  "keywords": [
+    "game",
+    "rogue-like",
+    "javascript"
+  ],
+  "author": "rpferdner",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@cucumber/cucumber": "^10.8.0",
+    "babel-jest": "^27.0.6",
+    "jest": "^29.7.0",
+    "jest-canvas-mock": "^2.5.2",
+    "jest-cucumber": "^4.4.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
