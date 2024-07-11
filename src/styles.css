@@ -24,6 +24,10 @@ html {
     font-size: 1.2em;
 }
 
+.test {
+    color: white;
+}
+
 h1,
 h2 {
     font-family: "Comfortaa Bold", sans-serif;
