@@ -10,7 +10,6 @@
   }
 ]
 
-
 ## Overview
 
 e210 is a demonstration of  Excellence-Driven Development (EDD). It provides a simple approach for learning and using AI driven software design, planning, and implementation.
