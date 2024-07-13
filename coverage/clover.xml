@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720892025272" clover="3.2.0">
-  <project timestamp="1720892025272" name="All files">
+<coverage generated="1720910718496" clover="3.2.0">
+  <project timestamp="1720910718496" name="All files">
     <metrics statements="124" coveredstatements="106" conditionals="36" coveredconditionals="26" methods="46" coveredmethods="41" elements="206" coveredelements="173" complexity="0" loc="124" ncloc="124" packages="1" files="3" classes="3"/>
-    <file name="a_excellence.js" path="/Users/Richard/Documents/CAI/Code/poieo/src/a_excellence.js">
+    <file name="a_excellence.js" path="/Users/Richard/Documents/CAI/Code/e210/src/a_excellence.js">
       <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <line num="13" count="1" type="stmt"/>
       <line num="14" count="1" type="stmt"/>
@@ -26,12 +26,12 @@
       <line num="40" count="1" type="stmt"/>
       <line num="41" count="1" type="stmt"/>
     </file>
-    <file name="a_value.js" path="/Users/Richard/Documents/CAI/Code/poieo/src/a_value.js">
+    <file name="a_value.js" path="/Users/Richard/Documents/CAI/Code/e210/src/a_value.js">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <line num="4" count="1" type="stmt"/>
       <line num="8" count="1" type="stmt"/>
     </file>
-    <file name="utilities.js" path="/Users/Richard/Documents/CAI/Code/poieo/src/utilities.js">
+    <file name="utilities.js" path="/Users/Richard/Documents/CAI/Code/e210/src/utilities.js">
       <metrics statements="101" coveredstatements="83" conditionals="36" coveredconditionals="26" methods="41" coveredmethods="36"/>
       <line num="4" count="1" type="stmt"/>
       <line num="6" count="26" type="cond" truecount="2" falsecount="0"/>

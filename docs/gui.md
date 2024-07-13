@@ -2,9 +2,14 @@
 
 ### GUI Modes
 - Simple HTML
+  - Subset of HTML/CSS/Flex to align with Three-mesh-ui features
 - 2D/3D Canvas Overlay
-- 2D Canvas Embed
-- 3D Canvas Embed
+  - Subset of HTML/CSS/Flex to align with Three-mesh-ui features
+- 2D Canvas Embedded
+  - PixiJS in 2D
+  - Three-mesh-ui in 2D
+- 3D Canvas Embedded
+  - Three-mesh-ui in 3D
 
 ### Value - What
 - Text

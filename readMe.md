@@ -1,4 +1,4 @@
-# poieo
+# e210
 
 ## In Zed here is the custom keymap binding to view markdown
 [
@@ -13,7 +13,15 @@
 
 ## Overview
 
-Poieo is a demonstration of  Excellence-Driven Development (EDD). It provides a simple approach for learning and using AI driven software design, planning, and implementation.
+e210 is a demonstration of  Excellence-Driven Development (EDD). It provides a simple approach for learning and using AI driven software design, planning, and implementation.
+
+## Name
+
+One meaning of e210 is exponential 2^10, which means 2 to the power of 10 and equals 1024.
+
+If a church teaches 2 other churches in another city with specific steps for extending hope to those in job transitions, and this happens 10 times, 1024 cities will be equipped. In each city if a person in each of those churches reaches 2 other people and extends hope, and this happens 10 times, over one million people will be encouraged, strengthen, and comforted.
+
+e210 is also Ephesians 2:10 (NKJV): "For we are His workmanship, created in Christ Jesus for good works, which God prepared beforehand that we should walk in them." God has a purpose for each person and has gone before them and prepared everything needed to complete that purpose. This is a promise.
 
 ## Implementations
 
