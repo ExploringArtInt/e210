@@ -213,7 +213,7 @@ const Cookie = {
       const cookieString = Cookie.bake(name, value, days);
       document.cookie = cookieString;
     } catch (error) {
-      console.error(`Failed to save cookie: ${error.message}`);
+      console.debug(`Failed to save cookie: ${error.message}`);
     }
   },
 

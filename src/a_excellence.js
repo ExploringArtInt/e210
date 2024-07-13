@@ -1,4 +1,4 @@
-// excellence.js
+// a_excellence.js
 
 /*
 Excellence-Driven Development (EDD) is  the pursuit of simplicy and excellence in all aspects of the development process. It focuses on normalizing a healthy cadence of delivering business value through excellence.
@@ -10,32 +10,33 @@ Business Driven Development (BDD) and Test Driven Development (TDD) are integrat
 
 // architecture
 export function architecture() {
-  let businessArchitecture = "";
-  let dataArchitecture = "";
-  let solutionArchitecture = "";
-  let scalabilityArchitecture = "";
-  let securityArchitecture = "";
-  let componentArchitecture = "";
+  let designBusiness = "";
+  let designData = "";
+  let designSolution = "";
+  let designComponent = "";
+  let designScalability = "";
+  let designSecurity = "";
+  let designResilence = "";
+  let designRisk = "";
   return;
 }
 
 // non-functional requirements (nfr) and service level agreements (sla)
 export function nfr() {
-  let performanceRequirements = "";
-  let reliabilityRequirements = "";
-  let resilenceRequirements = "";
-  let securityRequirements = "";
-  let usabilityRequirements = "";
-  let efficiencyRequirements = "";
-  let regulatoryRequirements = "";
+  let requirePerformance = "";
+  let requireReliability = "";
+  let requireSecurity = "";
+  let requireUsability = "";
+  let requireEfficiency = "";
+  let requireCompliance = "";
   return;
 }
 
 // tech debt management
 export function techDebt() {
-  let codeFragrance = "";
-  let configureAsCode = "";
-  let robustness = "";
-  let maintainability = "";
+  let debtBadFragrance = "";
+  let debtNotConfiguredAsCode = "";
+  let debtNotRobust = "";
+  let debtNeedsCare = "";
   return;
 }
