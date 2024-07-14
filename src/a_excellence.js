@@ -42,37 +42,9 @@ export function techDebt() {
   return;
 }
 
-// GUI Component ExlJourneys
-export function textComponentExlJourney() {
-  exlJourney("TextComponent", "GUI", "CustomFont", "DisplayTextWithCustomFont");
-  exlJourney("TextComponent", "GUI", "InfiniteWrapping", "DemonstrateTextWrapping");
-  exlJourney("TextComponent", "GUI", "FlexSupport", "ShowTextWithFlexLayout");
-}
-
-export function buttonComponentExlJourney() {
-  exlJourney("ButtonComponent", "GUI", "States", "DemonstrateButtonStates");
-  exlJourney("ButtonComponent", "GUI", "Styling", "CustomizeButtonAppearance");
-}
-
-export function modalComponentExlJourney() {
-  exlJourney("ModalComponent", "GUI", "Interaction", "OpenCloseModalWithKeyboardAndMouse");
-  exlJourney("ModalComponent", "GUI", "TabTrap", "DemonstrateTabTrappingWithinModal");
-}
-
-export function inputFieldComponentExlJourney() {
-  exlJourney("InputFieldComponent", "GUI", "Masking", "DemonstrateInputFieldMasking");
-  exlJourney("InputFieldComponent", "GUI", "Validation", "ShowInputFieldErrorHandling");
-  exlJourney("InputFieldComponent", "GUI", "Accessibility", "ImplementADACompliantInputField");
-}
-
-// Accessibility and Responsiveness
-export function accessibilityExlJourney() {
-  exlJourney("Accessibility", "GUI", "TabNavigation", "NavigateAcrossAllGUIsUsingTab");
-  exlJourney("Accessibility", "GUI", "AriaSupport", "ImplementAriaAttributesForComponents");
-}
-
-export function responsivenessExlJourney() {
-  exlJourney("Responsiveness", "GUI", "FlexLayout", "AdaptGUITorazličitihWidthsAndHeights");
+// Example Journey
+export function exampleExlJourney() {
+  exlJourney("ExampleJourney", "ExampleModule", "ExampleFeature", "ExampleScenario");
 }
 
 function exlJourney(name, module, feature, scenario) {

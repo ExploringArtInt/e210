@@ -14,3 +14,8 @@
 - Prompt "I renamed my git repository. git asks for username and password. How do I set up git so this is automatic using SSH keys?"
 
   - cat ~/.ssh/id_ed25519.pub
+
+## Node Modules
+npm audit
+npm install --save-dev jest
+npm install --save-dev jsdom

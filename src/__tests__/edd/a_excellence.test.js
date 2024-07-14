@@ -17,7 +17,7 @@ test("tech debt is low", () => {
   expect(true).toBe(true);
 });
 
-test("textComponentExlJourney", () => {
-  journeys.textComponentExlJourney();
+test("exampleExlJourney", () => {
+  journeys.exampleExlJourney();
   expect(true).toBe(true);
 });
