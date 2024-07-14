@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720910718496" clover="3.2.0">
-  <project timestamp="1720910718496" name="All files">
+<coverage generated="1720912937221" clover="3.2.0">
+  <project timestamp="1720912937222" name="All files">
     <metrics statements="124" coveredstatements="106" conditionals="36" coveredconditionals="26" methods="46" coveredmethods="41" elements="206" coveredelements="173" complexity="0" loc="124" ncloc="124" packages="1" files="3" classes="3"/>
     <file name="a_excellence.js" path="/Users/Richard/Documents/CAI/Code/e210/src/a_excellence.js">
       <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>

@@ -1,0 +1,859 @@
+<!doctype html>
+<meta charset="utf-8" />
+
+<!-- https://jsfiddle.net/nbhodfas/ -->
+
+<head>
+    <script src="d3.7.9.0.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="main.css" />
+    <style>
+        body {
+            background-color: #111111;
+        }
+    </style>
+</head>
+
+<html>
+    <body>
+        <div id="body">
+            <div id="chart"></div>
+        </div>
+    </body>
+
+    <script>
+        /*//////////////////////////////////////////////////////////
+        ////////////////// Set up the Data /////////////////////////
+        //////////////////////////////////////////////////////////*/
+
+        var locations = [
+            { id: 0, name: "Gate A", color: "#12B32D" },
+            { id: 1, name: "Gate B", color: "#0D8020" },
+            { id: 2, name: "Gate D", color: "#095916" },
+            { id: 3, name: "Gate E", color: "#064010" },
+            { id: 4, name: "Check-in 1", color: "#F4CF11" },
+            { id: 5, name: "Check-in 2", color: "#B3970C" },
+            { id: 6, name: "Check-in 3", color: "#665607" },
+            { id: 7, name: "Airside Center", color: "#0D6180" },
+            { id: 8, name: "Airport Shopping", color: "#16A2D5" },
+            { id: 9, name: "P1", color: "#01FAF1" },
+            { id: 10, name: "P2", color: "#14CCCC" },
+            { id: 11, name: "P3", color: "#0F9999" },
+            { id: 12, name: "P4", color: "#0C8080" },
+            { id: 13, name: "P5", color: "#074D4D" },
+            { id: 14, name: "Rail", color: "#F27900" },
+            { id: 15, name: "Bus/Tram", color: "#EF4F00" },
+        ];
+
+        var flows = [
+            { from: 0, to: 0, quantity: 428 },
+            { from: 0, to: 1, quantity: 5 },
+            { from: 0, to: 2, quantity: 2 },
+            { from: 0, to: 3, quantity: 10 },
+            { from: 0, to: 4, quantity: 1 },
+            { from: 0, to: 5, quantity: 8 },
+            { from: 0, to: 6, quantity: 0 },
+            { from: 0, to: 7, quantity: 86 },
+            { from: 0, to: 8, quantity: 318 },
+            { from: 0, to: 9, quantity: 30 },
+            { from: 0, to: 10, quantity: 23 },
+            { from: 0, to: 11, quantity: 67 },
+            { from: 0, to: 12, quantity: 101 },
+            { from: 0, to: 13, quantity: 10 },
+            { from: 0, to: 14, quantity: 270 },
+            { from: 0, to: 15, quantity: 120 },
+            { from: 1, to: 0, quantity: 0 },
+            { from: 1, to: 1, quantity: 128 },
+            { from: 1, to: 2, quantity: 40 },
+            { from: 1, to: 3, quantity: 10 },
+            { from: 1, to: 4, quantity: 0 },
+            { from: 1, to: 5, quantity: 30 },
+            { from: 1, to: 6, quantity: 10 },
+            { from: 1, to: 7, quantity: 78 },
+            { from: 1, to: 8, quantity: 172 },
+            { from: 1, to: 9, quantity: 90 },
+            { from: 1, to: 10, quantity: 2 },
+            { from: 1, to: 11, quantity: 10 },
+            { from: 1, to: 12, quantity: 13 },
+            { from: 1, to: 13, quantity: 56 },
+            { from: 1, to: 14, quantity: 134 },
+            { from: 1, to: 15, quantity: 87 },
+            { from: 2, to: 0, quantity: 0 },
+            { from: 2, to: 1, quantity: 3 },
+            { from: 2, to: 2, quantity: 97 },
+            { from: 2, to: 3, quantity: 7 },
+            { from: 2, to: 4, quantity: 12 },
+            { from: 2, to: 5, quantity: 9 },
+            { from: 2, to: 6, quantity: 3 },
+            { from: 2, to: 7, quantity: 11 },
+            { from: 2, to: 8, quantity: 109 },
+            { from: 2, to: 9, quantity: 2 },
+            { from: 2, to: 10, quantity: 3 },
+            { from: 2, to: 11, quantity: 12 },
+            { from: 2, to: 12, quantity: 9 },
+            { from: 2, to: 13, quantity: 0 },
+            { from: 2, to: 14, quantity: 76 },
+            { from: 2, to: 15, quantity: 26 },
+            { from: 3, to: 0, quantity: 3 },
+            { from: 3, to: 1, quantity: 10 },
+            { from: 3, to: 2, quantity: 9 },
+            { from: 3, to: 3, quantity: 390 },
+            { from: 3, to: 4, quantity: 0 },
+            { from: 3, to: 5, quantity: 0 },
+            { from: 3, to: 6, quantity: 12 },
+            { from: 3, to: 7, quantity: 43 },
+            { from: 3, to: 8, quantity: 126 },
+            { from: 3, to: 9, quantity: 207 },
+            { from: 3, to: 10, quantity: 23 },
+            { from: 3, to: 11, quantity: 10 },
+            { from: 3, to: 12, quantity: 36 },
+            { from: 3, to: 13, quantity: 78 },
+            { from: 3, to: 14, quantity: 532 },
+            { from: 3, to: 15, quantity: 265 },
+            { from: 4, to: 0, quantity: 165 },
+            { from: 4, to: 1, quantity: 277 },
+            { from: 4, to: 2, quantity: 80 },
+            { from: 4, to: 3, quantity: 109 },
+            { from: 4, to: 4, quantity: 78 },
+            { from: 4, to: 5, quantity: 34 },
+            { from: 4, to: 6, quantity: 10 },
+            { from: 4, to: 7, quantity: 23 },
+            { from: 4, to: 8, quantity: 381 },
+            { from: 4, to: 9, quantity: 40 },
+            { from: 4, to: 10, quantity: 35 },
+            { from: 4, to: 11, quantity: 21 },
+            { from: 4, to: 12, quantity: 54 },
+            { from: 4, to: 13, quantity: 3 },
+            { from: 4, to: 14, quantity: 38 },
+            { from: 4, to: 15, quantity: 38 },
+            { from: 5, to: 0, quantity: 80 },
+            { from: 5, to: 1, quantity: 12 },
+            { from: 5, to: 2, quantity: 5 },
+            { from: 5, to: 3, quantity: 254 },
+            { from: 5, to: 4, quantity: 10 },
+            { from: 5, to: 5, quantity: 97 },
+            { from: 5, to: 6, quantity: 22 },
+            { from: 5, to: 7, quantity: 35 },
+            { from: 5, to: 8, quantity: 103 },
+            { from: 5, to: 9, quantity: 67 },
+            { from: 5, to: 10, quantity: 12 },
+            { from: 5, to: 11, quantity: 0 },
+            { from: 5, to: 12, quantity: 6 },
+            { from: 5, to: 13, quantity: 2 },
+            { from: 5, to: 14, quantity: 10 },
+            { from: 5, to: 15, quantity: 8 },
+            { from: 6, to: 0, quantity: 12 },
+            { from: 6, to: 1, quantity: 220 },
+            { from: 6, to: 2, quantity: 70 },
+            { from: 6, to: 3, quantity: 0 },
+            { from: 6, to: 4, quantity: 12 },
+            { from: 6, to: 5, quantity: 8 },
+            { from: 6, to: 6, quantity: 238 },
+            { from: 6, to: 7, quantity: 12 },
+            { from: 6, to: 8, quantity: 3 },
+            { from: 6, to: 9, quantity: 30 },
+            { from: 6, to: 10, quantity: 10 },
+            { from: 6, to: 11, quantity: 38 },
+            { from: 6, to: 12, quantity: 8 },
+            { from: 6, to: 13, quantity: 12 },
+            { from: 6, to: 14, quantity: 20 },
+            { from: 6, to: 15, quantity: 7 },
+            { from: 7, to: 0, quantity: 87 },
+            { from: 7, to: 1, quantity: 20 },
+            { from: 7, to: 2, quantity: 123 },
+            { from: 7, to: 3, quantity: 143 },
+            { from: 7, to: 4, quantity: 9 },
+            { from: 7, to: 5, quantity: 2 },
+            { from: 7, to: 6, quantity: 0 },
+            { from: 7, to: 7, quantity: 457 },
+            { from: 7, to: 8, quantity: 30 },
+            { from: 7, to: 9, quantity: 10 },
+            { from: 7, to: 10, quantity: 32 },
+            { from: 7, to: 11, quantity: 19 },
+            { from: 7, to: 12, quantity: 3 },
+            { from: 7, to: 13, quantity: 4 },
+            { from: 7, to: 14, quantity: 73 },
+            { from: 7, to: 15, quantity: 25 },
+            { from: 8, to: 0, quantity: 120 },
+            { from: 8, to: 1, quantity: 38 },
+            { from: 8, to: 2, quantity: 96 },
+            { from: 8, to: 3, quantity: 167 },
+            { from: 8, to: 4, quantity: 3 },
+            { from: 8, to: 5, quantity: 23 },
+            { from: 8, to: 6, quantity: 9 },
+            { from: 8, to: 7, quantity: 47 },
+            { from: 8, to: 8, quantity: 97 },
+            { from: 8, to: 9, quantity: 123 },
+            { from: 8, to: 10, quantity: 86 },
+            { from: 8, to: 11, quantity: 90 },
+            { from: 8, to: 12, quantity: 34 },
+            { from: 8, to: 13, quantity: 12 },
+            { from: 8, to: 14, quantity: 176 },
+            { from: 8, to: 15, quantity: 192 },
+            { from: 9, to: 0, quantity: 30 },
+            { from: 9, to: 1, quantity: 87 },
+            { from: 9, to: 2, quantity: 9 },
+            { from: 9, to: 3, quantity: 123 },
+            { from: 9, to: 4, quantity: 376 },
+            { from: 9, to: 5, quantity: 233 },
+            { from: 9, to: 6, quantity: 199 },
+            { from: 9, to: 7, quantity: 43 },
+            { from: 9, to: 8, quantity: 90 },
+            { from: 9, to: 9, quantity: 0 },
+            { from: 9, to: 10, quantity: 0 },
+            { from: 9, to: 11, quantity: 0 },
+            { from: 9, to: 12, quantity: 4 },
+            { from: 9, to: 13, quantity: 0 },
+            { from: 9, to: 14, quantity: 10 },
+            { from: 9, to: 15, quantity: 2 },
+            { from: 10, to: 0, quantity: 23 },
+            { from: 10, to: 1, quantity: 1 },
+            { from: 10, to: 2, quantity: 9 },
+            { from: 10, to: 3, quantity: 6 },
+            { from: 10, to: 4, quantity: 197 },
+            { from: 10, to: 5, quantity: 201 },
+            { from: 10, to: 6, quantity: 66 },
+            { from: 10, to: 7, quantity: 7 },
+            { from: 10, to: 8, quantity: 143 },
+            { from: 10, to: 9, quantity: 2 },
+            { from: 10, to: 10, quantity: 0 },
+            { from: 10, to: 11, quantity: 0 },
+            { from: 10, to: 12, quantity: 1 },
+            { from: 10, to: 13, quantity: 0 },
+            { from: 10, to: 14, quantity: 2 },
+            { from: 10, to: 15, quantity: 18 },
+            { from: 11, to: 0, quantity: 0 },
+            { from: 11, to: 1, quantity: 2 },
+            { from: 11, to: 2, quantity: 0 },
+            { from: 11, to: 3, quantity: 4 },
+            { from: 11, to: 4, quantity: 67 },
+            { from: 11, to: 5, quantity: 23 },
+            { from: 11, to: 6, quantity: 221 },
+            { from: 11, to: 7, quantity: 12 },
+            { from: 11, to: 8, quantity: 4 },
+            { from: 11, to: 9, quantity: 10 },
+            { from: 11, to: 10, quantity: 0 },
+            { from: 11, to: 11, quantity: 0 },
+            { from: 11, to: 12, quantity: 0 },
+            { from: 11, to: 13, quantity: 0 },
+            { from: 11, to: 14, quantity: 3 },
+            { from: 11, to: 15, quantity: 0 },
+            { from: 12, to: 0, quantity: 2 },
+            { from: 12, to: 1, quantity: 16 },
+            { from: 12, to: 2, quantity: 10 },
+            { from: 12, to: 3, quantity: 8 },
+            { from: 12, to: 4, quantity: 412 },
+            { from: 12, to: 5, quantity: 321 },
+            { from: 12, to: 6, quantity: 100 },
+            { from: 12, to: 7, quantity: 54 },
+            { from: 12, to: 8, quantity: 89 },
+            { from: 12, to: 9, quantity: 0 },
+            { from: 12, to: 10, quantity: 2 },
+            { from: 12, to: 11, quantity: 4 },
+            { from: 12, to: 12, quantity: 0 },
+            { from: 12, to: 13, quantity: 0 },
+            { from: 12, to: 14, quantity: 0 },
+            { from: 12, to: 15, quantity: 0 },
+            { from: 13, to: 0, quantity: 0 },
+            { from: 13, to: 1, quantity: 3 },
+            { from: 13, to: 2, quantity: 30 },
+            { from: 13, to: 3, quantity: 2 },
+            { from: 13, to: 4, quantity: 80 },
+            { from: 13, to: 5, quantity: 83 },
+            { from: 13, to: 6, quantity: 20 },
+            { from: 13, to: 7, quantity: 10 },
+            { from: 13, to: 8, quantity: 0 },
+            { from: 13, to: 9, quantity: 0 },
+            { from: 13, to: 10, quantity: 0 },
+            { from: 13, to: 11, quantity: 0 },
+            { from: 13, to: 12, quantity: 1 },
+            { from: 13, to: 13, quantity: 4 },
+            { from: 13, to: 14, quantity: 10 },
+            { from: 13, to: 15, quantity: 32 },
+            { from: 14, to: 0, quantity: 30 },
+            { from: 14, to: 1, quantity: 45 },
+            { from: 14, to: 2, quantity: 10 },
+            { from: 14, to: 3, quantity: 2 },
+            { from: 14, to: 4, quantity: 486 },
+            { from: 14, to: 5, quantity: 512 },
+            { from: 14, to: 6, quantity: 89 },
+            { from: 14, to: 7, quantity: 10 },
+            { from: 14, to: 8, quantity: 188 },
+            { from: 14, to: 9, quantity: 12 },
+            { from: 14, to: 10, quantity: 8 },
+            { from: 14, to: 11, quantity: 0 },
+            { from: 14, to: 12, quantity: 4 },
+            { from: 14, to: 13, quantity: 22 },
+            { from: 14, to: 14, quantity: 12 },
+            { from: 14, to: 15, quantity: 287 },
+            { from: 15, to: 0, quantity: 30 },
+            { from: 15, to: 1, quantity: 2 },
+            { from: 15, to: 2, quantity: 8 },
+            { from: 15, to: 3, quantity: 0 },
+            { from: 15, to: 4, quantity: 275 },
+            { from: 15, to: 5, quantity: 100 },
+            { from: 15, to: 6, quantity: 45 },
+            { from: 15, to: 7, quantity: 8 },
+            { from: 15, to: 8, quantity: 87 },
+            { from: 15, to: 9, quantity: 2 },
+            { from: 15, to: 10, quantity: 0 },
+            { from: 15, to: 11, quantity: 0 },
+            { from: 15, to: 12, quantity: 8 },
+            { from: 15, to: 13, quantity: 2 },
+            { from: 15, to: 14, quantity: 310 },
+            { from: 15, to: 15, quantity: 54 },
+        ];
+
+        var totalCount = 0;
+        var matrix = [];
+
+        //Map list of data to matrix
+        flows.forEach(function (flow) {
+            if (!matrix[flow.from]) {
+                matrix[flow.from] = [];
+            }
+            matrix[flow.from][flow.to] = flow.quantity;
+            totalCount += flow.quantity;
+        });
+
+        /*//////////////////////////////////////////////////////////
+        /////////////// Initiate Chord Diagram /////////////////////
+        //////////////////////////////////////////////////////////*/
+        var size = 800;
+        var margin = { top: 150, right: 150, bottom: 50, left: 50 };
+        var width = size - margin.left - margin.right;
+        var height = size - margin.top - margin.bottom;
+        var innerRadius = Math.min(width, height) * 0.39;
+        var outerRadius = innerRadius * 1.08;
+        var focusedChordGroupIndex = null;
+
+        /*Initiate the SVG*/
+        //D3.js v3!
+        var svg = d3
+            .select("#chart")
+            .append("svg:svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("svg:g")
+            .attr("transform", "translate(" + (margin.left + width / 2) + "," + (margin.top + height / 2) + ")");
+
+        var chord = customChordLayout() //Using custom chord layout to order chords by adjacency so that they don't cross.
+            .padding(0.02)
+            .sortChords(d3.ascending) /*which chord should be shown on top when chords cross. Now the biggest chord is at the top*/
+            .matrix(matrix);
+
+        /*//////////////////////////////////////////////////////////
+        ////////////////// Draw outer Arcs /////////////////////////
+        //////////////////////////////////////////////////////////*/
+        var arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
+
+        var g = svg
+            .selectAll("g.group")
+            .data(chord.groups)
+            .enter()
+            .append("svg:g")
+            .attr("class", function (d) {
+                return "group " + locations[d.index].id;
+            });
+
+        g.append("svg:path")
+            .attr("class", "arc")
+            .style("stroke", function (d) {
+                return d3.rgb(locations[d.index].color).brighter();
+            })
+            .style("fill", function (d) {
+                return locations[d.index].color;
+            })
+            .attr("d", arc)
+            .on("click", function (d) {
+                highlightChords(d.index);
+            });
+
+        /*//////////////////////////////////////////////////////////
+        ////////////////// Initiate Ticks //////////////////////////
+        //////////////////////////////////////////////////////////*/
+        var ticks = svg
+            .selectAll("g.group")
+            .append("svg:g")
+            .attr("class", function (d) {
+                return "ticks " + locations[d.index].id;
+            })
+            .selectAll("g.ticks")
+            .attr("class", "ticks")
+            .data(groupTicks)
+            .enter()
+            .append("svg:g")
+            .attr("transform", function (d) {
+                return "rotate(" + ((d.angle * 180) / Math.PI - 90) + ")" + "translate(" + outerRadius + 40 + ",0)";
+            });
+
+        /*Append the tick around the arcs*/
+        ticks.append("svg:line").attr("x1", 1).attr("y1", 0).attr("x2", 8).attr("y2", 0).attr("class", "ticks").style("stroke", "#FFF").style("stroke-width", "1.5px");
+
+        /*Add the labels for the %'s*/
+        ticks
+            .append("svg:text")
+            .attr("x", 8)
+            .attr("dy", ".35em")
+            .attr("class", "tickLabels")
+            .style("font-size", "10px")
+            .style("font-family", "sans-serif")
+            .attr("fill", "#FFF")
+            .attr("transform", function (d) {
+                return d.angle > Math.PI ? "rotate(180)translate(-16)" : null;
+            })
+            .style("text-anchor", function (d) {
+                return d.angle > Math.PI ? "end" : null;
+            })
+            .text(function (d) {
+                return d.label;
+            });
+
+        /*//////////////////////////////////////////////////////////
+        ////////////////// Initiate Names //////////////////////////
+        //////////////////////////////////////////////////////////*/
+        g.append("svg:text")
+            .each(function (d) {
+                d.angle = (d.startAngle + d.endAngle) / 2;
+            })
+            .attr("dy", ".35em")
+            .attr("class", "titles")
+            .style("font-size", "14px")
+            .style("font-family", "sans-serif")
+            .attr("fill", "#FFF")
+            .attr("text-anchor", function (d) {
+                return d.angle > Math.PI ? "end" : null;
+            })
+            .attr("transform", function (d) {
+                return "rotate(" + ((d.angle * 180) / Math.PI - 90) + ")" + "translate(" + (innerRadius + 55) + ")" + (d.angle > Math.PI ? "rotate(180)" : "");
+            })
+            .text(function (d, i) {
+                return locations[i].name;
+            });
+
+        /*//////////////////////////////////////////////////////////
+        //////////////// Initiate inner chords /////////////////////
+        //////////////////////////////////////////////////////////*/
+        var chords = svg
+            .selectAll("path.chord")
+            .data(chord.chords)
+            .enter()
+            .append("svg:path")
+            .attr("class", "chord")
+            .attr("class", function (d) {
+                return "chord chord-source-" + d.source.index + " chord-target-" + d.target.index;
+            })
+            .style("fill-opacity", "0.7")
+            .style("stroke-opacity", "1")
+            //Change the fill to reference the unique gradient ID
+            //of the source-target combination
+            .style("fill", function (d) {
+                return "url(#chordGradient-" + d.source.index + "-" + d.target.index + ")";
+            })
+            .style("stroke", function (d) {
+                return "url(#chordGradient-" + d.source.index + "-" + d.target.index + ")";
+            })
+            //.style("stroke", function (d) { return d3.rgb(locations[d.source.index].color).brighter(); })
+            //.style("fill", function (d) { return locations[d.source.index].color; })
+            .attr("d", customChordPathGenerator().radius(innerRadius))
+            .on("click", function () {
+                showAllChords();
+            });
+
+        //Cf https://www.visualcinnamon.com/2016/06/orientation-gradient-d3-chord-diagram
+        //Create a gradient definition for each chord
+        var grads = svg
+            .append("defs")
+            .selectAll("linearGradient")
+            .data(chord.chords)
+            .enter()
+            .append("linearGradient")
+            //Create a unique gradient id per chord: e.g. "chordGradient-0-4"
+            .attr("id", function (d) {
+                return "chordGradient-" + d.source.index + "-" + d.target.index;
+            })
+            //Instead of the object bounding box, use the entire SVG for setting locations
+            //in pixel locations instead of percentages (which is more typical)
+            .attr("gradientUnits", "userSpaceOnUse")
+            //The full mathematical formula to find the x and y locations
+            .attr("x1", function (d, i) {
+                return innerRadius * Math.cos((d.source.endAngle - d.source.startAngle) / 2 + d.source.startAngle - Math.PI / 2);
+            })
+            .attr("y1", function (d, i) {
+                return innerRadius * Math.sin((d.source.endAngle - d.source.startAngle) / 2 + d.source.startAngle - Math.PI / 2);
+            })
+            .attr("x2", function (d, i) {
+                return innerRadius * Math.cos((d.target.endAngle - d.target.startAngle) / 2 + d.target.startAngle - Math.PI / 2);
+            })
+            .attr("y2", function (d, i) {
+                return innerRadius * Math.sin((d.target.endAngle - d.target.startAngle) / 2 + d.target.startAngle - Math.PI / 2);
+            });
+
+        //Set the starting color (at 0%)
+        grads
+            .append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", function (d) {
+                return locations[d.source.index].color;
+            });
+
+        //Set the ending color (at 100%)
+        grads
+            .append("stop")
+            .attr("offset", "100%")
+            .attr("stop-color", function (d) {
+                return locations[d.target.index].color;
+            });
+
+        /*//////////////////////////////////////////////////////////
+        ////////////////// Extra Functions /////////////////////////
+        //////////////////////////////////////////////////////////*/
+
+        /*Returns an array of tick angles and labels, given a group*/
+        function groupTicks(d) {
+            var anglePerPerson = (d.endAngle - d.startAngle) / d.value;
+            var personsPerPercent = totalCount / 100;
+            return d3.range(0, d.value, personsPerPercent).map(function (v, i) {
+                return {
+                    angle: v * anglePerPerson + d.startAngle,
+                    label: i % 5 ? null : v / personsPerPercent + "%",
+                };
+            });
+        }
+
+        //Hides all chords except the chords connecting to the subgroup / location of the given index.
+        function highlightChords(index) {
+            //If this subgroup is already highlighted, toggle all chords back on.
+            if (focusedChordGroupIndex === index) {
+                showAllChords();
+                return;
+            }
+
+            hideAllChords();
+
+            //Show only the ones with source or target == index
+            d3.selectAll(".chord-source-" + index + ", .chord-target-" + index)
+                .style("fill-opacity", "0.7")
+                .style("stroke-opacity", "1");
+
+            focusedChordGroupIndex = index;
+        }
+
+        function showAllChords() {
+            svg.selectAll("path.chord").style("fill-opacity", "0.7").style("stroke-opacity", "1");
+
+            focusedChordGroupIndex = null;
+        }
+
+        function hideAllChords() {
+            svg.selectAll("path.chord").style("fill-opacity", "0").style("stroke-opacity", "0");
+        }
+
+        ////////////////////////////////////////////////////////////
+        //////////// Custom Chord Layout Function //////////////////
+        /////// Places the Chords in the visually best order ///////
+        ///////////////// to reduce overlap ////////////////////////
+        ////////////////////////////////////////////////////////////
+        //////// Slightly adjusted by Nadieh Bremer ////////////////
+        //////////////// VisualCinnamon.com ////////////////////////
+        ////////////////////////////////////////////////////////////
+        ////// Original from the d3.layout.chord() function ////////
+        ///////////////// from the d3.js library ///////////////////
+        //////////////// Created by Mike Bostock ///////////////////
+        ////////////////////////////////////////////////////////////
+        function customChordLayout() {
+            var ε = 1e-6,
+                ε2 = ε * ε,
+                π = Math.PI,
+                τ = 2 * π,
+                τε = τ - ε,
+                halfπ = π / 2,
+                d3_radians = π / 180,
+                d3_degrees = 180 / π;
+            var chord = {},
+                chords,
+                groups,
+                matrix,
+                n,
+                padding = 0,
+                sortGroups,
+                sortSubgroups,
+                sortChords;
+            function relayout() {
+                var subgroups = {},
+                    groupSums = [],
+                    groupIndex = d3.range(n),
+                    subgroupIndex = [],
+                    k,
+                    x,
+                    x0,
+                    i,
+                    j;
+                var numSeq;
+                chords = [];
+                groups = [];
+                (k = 0), (i = -1);
+
+                while (++i < n) {
+                    (x = 0), (j = -1), (numSeq = []);
+                    while (++j < n) {
+                        x += matrix[i][j];
+                    }
+                    groupSums.push(x);
+                    //////////////////////////////////////
+                    ////////////// New part //////////////
+                    //////////////////////////////////////
+                    for (var m = 0; m < n; m++) {
+                        numSeq[m] = (n + (i - 1) - m) % n;
+                    }
+                    subgroupIndex.push(numSeq);
+                    //////////////////////////////////////
+                    //////////  End new part /////////////
+                    //////////////////////////////////////
+                    k += x;
+                } //while
+
+                k = (τ - padding * n) / k;
+                (x = 0), (i = -1);
+                while (++i < n) {
+                    (x0 = x), (j = -1);
+                    while (++j < n) {
+                        var di = groupIndex[i],
+                            dj = subgroupIndex[di][j],
+                            v = matrix[di][dj],
+                            a0 = x,
+                            a1 = (x += v * k);
+                        subgroups[di + "-" + dj] = {
+                            index: di,
+                            subindex: dj,
+                            startAngle: a0,
+                            endAngle: a1,
+                            value: v,
+                        };
+                    } //while
+
+                    groups[di] = {
+                        index: di,
+                        startAngle: x0,
+                        endAngle: x,
+                        value: (x - x0) / k,
+                    };
+                    x += padding;
+                } //while
+
+                i = -1;
+                while (++i < n) {
+                    j = i - 1;
+                    while (++j < n) {
+                        var source = subgroups[i + "-" + j],
+                            target = subgroups[j + "-" + i];
+                        if (source.value || target.value) {
+                            chords.push(
+                                source.value < target.value
+                                    ? {
+                                          source: target,
+                                          target: source,
+                                      }
+                                    : {
+                                          source: source,
+                                          target: target,
+                                      },
+                            );
+                        } //if
+                    } //while
+                } //while
+                if (sortChords) resort();
+            } //function relayout
+
+            function resort() {
+                chords.sort(function (a, b) {
+                    return sortChords((a.source.value + a.target.value) / 2, (b.source.value + b.target.value) / 2);
+                });
+            }
+            chord.matrix = function (x) {
+                if (!arguments.length) return matrix;
+                n = (matrix = x) && matrix.length;
+                chords = groups = null;
+                return chord;
+            };
+            chord.padding = function (x) {
+                if (!arguments.length) return padding;
+                padding = x;
+                chords = groups = null;
+                return chord;
+            };
+            chord.sortGroups = function (x) {
+                if (!arguments.length) return sortGroups;
+                sortGroups = x;
+                chords = groups = null;
+                return chord;
+            };
+            chord.sortSubgroups = function (x) {
+                if (!arguments.length) return sortSubgroups;
+                sortSubgroups = x;
+                chords = null;
+                return chord;
+            };
+            chord.sortChords = function (x) {
+                if (!arguments.length) return sortChords;
+                sortChords = x;
+                if (chords) resort();
+                return chord;
+            };
+            chord.chords = function () {
+                if (!chords) relayout();
+                return chords;
+            };
+            chord.groups = function () {
+                if (!groups) relayout();
+                return groups;
+            };
+            return chord;
+        }
+
+        ////////////////////////////////////////////////////////////
+        //////////// Custom Chord Path Generator ///////////////////
+        ///////// Uses cubic bezier curves with quadratic //////////
+        /////// spread of control points to minimise overlap ///////
+        ////////////////// of adjacent chords. /////////////////////
+        ////////////////////////////////////////////////////////////
+        //////// Slightly adjusted by Severin Zahler ///////////////
+        ////////////////////////////////////////////////////////////
+        /////// Original from the d3.svg.chord() function //////////
+        ///////////////// from the d3.js library ///////////////////
+        //////////////// Created by Mike Bostock ///////////////////
+        ////////////////////////////////////////////////////////////
+        function customChordPathGenerator() {
+            var source = function (d) {
+                return d.source;
+            };
+            var target = function (d) {
+                return d.target;
+            };
+            var radius = function (d) {
+                return d.radius;
+            };
+            var startAngle = function (d) {
+                return d.startAngle;
+            };
+            var endAngle = function (d) {
+                return d.endAngle;
+            };
+
+            function chord(d, i) {
+                var s = subgroup(this, source, d, i),
+                    t = subgroup(this, target, d, i);
+
+                var path =
+                    "M" +
+                    s.p0 +
+                    arc(s.r, s.p1, s.a1 - s.a0) +
+                    (equals(s, t)
+                        ? curve(s.r, s.p1, s.a1, s.r, s.p0, s.a0)
+                        : curve(s.r, s.p1, s.a1, t.r, t.p0, t.a0) + arc(t.r, t.p1, t.a1 - t.a0) + curve(t.r, t.p1, t.a1, s.r, s.p0, s.a0)) +
+                    "Z";
+
+                return path;
+            }
+
+            function subgroup(self, f, d, i) {
+                var subgroup = f.call(self, d, i),
+                    r = radius.call(self, subgroup, i),
+                    a0 = startAngle.call(self, subgroup, i) - Math.PI / 2,
+                    a1 = endAngle.call(self, subgroup, i) - Math.PI / 2;
+
+                return {
+                    r: r,
+                    a0: a0,
+                    a1: a1,
+                    p0: [r * Math.cos(a0), r * Math.sin(a0)],
+                    p1: [r * Math.cos(a1), r * Math.sin(a1)],
+                };
+            }
+
+            function equals(a, b) {
+                return a.a0 == b.a0 && a.a1 == b.a1;
+            }
+
+            function arc(r, p, a) {
+                return "A" + r + "," + r + " 0 " + +(a > Math.PI) + ",1 " + p;
+            }
+
+            function curve(r0, p0, a0, r1, p1, a1) {
+                //////////////////////////////////////
+                ////////////// New part //////////////
+                //////////////////////////////////////
+                var deltaAngle = Math.abs(mod(a1 - a0 + Math.PI, 2 * Math.PI) - Math.PI);
+                var radialControlPointScale = Math.pow((Math.PI - deltaAngle) / Math.PI, 2) * 0.9;
+                var controlPoint1 = [p0[0] * radialControlPointScale, p0[1] * radialControlPointScale];
+                var controlPoint2 = [p1[0] * radialControlPointScale, p1[1] * radialControlPointScale];
+                var cubicBezierSvg = "C " + controlPoint1[0] + " " + controlPoint1[1] + ", " + controlPoint2[0] + " " + controlPoint2[1] + ", " + p1[0] + " " + p1[1];
+                return cubicBezierSvg;
+                //////////////////////////////////////
+                //////////  End new part /////////////
+                //////////////////////////////////////
+            }
+
+            function mod(a, n) {
+                return ((a % n) + n) % n;
+            }
+
+            chord.radius = function (v) {
+                if (!arguments.length) return radius;
+                radius =
+                    typeof v === "function"
+                        ? v
+                        : function () {
+                              return v;
+                          };
+                return chord;
+            };
+
+            chord.source = function (v) {
+                if (!arguments.length) return source;
+                source =
+                    typeof v === "function"
+                        ? v
+                        : function () {
+                              return v;
+                          };
+                return chord;
+            };
+
+            chord.target = function (v) {
+                if (!arguments.length) return target;
+                target =
+                    typeof v === "function"
+                        ? v
+                        : function () {
+                              return v;
+                          };
+                return chord;
+            };
+
+            chord.startAngle = function (v) {
+                if (!arguments.length) return startAngle;
+                startAngle =
+                    typeof v === "function"
+                        ? v
+                        : function () {
+                              return v;
+                          };
+                return chord;
+            };
+
+            chord.endAngle = function (v) {
+                if (!arguments.length) return endAngle;
+                endAngle =
+                    typeof v === "function"
+                        ? v
+                        : function () {
+                              return v;
+                          };
+                return chord;
+            };
+
+            return chord;
+        }
+    </script>
+</html>
