@@ -2,7 +2,7 @@
 
 const journeys = require("../../a_value.js");
 
-test("journeyExample", () => {
-  journeys.journeyExample();
+test("simpleHTMLValJourney", () => {
+  journeys.simpleHTMLValJourney();
   expect(true).toBe(true);
 });

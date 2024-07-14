@@ -1,18 +1,23 @@
 // excellence.test.js
 
-const excellent = require("../../a_excellence.js");
+const journeys = require("../../a_excellence.js");
 
 test("architecture is excellent", () => {
-  excellent.architecture();
+  journeys.architecture();
   expect(true).toBe(true);
 });
 
 test("nfrs are excellent", () => {
-  excellent.nfr();
+  journeys.nfr();
   expect(true).toBe(true);
 });
 
 test("tech debt is low", () => {
-  excellent.techDebt();
+  journeys.techDebt();
+  expect(true).toBe(true);
+});
+
+test("textComponentExlJourney", () => {
+  journeys.textComponentExlJourney();
   expect(true).toBe(true);
 });

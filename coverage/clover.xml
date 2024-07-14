@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1720912937221" clover="3.2.0">
-  <project timestamp="1720912937222" name="All files">
-    <metrics statements="124" coveredstatements="106" conditionals="36" coveredconditionals="26" methods="46" coveredmethods="41" elements="206" coveredelements="173" complexity="0" loc="124" ncloc="124" packages="1" files="3" classes="3"/>
+<coverage generated="1720982243230" clover="3.2.0">
+  <project timestamp="1720982243230" name="All files">
+    <metrics statements="141" coveredstatements="109" conditionals="36" coveredconditionals="26" methods="55" coveredmethods="43" elements="232" coveredelements="178" complexity="0" loc="141" ncloc="141" packages="1" files="3" classes="3"/>
     <file name="a_excellence.js" path="/Users/Richard/Documents/CAI/Code/e210/src/a_excellence.js">
-      <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <metrics statements="35" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="5"/>
       <line num="13" count="1" type="stmt"/>
       <line num="14" count="1" type="stmt"/>
       <line num="15" count="1" type="stmt"/>
@@ -20,16 +20,33 @@
       <line num="30" count="1" type="stmt"/>
       <line num="31" count="1" type="stmt"/>
       <line num="32" count="1" type="stmt"/>
-      <line num="37" count="1" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
       <line num="38" count="1" type="stmt"/>
       <line num="39" count="1" type="stmt"/>
       <line num="40" count="1" type="stmt"/>
       <line num="41" count="1" type="stmt"/>
+      <line num="42" count="1" type="stmt"/>
+      <line num="47" count="1" type="stmt"/>
+      <line num="48" count="1" type="stmt"/>
+      <line num="49" count="1" type="stmt"/>
+      <line num="53" count="0" type="stmt"/>
+      <line num="54" count="0" type="stmt"/>
+      <line num="58" count="0" type="stmt"/>
+      <line num="59" count="0" type="stmt"/>
+      <line num="63" count="0" type="stmt"/>
+      <line num="64" count="0" type="stmt"/>
+      <line num="65" count="0" type="stmt"/>
+      <line num="70" count="0" type="stmt"/>
+      <line num="71" count="0" type="stmt"/>
+      <line num="75" count="0" type="stmt"/>
     </file>
     <file name="a_value.js" path="/Users/Richard/Documents/CAI/Code/e210/src/a_value.js">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="8" count="1" type="stmt"/>
+      <metrics statements="5" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="15" count="0" type="stmt"/>
+      <line num="16" count="0" type="stmt"/>
     </file>
     <file name="utilities.js" path="/Users/Richard/Documents/CAI/Code/e210/src/utilities.js">
       <metrics statements="101" coveredstatements="83" conditionals="36" coveredconditionals="26" methods="41" coveredmethods="36"/>

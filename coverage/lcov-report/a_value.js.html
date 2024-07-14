@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>1/5</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -72,23 +72,62 @@
 <a name='L7'></a><a href='#L7'>7</a>
 <a name='L8'></a><a href='#L8'>8</a>
 <a name='L9'></a><a href='#L9'>9</a>
-<a name='L10'></a><a href='#L10'>10</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// a_value.js - list of journeys that have value
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// a_value.js - list of valJourneys focus on "what" is valuable to users and stakeholders
 &nbsp;
-export function journeyExample() {
-  journey("exampleName", "exampleModule", "exampleFeature", "exampleScenario");
+// GUI Mode ValJourneys
+export function simpleHTMLValJourney() {
+  valJourney("SimpleHTML", "GUI", "TopMenuAndCrumbs", "DisplayUsingSimpleHTML");
 }
 &nbsp;
-function journey(name, module, feature, scenario) {
-  return;
+export function <span class="fstat-no" title="function not covered" >canvasOverlayValJourney(</span>) {
+<span class="cstat-no" title="statement not covered" >  valJourney("CanvasOverlay", "GUI", "2DOverlay", "Display2DCanvasOverlay");</span>
+<span class="cstat-no" title="statement not covered" >  valJourney("CanvasOverlay", "GUI", "3DOverlay", "Display3DCanvasOverlay");</span>
+}
+&nbsp;
+// Dev Demo ValJourney
+export function <span class="fstat-no" title="function not covered" >devDemoValJourney(</span>) {
+<span class="cstat-no" title="statement not covered" >  valJourney("DevDemo", "GUI", "SplitLayout", "CreateSplitLayoutWithDifferentGUIModes");</span>
+<span class="cstat-no" title="statement not covered" >  valJourney("DevDemo", "GUI", "CrossModeNavigation", "EnableTabNavigationAcrossAllGUIModes");</span>
+}
+&nbsp;
+function valJourney(name, module, feature, scenario) {
+  // Implementation of the valJourney function
+  // console.log(`ValJourney: ${name}, Module: ${module}, Feature: ${feature}, Scenario: ${scenario}`);
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -97,7 +136,7 @@ function journey(name, module, feature, scenario) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-13T23:22:17.178Z
+                at 2024-07-14T18:37:23.219Z
             </div>
         <script src="prettify.js"></script>
         <script>
