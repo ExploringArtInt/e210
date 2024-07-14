@@ -1,5 +1,14 @@
 ## gui.md: Graphical User Interface
 
+## prompt: Create gui.js, index.html, styles.css, and gui.test.jst for HTML UI Components using CSS and Flex. Create the a button with a text label that can be any length (wraps as needed using Flex).
+
+## prompt: See uploaded files and compare with above. I am curious if you have any comments, questions, or concerns with my changes?
+
+## prompt: button can have custom font
+## prompt: button can have SVG icon
+## prompt: Button states support: Default state, Hover state, Active state, Focus state, and Disabled state.
+## prompt: Buttons fit into a Flex menu at the top of the screen or optionally at the bottom of the screen.
+
 ### GUI Modes
 - Solution: HTML/CSS/Flex
   - Simple HTML

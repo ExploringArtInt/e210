@@ -19,9 +19,12 @@ html {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #000000;
     font-family: "Comfortaa Medium", sans-serif;
     font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
 }
 
 .test {
@@ -46,4 +49,29 @@ canvas {
 
 .hidden {
     display: none !important;
+}
+
+.flex-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 5px 3px;
+    color: white;
+    background-color: #303030;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.flex-button:hover {
+    background-color: #606060;
+}
+
+.button-text {
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100%;
 }
