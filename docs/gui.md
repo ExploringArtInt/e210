@@ -31,14 +31,20 @@
     - Focus state (tab)
     - Active state - TBD
     - Disabled state - TBD
-
-## NEXT
 - GUIDs
   - Guid 0 to 4B
   - Luid 0 to 9999
--- Create function to add menu bar to a div
+
+- Create function to add menu bar to a div
+- Create function to add button to a menu bar
+
+  ## NEXT
+- Create patterns.js
+  - create FSM
+- Create app.js and app.state.js
+  - create appFSM to set state
   - Optional top or bottom of div
- Create function to add button to a menu bar
+- Create function to add button to a menu bar
   - Optional icon
   - Optional text
 - Support multiple menus in same DOM
