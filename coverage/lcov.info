@@ -55,6 +55,15 @@ BRF:0
 BRH:0
 end_of_record
 TN:
+SF:src/app.js
+FNF:0
+FNH:0
+LF:0
+LH:0
+BRF:0
+BRH:0
+end_of_record
+TN:
 SF:src/gui.js
 FN:3,addMenuBar
 FN:12,addButton
@@ -135,7 +144,7 @@ FNDA:9,(anonymous_3)
 FNDA:5,(anonymous_4)
 FNDA:2,(anonymous_5)
 FNDA:2,(anonymous_6)
-DA:33,1
+DA:33,2
 DA:35,10
 DA:37,10
 DA:38,24
