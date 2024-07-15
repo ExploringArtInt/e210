@@ -21,19 +21,31 @@
   - Infinite wrapping
   - Flex support
   - Size, color, alignment
-- Blocks
-  - Margin and Padding support
-- Spinner
 - Button
   - SVG Icon
     - ADA description of icon
   - Label
   - States
     - Default state
-    - Hover state
-    - Active state
-    - Focus state
-    - Disabled state
+    - Hover state (mouse)
+    - Focus state (tab)
+    - Active state - TBD
+    - Disabled state - TBD
+
+## NEXT
+- GUIDs
+  - Guid 0 to 4B
+  - Luid 0 to 9999
+-- Create function to add menu bar to a div
+  - Optional top or bottom of div
+ Create function to add button to a menu bar
+  - Optional icon
+  - Optional text
+- Support multiple menus in same DOM
+  - Multiple Divs
+  - Tab across menus, return or space to select
+- Spinner
+  - test delay function to verify it works
 - Modal
   - Close by hitting escape key
   - Close by selecting close button
@@ -62,6 +74,9 @@
 - Unified Content Scroll
   - Either no or one scroll bar displayed to access all content in DOM or Modal
 
+## Roadmap
+- Support Simple UX Contract Pattern
+  - All UI elements need to be dynamic via Javascript CRUD
 
 ### Dev Demo
 - Top menu and crumbs using Simple HTML
