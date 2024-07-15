@@ -1,9 +1,16 @@
 // gui.js
 
-document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("flexButton");
+export function initializeButtons() {
+  const buttons = document.querySelectorAll(".flex-button");
 
-  button.addEventListener("click", () => {
-    alert("Button clicked!");
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      alert(`Button ${index + 1} clicked!`);
+    });
   });
-});
+}
+
+// Run the initialization when the DOM is loaded
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", initializeButtons);
+}

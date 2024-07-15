@@ -2,7 +2,7 @@
 
 ## prompt: Create gui.js, index.html, styles.css, and gui.test.jst for HTML UI Components using CSS and Flex. Create the a button with a text label that can be any length (wraps as needed using Flex).
 
-## prompt: See uploaded files and compare with above. I am curious if you have any comments, questions, or concerns with my changes?
+## prompt: See uploaded project files and compare with the files you created. I am curious if you have any comments, questions, or concerns with my changes?
 
 ## prompt: button can have custom font
 ## prompt: button can have SVG icon
