@@ -1,28 +1,5 @@
 // js/utilities.js
 
-// MathUtils Functions
-const MathUtils = {
-  randomRange: (min, max) => Math.random() * (max - min) + min,
-
-  randomInt: (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
-};
-
-// Time Functions
-const TimeUtils = {
-  getTime: () => performance.now(),
-
-  calculateDeltaTime: (lastTime) => {
-    const currentTime = TimeUtils.getTime();
-    const deltaTime = (currentTime - lastTime) / 1000; // Convert to seconds
-    return { deltaTime, currentTime };
-  },
-};
-
-// Data Structure Operations
-const DataUtils = {
-  deepClone: (obj) => JSON.parse(JSON.stringify(obj)),
-};
-
 // Browser Cookie Management
 const CookieUtils = {
   MAX_COOKIE_SIZE: 4096, // bytes
@@ -82,4 +59,31 @@ const CookieUtils = {
   },
 };
 
-export { MathUtils, TimeUtils, DataUtils, CookieUtils };
+// Data Structure Operations
+const DataUtils = {
+  deepClone: (obj) => JSON.parse(JSON.stringify(obj)),
+};
+
+const GuidUtils = {
+  getGlobalUniqueID: () => Math.floor(Math.random() * (2e9 - 1e9) + 1e9),
+  getLocalUniqueID: () => Math.floor(Math.random() * (1e4 - 1e3) + 1e3),
+};
+
+// MathUtils Functions
+const MathUtils = {
+  randomRange: (min, max) => Math.random() * (max - min) + min,
+
+  randomInt: (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
+};
+
+// Time Functions
+const TimeUtils = {
+  getTime: () => performance.now(),
+
+  calculateDeltaTime: (lastTime) => {
+    const currentTime = TimeUtils.getTime();
+    const deltaTime = (currentTime - lastTime) / 1000; // Convert to seconds
+    return { deltaTime, currentTime };
+  },
+};
+export { CookieUtils, DataUtils, GuidUtils, MathUtils, TimeUtils };

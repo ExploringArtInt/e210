@@ -1,5 +1,5 @@
 // src/__tests__/utilities.test.js
-import { MathUtils, TimeUtils, DataUtils, CookieUtils } from "../../utilities.js";
+import { CookieUtils, DataUtils, GuidUtils, MathUtils, TimeUtils } from "../../utilities.js";
 
 // Mock document and its cookie property
 global.document = {
@@ -65,6 +65,52 @@ describe("Utilities", () => {
       CookieUtils.toss("testCookie");
       expect(global.document.cookie).toContain("testCookie=;");
       expect(global.document.cookie).toContain("expires=Thu, 01 Jan 1970 00:00:00 UTC");
+    });
+  });
+
+  describe("GuidUtils", () => {
+    test("getGlobalUniqueID returns a number between 1 billion and 2 billion", () => {
+      const id = GuidUtils.getGlobalUniqueID();
+      expect(id).toBeGreaterThanOrEqual(1e9);
+      expect(id).toBeLessThan(2e9);
+      expect(Number.isInteger(id)).toBe(true);
+    });
+
+    test("getGlobalUniqueID returns different values on subsequent calls", () => {
+      const id1 = GuidUtils.getGlobalUniqueID();
+      const id2 = GuidUtils.getGlobalUniqueID();
+      expect(id1).not.toBe(id2);
+    });
+
+    test("getGlobalUniqueID returns a number within the correct range over multiple calls", () => {
+      for (let i = 0; i < 10; i++) {
+        const id = GuidUtils.getGlobalUniqueID();
+        expect(id).toBeGreaterThanOrEqual(1e9);
+        expect(id).toBeLessThan(2e9);
+        expect(Number.isInteger(id)).toBe(true);
+      }
+    });
+
+    test("getLocalUniqueID returns a number between 1 thousand and 10 thousand", () => {
+      const id = GuidUtils.getLocalUniqueID();
+      expect(id).toBeGreaterThanOrEqual(1e3);
+      expect(id).toBeLessThan(1e4);
+      expect(Number.isInteger(id)).toBe(true);
+    });
+
+    test("getLocalUniqueID returns different values on subsequent calls", () => {
+      const id1 = GuidUtils.getLocalUniqueID();
+      const id2 = GuidUtils.getLocalUniqueID();
+      expect(id1).not.toBe(id2);
+    });
+
+    test("getLocalUniqueID returns a number within the correct range over multiple calls", () => {
+      for (let i = 0; i < 10; i++) {
+        const id = GuidUtils.getLocalUniqueID();
+        expect(id).toBeGreaterThanOrEqual(1e3);
+        expect(id).toBeLessThan(1e4);
+        expect(Number.isInteger(id)).toBe(true);
+      }
     });
   });
 });
