@@ -35,10 +35,10 @@
   - Guid 0 to 4B
   - Luid 0 to 9999
 
+  ## NEXT
+
 - Create function to add menu bar to a div
 - Create function to add button to a menu bar
-
-  ## NEXT
 - Create patterns.js
   - create FSM
 - Create app.js and app.state.js
