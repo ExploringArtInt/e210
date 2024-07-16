@@ -1,13 +1,34 @@
 import { fsmPattern } from "./patterns.js";
 import { guiCreatePage, initializeButtons } from "./gui.js";
 
+/***
+
+App State Transition Table
+
+| Current State | Event | Next State | Actions
+|---------------|-------|------------|--------
+| init          | exit  | normal     | exitInitState
+
+
+State Action Table
+
+| State    | Enter Action     | Exit Action    | Is Final State
+|----------|------------------|----------------|---------------
+| init     | enterInitState   | exitInitState  | No
+| normal   | enterNormalState |                | Yes
+
+***/
+
 export class App {
   constructor() {
     this.state = "init";
-    this.fsm = fsmPattern({
+    this.fsm = fsmPattern.createMachine("init", {
       init: {
         enter: this.enterInitState.bind(this),
-        exit: this.exitInitState.bind(this),
+        exit: {
+          target: "normal",
+          actions: this.exitInitState.bind(this),
+        },
       },
       normal: {
         enter: this.enterNormalState.bind(this),
@@ -15,15 +36,13 @@ export class App {
     });
   }
 
-  async start() {
-    await this.fsm.transition("init");
+  start() {
+    this.fsm.transition("enter");
   }
 
-  async enterInitState() {
+  enterInitState() {
     console.log("Entering init state");
-    // Simulate some initialization process
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    await this.fsm.transition("normal");
+    this.fsm.transition("exit");
   }
 
   exitInitState() {
@@ -41,6 +60,6 @@ export class App {
 if (typeof document !== "undefined") {
   document.addEventListener("DOMContentLoaded", () => {
     const app = new App();
-    app.start();
+    app.enterInitState();
   });
 }

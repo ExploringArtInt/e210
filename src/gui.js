@@ -60,11 +60,3 @@ export function initializeButtons() {
     });
   });
 }
-
-// Run the initialization when the DOM is loaded
-if (typeof document !== "undefined") {
-  document.addEventListener("DOMContentLoaded", () => {
-    guiCreatePage();
-    initializeButtons();
-  });
-}

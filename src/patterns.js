@@ -59,8 +59,10 @@ export const fsmPattern = {
           }
 
           // Execute enter actions of the new state
-          if (states[target].enter) {
+          if (states && states[target] && states[target].enter) {
             executeActions(states[target].enter, event);
+          } else {
+            console.log("State config problem");
           }
 
           currentState = target;
