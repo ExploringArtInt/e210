@@ -9,7 +9,7 @@ export function addMenuBar(parentDiv) {
   return menuBar;
 }
 
-export function addButton(menuBar, iconSrc, buttonText) {
+export function createButton(menuBar, iconSrc, buttonText) {
   const buttonId = `flex-button-${GuidUtils.getLocalUniqueID()}`;
   const button = document.createElement("button");
   button.id = buttonId;
@@ -29,7 +29,7 @@ export function addButton(menuBar, iconSrc, buttonText) {
   return button;
 }
 
-export function guiCreatePage() {
+export function createButtonSet() {
   const app = document.getElementById("app");
   if (!app) {
     console.error("App container not found");
@@ -38,13 +38,13 @@ export function guiCreatePage() {
 
   const menuBar = addMenuBar(app);
 
-  addButton(
+  createButton(menuBar, "./assets/svg/gui-white/hamburger-menu.svg", "Lorem ipsum dolor");
+  createButton(
     menuBar,
     "./assets/svg/gui-white/save-arrow.svg",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida neque blandit rhoncus porttitor. Sed et tincidunt risus.",
   );
-  addButton(menuBar, "./assets/svg/gui-white/hamburger-menu.svg", "Lorem ipsum dolor");
-  addButton(
+  createButton(
     menuBar,
     "./assets/svg/gui-white/round-knob.svg",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida neque blandit rhoncus porttitor. Sed et tincidunt risus. Sed vitae arcu eu neque congue iaculis. Nunc tortor magna, vulputate eget erat vel, sagittis consequat nisi. Donec eu quam vitae tellus venenatis rutrum eget eget nibh. Suspendisse potenti. Morbi ut ligula efficitur, consectetur diam et, malesuada leo. Donec id vestibulum mauris, sit amet pharetra nisi. In magna enim, tincidunt id nisl tincidunt, volutpat sodales tellus. Suspendisse vel dolor ipsum. Sed efficitur, tortor ac tristique varius, elit massa cursus lectus, quis lacinia neque risus ut nulla. Aliquam erat volutpat. Vivamus et tellus at mauris tincidunt convallis.",
@@ -59,4 +59,42 @@ export function initializeButtons() {
       alert(`Button ${index + 1} clicked!`);
     });
   });
+}
+
+let spinnerInterval;
+
+export function createSpinner() {
+  const spinner = document.getElementById("spinner");
+  if (!spinner) {
+    console.error("Spinner container not found");
+    return;
+  }
+
+  const spinnerId = `spinner-${GuidUtils.getLocalUniqueID()}`;
+
+  spinner.innerHTML = `
+    <div id="${spinnerId}" class="spinner">
+      <img src="assets/svg/gui-black/cycle.svg" alt="Loading spinner">
+    </div>
+  `;
+
+  const spinnerElement = document.getElementById(spinnerId);
+  let rotation = 0;
+
+  spinnerInterval = setInterval(() => {
+    rotation -= 360;
+    spinnerElement.style.transform = `rotate(${rotation}deg)`;
+  }, 1000);
+}
+
+export function deleteSpinner() {
+  const spinner = document.getElementById("spinner");
+  if (spinner) {
+    spinner.innerHTML = "";
+  }
+
+  if (spinnerInterval) {
+    clearInterval(spinnerInterval);
+    spinnerInterval = null;
+  }
 }

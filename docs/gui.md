@@ -43,24 +43,31 @@
     - create appFSM to set state
 
 ## NEXT
-
-- App - fsm with one or more pages
-- Page - fsm with one or more layers
-       - a page contains the entire DOM
-- Layer - fsm with zero or more menus, breadcrumbs, flows, tables and/or canvases
-        - a layer has a z-index
-        - a layer can be modal, interaction and tabbing is trapped within layer
+- Spinner
+  - test delay function to verify it works
+- App - fsm with one or more cards
+      - an app has a router that can parse URL parameters to a Page>Card>Flow
+      - an app contains the entire DOM
+      - an app has a 2D light source for any 2D shadows
+- Card - fsm with zero or more menus, breadcrumbs, flows, tables and/or canvases
+        - a card can be active or hidden
+        - a card can have a border
+          - a border has a corner radius starting at 0
+          - a border can have a 2D shadow
+        - a card has a z-index
+        - a card can be modal, interaction and tabbing is trapped within card
           - close by hitting escape key
           - close by selecting close button
-        - a layer can be non-modal, interaction and tabbing continues within page
+        - a card can be non-modal, interaction and tabbing continues within page
         - vertical and horizontal alignment via Flex
 - Menu - holds one or more buttons
   - Button - click to request action
     - Optional icon
     - Optional text
-- Breadcrumbs - a set of crumbs
+- CrumbTrail - a set of one or more crumbs
+  - can optionally have a dataTree
+  - a crumb trail has a seperator between crumbs (/, |, >)
   - Crumb - a single link back up the heirarchy
-    - crumbs have a seperator between them (/, |, >)
 - Flow - fsm with one or more steps
   - Step - fsm with zero or more elements and/or buttons
     - Element
@@ -76,16 +83,21 @@
         - ADA Aria data
         - Error Indicator
         - Error Text
-
-  - Table - a display of cells in columns and rows
-        - can optionally be sorted
-        - can optionally be paged
+- Table - a display of cells in columns and rows
+      - can optionally have a dataTree
+      - can optionally be sorted
+      - can optionally be paged
 - Canvas - a display of 2D and 3D elements
          - can optionally have interaction and tabbing that continues within page
-
-- Create function to add button to a menu bar
-- Spinner
-  - test delay function to verify it works
+         - can optionally have a dataTree
+- DataTree - a JSON data heirarchy
+  - columns are attributes
+  - rows are instances
+  - cells are values
+    - can optionally link to next level down in heirarchy
+- DataStore - persists zero or more dataTrees
+  - api to local Mongo using NoSQL
+  - api to Google Firebase using NoSqL
 
 ### Excellence - How
 - ADA Compliant

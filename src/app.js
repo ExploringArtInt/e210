@@ -1,5 +1,5 @@
 import { fsmPattern } from "./patterns.js";
-import { guiCreatePage, initializeButtons } from "./gui.js";
+import { createButtonSet, initializeButtons, createSpinner, deleteSpinner } from "./gui.js";
 
 /***
 
@@ -81,21 +81,24 @@ export class App {
 
   onAppInitialized() {
     console.log("App initialized");
-    // Simulate content loading
-    setTimeout(() => this.fsm.transition("Content Loaded"), 1000);
   }
 
   enterLoadingState() {
     console.log("Entering Loading state");
+    createSpinner();
+
+    // Simulate content loading
+    setTimeout(() => this.fsm.transition("Content Loaded"), 1000);
   }
 
   exitLoadingState() {
     console.log("Exiting Loading state");
+    deleteSpinner();
   }
 
   onCreatePage() {
     console.log("Creating page");
-    guiCreatePage();
+    createButtonSet();
     initializeButtons();
   }
 
