@@ -35,41 +35,57 @@
   - Guid 0 to 4B
   - Luid 0 to 9999
 
-  ## NEXT
+  - Create function to add menu bar to a div
+  - Create function to add button to a menu bar
+  - Create patterns.js
+    - create FSM
+  - Create app.js and app.state.js
+    - create appFSM to set state
 
-- Create function to add menu bar to a div
+## NEXT
+
+- App - fsm with one or more pages
+- Page - fsm with one or more layers
+       - a page contains the entire DOM
+- Layer - fsm with zero or more menus, breadcrumbs, flows, tables and/or canvases
+        - a layer has a z-index
+        - a layer can be modal, interaction and tabbing is trapped within layer
+          - close by hitting escape key
+          - close by selecting close button
+        - a layer can be non-modal, interaction and tabbing continues within page
+        - vertical and horizontal alignment via Flex
+- Menu - holds one or more buttons
+  - Button - click to request action
+    - Optional icon
+    - Optional text
+- Breadcrumbs - a set of crumbs
+  - Crumb - a single link back up the heirarchy
+    - crumbs have a seperator between them (/, |, >)
+- Flow - fsm with one or more steps
+  - Step - fsm with zero or more elements and/or buttons
+    - Element
+      - vertical and horizontal alignment via Flex
+      - Checkbox
+      - Toggle
+        - Radiobox
+      - Input Field
+        - Label
+        - Default value
+        - Mask
+        - Unmask Toggle
+        - ADA Aria data
+        - Error Indicator
+        - Error Text
+
+  - Table - a display of cells in columns and rows
+        - can optionally be sorted
+        - can optionally be paged
+- Canvas - a display of 2D and 3D elements
+         - can optionally have interaction and tabbing that continues within page
+
 - Create function to add button to a menu bar
-- Create patterns.js
-  - create FSM
-- Create app.js and app.state.js
-  - create appFSM to set state
-  - Optional top or bottom of div
-- Create function to add button to a menu bar
-  - Optional icon
-  - Optional text
-- Support multiple menus in same DOM
-  - Multiple Divs
-  - Tab across menus, return or space to select
 - Spinner
   - test delay function to verify it works
-- Modal
-  - Close by hitting escape key
-  - Close by selecting close button
-  - Trap tab within modal
-- Crumbs
-  - Crumb link
-  - Crumb seperator
-- Checkbox
-- Toggle
-  - Radiobox
-- Input Field
-  - Label
-  - Default value
-  - Mask
-  - Unmask Toggle
-  - ADA Aria data
-  - Error Indicator
-  - Error Text
 
 ### Excellence - How
 - ADA Compliant
