@@ -5,54 +5,126 @@ import { guiCreatePage, initializeButtons } from "./gui.js";
 
 App State Transition Table
 
-| Current State | Event | Next State | Actions
-|---------------|-------|------------|--------
-| init          | exit  | normal     | exitInitState
-
+|  State  | Event           | Next State | Actions
+|---------|-----------------|------------|--------
+| Start   | Initialize      | Loading    | onAppInitialized
+| Loading | Content Loaded  | Idle       | onCreatePage
+| Idle    | Request Action  | Idle       | onPerformAction
+| Idle    | Pause           | Paused     | onPauseApp
+| Paused  | Unpause         | Idle       | onResumeApp
 
 State Action Table
 
-| State    | Enter Action     | Exit Action    | Is Final State
-|----------|------------------|----------------|---------------
-| init     | enterInitState   | exitInitState  | No
-| normal   | enterNormalState |                | Yes
+| State   | Enter Action    | Exit Action    | Is Final State
+|---------|-----------------|----------------|---------------
+| Start   | onEnterStart    | onExitStart    | No
+| Loading | onEnterLoading  | onExitLoading  | No
+| Idle    | onEnterIdle     | onExitIdle     | No
+| Paused  | onEnterPaused   | onExitPaused   | Yes
 
 ***/
 
 export class App {
   constructor() {
-    this.state = "init";
-    this.fsm = fsmPattern.createMachine("init", {
-      init: {
-        enter: this.enterInitState.bind(this),
-        exit: {
-          target: "normal",
-          actions: this.exitInitState.bind(this),
+    this.fsm = fsmPattern.createMachine("Start", {
+      Start: {
+        enter: this.enterStartState.bind(this),
+        exit: this.exitStartState.bind(this),
+        Initialize: {
+          target: "Loading",
+          actions: this.onAppInitialized.bind(this),
         },
       },
-      normal: {
-        enter: this.enterNormalState.bind(this),
+      Loading: {
+        enter: this.enterLoadingState.bind(this),
+        exit: this.exitLoadingState.bind(this),
+        "Content Loaded": {
+          target: "Idle",
+          actions: this.onCreatePage.bind(this),
+        },
+      },
+      Idle: {
+        enter: this.enterIdleState.bind(this),
+        exit: this.exitIdleState.bind(this),
+        "Request Action": {
+          target: "Idle",
+          actions: this.onPerformAction.bind(this),
+        },
+        Pause: {
+          target: "Paused",
+          actions: this.onPauseApp.bind(this),
+        },
+      },
+      Paused: {
+        enter: this.enterPausedState.bind(this),
+        exit: this.exitPausedState.bind(this),
+        Unpause: {
+          target: "Idle",
+          actions: this.onResumeApp.bind(this),
+        },
+        isFinal: true,
       },
     });
   }
 
   start() {
-    this.fsm.transition("enter");
+    this.fsm.transition("Initialize");
   }
 
-  enterInitState() {
-    console.log("Entering init state");
-    this.fsm.transition("exit");
+  enterStartState() {
+    console.log("Entering Start state");
   }
 
-  exitInitState() {
-    console.log("Exiting init state");
+  exitStartState() {
+    console.log("Exiting Start state");
   }
 
-  enterNormalState() {
-    console.log("Entering normal state");
+  onAppInitialized() {
+    console.log("App initialized");
+    // Simulate content loading
+    setTimeout(() => this.fsm.transition("Content Loaded"), 1000);
+  }
+
+  enterLoadingState() {
+    console.log("Entering Loading state");
+  }
+
+  exitLoadingState() {
+    console.log("Exiting Loading state");
+  }
+
+  onCreatePage() {
+    console.log("Creating page");
     guiCreatePage();
     initializeButtons();
+  }
+
+  enterIdleState() {
+    console.log("Entering Idle state");
+  }
+
+  exitIdleState() {
+    console.log("Exiting Idle state");
+  }
+
+  onPerformAction() {
+    console.log("Performing action");
+  }
+
+  onPauseApp() {
+    console.log("Pausing app");
+  }
+
+  enterPausedState() {
+    console.log("Entering Paused state");
+  }
+
+  exitPausedState() {
+    console.log("Exiting Paused state");
+  }
+
+  onResumeApp() {
+    console.log("Resuming app");
   }
 }
 
@@ -60,6 +132,6 @@ export class App {
 if (typeof document !== "undefined") {
   document.addEventListener("DOMContentLoaded", () => {
     const app = new App();
-    app.enterInitState();
+    app.start();
   });
 }
