@@ -1,10 +1,12 @@
 // app.test.js
 import { App } from "../../app.js";
-import { guiCreatePage, initializeButtons } from "../../gui.js";
+import { createContent, initializeButtons, createSpinner, deleteSpinner } from "../../gui.js";
 
 jest.mock("../../gui.js", () => ({
-  guiCreatePage: jest.fn(),
+  createContent: jest.fn(),
   initializeButtons: jest.fn(),
+  createSpinner: jest.fn(),
+  deleteSpinner: jest.fn(),
 }));
 
 describe("App", () => {
@@ -43,10 +45,10 @@ describe("App", () => {
     expect(consoleSpy).toHaveBeenCalledWith("Entering Idle state");
   });
 
-  test("guiCreatePage and initializeButtons are called when transitioning to Idle", () => {
+  test("createContent and initializeButtons are called when transitioning to Idle", () => {
     app.start();
     jest.runAllTimers();
-    expect(guiCreatePage).toHaveBeenCalled();
+    expect(createContent).toHaveBeenCalled();
     expect(initializeButtons).toHaveBeenCalled();
   });
 

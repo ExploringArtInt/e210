@@ -1,6 +1,6 @@
 import { GuidUtils } from "./utilities.js";
 
-export function addMenuBar(parentDiv) {
+export function createMenuBar(parentDiv) {
   const menuBarId = `menu-bar-${GuidUtils.getLocalUniqueID()}`;
   const menuBar = document.createElement("div");
   menuBar.id = menuBarId;
@@ -29,14 +29,14 @@ export function createButton(menuBar, iconSrc, buttonText) {
   return button;
 }
 
-export function createButtonSet() {
+export function createContent() {
   const app = document.getElementById("app");
   if (!app) {
     console.error("App container not found");
     return;
   }
 
-  const menuBar = addMenuBar(app);
+  const menuBar = createMenuBar(app);
 
   createButton(menuBar, "./assets/svg/gui-white/hamburger-menu.svg", "Lorem ipsum dolor");
   createButton(
