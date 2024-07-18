@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.53% </span>
+                <span class="strong">95.12% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/41</span>
+                <span class='fraction'>39/41</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">87.5% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/8</span>
+                <span class='fraction'>7/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.53% </span>
+                <span class="strong">95.12% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/41</span>
+                <span class='fraction'>39/41</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -185,38 +185,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { GuidUtils } from "./utilities.js";
@@ -262,39 +262,39 @@ export function initializeButtons() {
 &nbsp;
 let spinnerInterval;
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >createSpinner(</span>) {
-  const spinner = <span class="cstat-no" title="statement not covered" >document.getElementById("spinner");</span>
-<span class="cstat-no" title="statement not covered" >  if (!spinner) {</span>
-<span class="cstat-no" title="statement not covered" >    console.error("Spinner container not found");</span>
-<span class="cstat-no" title="statement not covered" >    return;</span>
+export function createSpinner() {
+  const spinner = document.getElementById("spinner");
+  if (!spinner) {
+    console.error("Spinner container not found");
+    return;
   }
 &nbsp;
-  const spinnerId = <span class="cstat-no" title="statement not covered" >`spinner-${GuidUtils.getLocalUniqueID()}`;</span>
+  const spinnerId = `spinner-${GuidUtils.getLocalUniqueID()}`;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  spinner.innerHTML = `</span>
+  spinner.innerHTML = `
     &lt;div id="${spinnerId}" class="spinner"&gt;
       &lt;img src="assets/svg/gui-black/cycle.svg" alt="Loading spinner"&gt;
     &lt;/div&gt;
   `;
 &nbsp;
-  const spinnerElement = <span class="cstat-no" title="statement not covered" >document.getElementById(spinnerId);</span>
-  let rotation = <span class="cstat-no" title="statement not covered" >0;</span>
+  const spinnerElement = document.getElementById(spinnerId);
+  let rotation = 0;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  spinnerInterval = setInterval(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  spinnerInterval = setInterval(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    rotation -= 360;</span>
 <span class="cstat-no" title="statement not covered" >    spinnerElement.style.transform = `rotate(${rotation}deg)`;</span>
   }, 1000);
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >deleteSpinner(</span>) {
-  const spinner = <span class="cstat-no" title="statement not covered" >document.getElementById("spinner");</span>
-<span class="cstat-no" title="statement not covered" >  if (spinner) {</span>
-<span class="cstat-no" title="statement not covered" >    spinner.innerHTML = "";</span>
+export function deleteSpinner() {
+  const spinner = document.getElementById("spinner");
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (spinner) {
+    spinner.innerHTML = "";
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (spinnerInterval) {</span>
-<span class="cstat-no" title="statement not covered" >    clearInterval(spinnerInterval);</span>
-<span class="cstat-no" title="statement not covered" >    spinnerInterval = null;</span>
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (spinnerInterval) {
+    clearInterval(spinnerInterval);
+    spinnerInterval = null;
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -304,7 +304,7 @@ export function <span class="fstat-no" title="function not covered" >deleteSpinn
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-18T01:26:05.119Z
+                at 2024-07-18T01:40:50.234Z
             </div>
         <script src="prettify.js"></script>
         <script>

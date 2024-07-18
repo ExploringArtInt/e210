@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import "jest-canvas-mock";
-
 import { initializeButtons, createMenuBar, createButton, createSpinner, deleteSpinner } from "../../gui.js";
 import { GuidUtils } from "../../utilities.js";
 
@@ -14,8 +13,13 @@ jest.mock("../../utilities.js", () => ({
 
 describe("GUI Functions", () => {
   beforeEach(() => {
-    document.body.innerHTML = '<div id="app"></div>';
+    document.body.innerHTML = '<div id="app"></div><div id="spinner"></div>';
     jest.clearAllMocks();
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   test("createMenuBar creates a menu bar with correct ID and class", () => {
@@ -60,5 +64,46 @@ describe("GUI Functions", () => {
     alertMock.mockRestore();
   });
 
-  // Add tests for createSpinner and deleteSpinner if needed
+  test("createSpinner creates a spinner with correct structure", () => {
+    createSpinner();
+
+    const spinnerContainer = document.getElementById("spinner");
+    const spinnerElement = spinnerContainer.querySelector(".spinner");
+    const spinnerImage = spinnerElement.querySelector("img");
+
+    expect(spinnerElement).toBeTruthy();
+    expect(spinnerElement.id).toBe("spinner-1234");
+    expect(spinnerImage).toBeTruthy();
+    expect(spinnerImage.src).toContain("assets/svg/gui-black/cycle.svg");
+    expect(spinnerImage.alt).toBe("Loading spinner");
+  });
+
+  test("createSpinner starts rotation animation", () => {
+    createSpinner();
+
+    const spinnerElement = document.querySelector(".spinner");
+
+    expect(spinnerElement.style.transform).toBe("");
+  });
+
+  test("createSpinner logs error when spinner container is not found", () => {
+    document.body.innerHTML = "";
+    const consoleSpy = jest.spyOn(console, "error").mockImplementation();
+
+    createSpinner();
+
+    expect(consoleSpy).toHaveBeenCalledWith("Spinner container not found");
+    consoleSpy.mockRestore();
+  });
+
+  test("deleteSpinner removes spinner and stops animation", () => {
+    createSpinner();
+
+    const spinnerContainer = document.getElementById("spinner");
+    expect(spinnerContainer.innerHTML).not.toBe("");
+
+    deleteSpinner();
+
+    expect(spinnerContainer.innerHTML).toBe("");
+  });
 });
