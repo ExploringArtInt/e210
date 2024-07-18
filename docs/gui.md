@@ -46,20 +46,33 @@
 
 ## NEXT
 - App - fsm with one or more cards
-      - an app has a router that can parse URL parameters to a Page>Card>Flow
       - an app contains the entire DOM
+      - an app contains a session
+        - session authenication of the user's identity
+        - session authorization of the access roles for that identity
+      - an app contains an inactivity timeout counter
+      - an app has a router that can parse URL parameters to a Page>Card>Flow
       - an app has a 2D light source for any 2D shadows
-- Card - fsm with zero or more menus, breadcrumbs, flows, tables and/or canvases
-        - a card can be active or hidden
-        - a card can have a border
-          - a border has a corner radius starting at 0
-          - a border can have a 2D shadow
-        - a card has a z-index
-        - a card can be modal, interaction and tabbing is trapped within card
-          - close by hitting escape key
-          - close by selecting close button
-        - a card can be non-modal, interaction and tabbing continues within page
-        - vertical and horizontal alignment via Flex
+      - an app has padding and margin for all cards within it
+      - an app has a responsive breakpoint and a maximum width
+      - an app can have zero or one of its cards open as modal at a time
+        - a stack of modal card can be on a modal card without limit
+        - an app has a target for after the open modal closes
+- Card - fsm with zero or more cards, menus, breadcrumbs, flows, tables and/or canvases
+  - a card's states are hidden, normal, modal
+  - a card can be modal, interaction and tabbing is trapped within card
+    - close by hitting escape key
+    - close by selecting close button
+    - an card can have zero or one of its cards open as modal at a time
+      - a stack of modal card can be on a modal card without limit
+      - a card has a target for after the open modal closes
+ - a card can be non-modal, interaction and tabbing continues within page
+  - a card has a z-index
+  - vertical and horizontal alignment via Flex
+  - a card can have a border
+    - a border has a corner radius starting at 0
+    - a border can have a 2D partically transcent shadow
+    - a card has padding and margin for all cards, menus, breadcrumbs, flows, tables and/or canvases within it
 - Menu - holds one or more buttons
   - Button - click to request action
     - Optional icon
@@ -69,12 +82,17 @@
   - a crumb trail has a seperator between crumbs (/, |, >)
   - Crumb - a single link back up the heirarchy
 - Flow - fsm with one or more steps
+  - a flows's states are start, displayed, begun, cancelled, completed, removed
+  - a flow containers a required role to access (authorization)
   - Step - fsm with zero or more elements and/or buttons
+    - a steps's states are start, display, begun, incomplete, errors, completed, removed
     - Element
       - vertical and horizontal alignment via Flex
       - Checkbox
+        - can be required or optional
       - Toggle
         - Radiobox
+        - can be required or optional
       - Input Field
         - Label
         - Default value
@@ -83,6 +101,7 @@
         - ADA Aria data
         - Error Indicator
         - Error Text
+        - can be required or optional
 - Table - a display of cells in columns and rows
       - can optionally have a dataTree
       - can optionally be sorted
