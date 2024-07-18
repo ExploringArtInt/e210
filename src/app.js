@@ -1,5 +1,6 @@
 import { fsmPattern } from "./patterns.js";
-import { createContent, initializeButtons, createSpinner, deleteSpinner } from "./gui.js";
+import { initializeButtons, createSpinner, deleteSpinner } from "./gui.js";
+import { createContent } from "./content.js";
 
 /***
 

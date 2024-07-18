@@ -1,12 +1,21 @@
 // app.test.js
+/**
+ * @jest-environment jsdom
+ */
+import "jest-canvas-mock";
+
 import { App } from "../../app.js";
-import { createContent, initializeButtons, createSpinner, deleteSpinner } from "../../gui.js";
+import { initializeButtons, createSpinner, deleteSpinner } from "../../gui.js";
+import { createContent } from "../../content.js";
 
 jest.mock("../../gui.js", () => ({
-  createContent: jest.fn(),
   initializeButtons: jest.fn(),
   createSpinner: jest.fn(),
   deleteSpinner: jest.fn(),
+}));
+
+jest.mock("../../content.js", () => ({
+  createContent: jest.fn(),
 }));
 
 describe("App", () => {

@@ -41,10 +41,10 @@
     - create FSM
   - Create app.js and app.state.js
     - create appFSM to set state
-
-## NEXT
 - Spinner
   - test delay function to verify it works
+
+## NEXT
 - App - fsm with one or more cards
       - an app has a router that can parse URL parameters to a Page>Card>Flow
       - an app contains the entire DOM

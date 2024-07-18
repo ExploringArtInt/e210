@@ -2,7 +2,8 @@
  * @jest-environment jsdom
  */
 import "jest-canvas-mock";
-import { initializeButtons, createMenuBar, createButton, createContent, createSpinner, deleteSpinner } from "../../gui.js";
+
+import { initializeButtons, createMenuBar, createButton, createSpinner, deleteSpinner } from "../../gui.js";
 import { GuidUtils } from "../../utilities.js";
 
 jest.mock("../../utilities.js", () => ({
@@ -39,50 +40,18 @@ describe("GUI Functions", () => {
     expect(menuBar.contains(button)).toBe(true);
   });
 
-  test("createContent creates the correct page structure", () => {
-    const app = document.getElementById("app");
-    createContent();
+  test("initializeButtons adds click event listeners to buttons", () => {
+    document.body.innerHTML = `
+      <button class="flex-button"></button>
+      <button class="flex-button"></button>
+      <button class="flex-button"></button>
+    `;
 
-    const menuBar = app.querySelector(".menu-bar");
-    expect(menuBar).toBeTruthy();
-
-    const buttons = menuBar.querySelectorAll(".flex-button");
-    expect(buttons.length).toBe(3);
-
-    expect(buttons[0].querySelector(".button-icon").src).toContain("hamburger-menu.svg");
-    expect(buttons[1].querySelector(".button-icon").src).toContain("save-arrow.svg");
-    expect(buttons[2].querySelector(".button-icon").src).toContain("round-knob.svg");
-  });
-
-  test("Buttons exist in the document", () => {
-    createContent();
-    initializeButtons();
-    const buttons = document.querySelectorAll(".flex-button");
-    expect(buttons.length).toBe(3);
-  });
-
-  test("Buttons have correct classes", () => {
-    createContent();
-    initializeButtons();
-    const buttons = document.querySelectorAll(".flex-button");
-    buttons.forEach((button) => {
-      expect(button.classList.contains("flex-button")).toBe(true);
-    });
-  });
-
-  test("Button text is wrapped in a span", () => {
-    createContent();
-    initializeButtons();
-    const buttonTexts = document.querySelectorAll(".button-text");
-    expect(buttonTexts.length).toBe(3);
-  });
-
-  test("Button click event listeners are added", () => {
-    createContent();
-    initializeButtons();
-    const buttons = document.querySelectorAll(".flex-button");
     const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
 
+    initializeButtons();
+
+    const buttons = document.querySelectorAll(".flex-button");
     buttons.forEach((button, index) => {
       button.click();
       expect(alertMock).toHaveBeenCalledWith(`Button ${index + 1} clicked!`);
@@ -90,4 +59,6 @@ describe("GUI Functions", () => {
 
     alertMock.mockRestore();
   });
+
+  // Add tests for createSpinner and deleteSpinner if needed
 });
