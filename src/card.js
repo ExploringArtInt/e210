@@ -1,5 +1,6 @@
 import { fsmPattern } from "./patterns.js";
 import { GuidUtils } from "./utilities.js";
+import { createMenuBar, createButton } from "./gui.js";
 
 /***
 
@@ -74,14 +75,27 @@ export class Card {
     const card = document.createElement("div");
     card.id = this.cardId;
     card.className = "card hidden";
-    card.innerHTML = `
+
+    // Create the card content
+    const cardContent = document.createElement("div");
+    cardContent.className = "card-content";
+    cardContent.innerHTML = `
       <h2>Card Title</h2>
       <p>Card content goes here.</p>
-      <button class="hide-btn">Hide</button>
-      <button class="modal-btn">Open Modal</button>
     `;
 
+    // Create the menu bar
+    const menuBar = createMenuBar(card);
+    createButton(menuBar, "./assets/svg/gui-white/hamburger-menu.svg", "Hide");
+    createButton(menuBar, "./assets/svg/gui-white/save-arrow.svg", "Open");
+
+    // Append the menu bar and card content to the card
+    card.appendChild(cardContent);
+    card.appendChild(menuBar);
+
+    // Append the card to the parent div
     parentDiv.appendChild(card);
+
     return card;
   }
 
@@ -152,8 +166,11 @@ export function createCard(parentDiv) {
   const card = new Card(parentDiv);
 
   // Add event listeners
-  card.element.querySelector(".hide-btn").addEventListener("click", () => card.hide());
-  card.element.querySelector(".modal-btn").addEventListener("click", () => card.openModal());
+  const hideButton = card.element.querySelector(".flex-button:nth-child(1)");
+  const openButton = card.element.querySelector(".flex-button:nth-child(2)");
+
+  hideButton.addEventListener("click", () => card.hide());
+  openButton.addEventListener("click", () => card.openModal());
 
   // Initially display the card
   card.display();
