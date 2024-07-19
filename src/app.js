@@ -26,7 +26,43 @@ State Action Table
 ***/
 
 export class App {
-  constructor() {
+  constructor({
+    sessionKey = 123456789,
+    msUntilTimeOut = 20000,
+    routeURL = "/",
+    lightSourceX = 0,
+    lightSourceY = 0,
+    lightSourceBrightness = 0,
+    lightSourceBlur = 0,
+    cardPaddingTop = 0,
+    cardPaddingRight = 0,
+    cardPaddingBottom = 0,
+    cardPaddingLeft = 0,
+    cardMarginTop = 0,
+    cardMarginRight = 0,
+    cardMarginBottom = 0,
+    cardMarginLeft = 0,
+    appMaxWidth = 0,
+    appBreakWidth = 0,
+  } = {}) {
+    this.sessionKey = sessionKey;
+    this.msUntilTimeOut = msUntilTimeOut;
+    this.routeURL = routeURL;
+    this.lightSourceX = lightSourceX;
+    this.lightSourceY = lightSourceY;
+    this.lightSourceBrightness = lightSourceBrightness;
+    this.lightSourceBlur = lightSourceBlur;
+    this.cardPaddingTop = cardPaddingTop;
+    this.cardPaddingRight = cardPaddingRight;
+    this.cardPaddingBottom = cardPaddingBottom;
+    this.cardPaddingLeft = cardPaddingLeft;
+    this.cardMarginTop = cardMarginTop;
+    this.cardMarginRight = cardMarginRight;
+    this.cardMarginBottom = cardMarginBottom;
+    this.cardMarginLeft = cardMarginLeft;
+    this.appMaxWidth = appMaxWidth;
+    this.appBreakWidth = appBreakWidth;
+
     this.fsm = fsmPattern.createMachine("Start", {
       Start: {
         enter: this.enterStartState.bind(this),

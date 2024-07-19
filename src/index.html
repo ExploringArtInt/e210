@@ -9,6 +9,20 @@
     <body>
         <div id="spinner"></div>
         <div id="app">
-        <script type="module" src="app.js"></script>
+            <script type="module">
+                import { App } from './app.js';
+
+                document.addEventListener("DOMContentLoaded", () => {
+                    const nvpApp = {
+                        sessionKey: 987654321,
+                        routeURL: "/partial-custom",
+                        lightSourceBrightness: 0.7,
+                        cardPaddingTop: 8,
+                        appMaxWidth: 1000,
+                    };
+                    // console.table(nvpApp);
+                    const app = new App(nvpApp);
+                });
+            </script>
     </body>
 </html>

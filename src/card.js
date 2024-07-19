@@ -100,49 +100,49 @@ export class Card {
   }
 
   onEnterHidden() {
-    console.log("Entering Hidden state");
+    // console.log("Entering Hidden state");
     this.element.classList.add("hidden");
   }
 
   onExitHidden() {
-    console.log("Exiting Hidden state");
+    // console.log("Exiting Hidden state");
     this.element.classList.remove("hidden");
   }
 
   onEnterNormal() {
-    console.log("Entering Normal state");
+    // console.log("Entering Normal state");
     this.element.classList.add("normal");
   }
 
   onExitNormal() {
-    console.log("Exiting Normal state");
+    // console.log("Exiting Normal state");
     this.element.classList.remove("normal");
   }
 
   onEnterModal() {
-    console.log("Entering Modal state");
+    // console.log("Entering Modal state");
     this.element.classList.add("modal");
   }
 
   onExitModal() {
-    console.log("Exiting Modal state");
+    // console.log("Exiting Modal state");
     this.element.classList.remove("modal");
   }
 
   onDisplayCard() {
-    console.log("Displaying card");
+    // console.log("Displaying card");
   }
 
   onHideCard() {
-    console.log("Hiding card");
+    // console.log("Hiding card");
   }
 
   onOpenModal() {
-    console.log("Opening modal");
+    // console.log("Opening modal");
   }
 
   onCloseModal() {
-    console.log("Closing modal");
+    // console.log("Closing modal");
   }
 
   display() {
