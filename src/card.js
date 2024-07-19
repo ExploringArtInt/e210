@@ -30,7 +30,7 @@ export class Card {
   constructor(parentDiv) {
     this.parentDiv = parentDiv;
     this.cardId = `card-${GuidUtils.getLocalUniqueID()}`;
-    this.element = this.createCardElement();
+    this.element = this.createCardElement(parentDiv);
 
     this.fsm = fsmPattern.createMachine("Hidden", {
       Hidden: {
@@ -65,7 +65,12 @@ export class Card {
     });
   }
 
-  createCardElement() {
+  createCardElement(parentDiv) {
+    if (!parentDiv) {
+      console.error("parent container not found");
+      return;
+    }
+
     const card = document.createElement("div");
     card.id = this.cardId;
     card.className = "card hidden";
@@ -75,7 +80,8 @@ export class Card {
       <button class="hide-btn">Hide</button>
       <button class="modal-btn">Open Modal</button>
     `;
-    this.parentDiv.appendChild(card);
+
+    parentDiv.appendChild(card);
     return card;
   }
 

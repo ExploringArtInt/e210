@@ -2,14 +2,14 @@
 
 @font-face {
     font-family: "Comfortaa Bold";
-    src: url("assets/fonts/comfortaa-Bold.ttf") format("truetype");
+    src: url("assets/fonts/Comfortaa/comfortaa-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Comfortaa Medium";
-    src: url("assets/fonts/comfortaa-Medium.ttf") format("truetype");
+    src: url("assets/fonts/Comfortaa/comfortaa-Medium.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }

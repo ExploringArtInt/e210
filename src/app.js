@@ -73,19 +73,19 @@ export class App {
   }
 
   enterStartState() {
-    console.log("Entering Start state");
+    // console.log("Entering Start state");
   }
 
   exitStartState() {
-    console.log("Exiting Start state");
+    // console.log("Exiting Start state");
   }
 
   onAppInitialized() {
-    console.log("App initialized");
+    // console.log("App initialized");
   }
 
   enterLoadingState() {
-    console.log("Entering Loading state");
+    // console.log("Entering Loading state");
     createSpinner();
 
     // Simulate content loading
@@ -93,42 +93,42 @@ export class App {
   }
 
   exitLoadingState() {
-    console.log("Exiting Loading state");
+    // console.log("Exiting Loading state");
     deleteSpinner();
   }
 
   onCreatePage() {
-    console.log("Creating page");
+    // console.log("Creating page");
     createContent();
     initializeButtons();
   }
 
   enterIdleState() {
-    console.log("Entering Idle state");
+    // console.log("Entering Idle state");
   }
 
   exitIdleState() {
-    console.log("Exiting Idle state");
+    // console.log("Exiting Idle state");
   }
 
   onPerformAction() {
-    console.log("Performing action");
+    // console.log("Performing action");
   }
 
   onPauseApp() {
-    console.log("Pausing app");
+    // console.log("Pausing app");
   }
 
   enterPausedState() {
-    console.log("Entering Paused state");
+    // console.log("Entering Paused state");
   }
 
   exitPausedState() {
-    console.log("Exiting Paused state");
+    // console.log("Exiting Paused state");
   }
 
   onResumeApp() {
-    console.log("Resuming app");
+    // console.log("Resuming app");
   }
 }
 
