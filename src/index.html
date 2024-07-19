@@ -13,6 +13,7 @@
                 import { App } from './app.js';
 
                 document.addEventListener("DOMContentLoaded", () => {
+                    // nvp = name value pairs
                     const nvpApp = {
                         sessionKey: 987654321,
                         routeURL: "/partial-custom",
@@ -20,7 +21,9 @@
                         cardPaddingTop: 8,
                         appMaxWidth: 1000,
                     };
-                    // console.table(nvpApp);
+                    console.groupCollapsed("App")
+                    console.table(nvpApp);
+                    console.groupEnd("App");
                     const app = new App(nvpApp);
                 });
             </script>

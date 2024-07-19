@@ -28,9 +28,37 @@ State Action Table
 ***/
 
 export class Card {
-  constructor(parentDiv) {
+  constructor(parentDiv, options = {}) {
     this.parentDiv = parentDiv;
     this.cardId = `card-${GuidUtils.getLocalUniqueID()}`;
+
+    // Define default values
+    const defaults = {
+      cardPaddingTop: 0,
+      cardPaddingRight: 0,
+      cardPaddingBottom: 0,
+      cardPaddingLeft: 0,
+      cardMarginTop: 0,
+      cardMarginRight: 0,
+      cardMarginBottom: 0,
+      cardMarginLeft: 0,
+      lastElementBeforeModal: 0,
+      zIndex: 0,
+      flexDirection: 0,
+      flexJustify: 0,
+      flexAlign: 0,
+      flexContent: 0,
+      flexGrow: 0,
+      borderRadius: 0,
+      shadowZ: 0,
+    };
+
+    // Merge provided options with defaults
+    const config = { ...defaults, ...options };
+
+    // Assign merged config to instance properties
+    Object.assign(this, config);
+
     this.element = this.createCardElement(parentDiv);
 
     this.fsm = fsmPattern.createMachine("Hidden", {
@@ -100,49 +128,43 @@ export class Card {
   }
 
   onEnterHidden() {
-    // console.log("Entering Hidden state");
     this.element.classList.add("hidden");
   }
 
   onExitHidden() {
-    // console.log("Exiting Hidden state");
     this.element.classList.remove("hidden");
   }
 
   onEnterNormal() {
-    // console.log("Entering Normal state");
     this.element.classList.add("normal");
   }
 
   onExitNormal() {
-    // console.log("Exiting Normal state");
     this.element.classList.remove("normal");
   }
 
   onEnterModal() {
-    // console.log("Entering Modal state");
     this.element.classList.add("modal");
   }
 
   onExitModal() {
-    // console.log("Exiting Modal state");
     this.element.classList.remove("modal");
   }
 
   onDisplayCard() {
-    // console.log("Displaying card");
+    // Logic for displaying card
   }
 
   onHideCard() {
-    // console.log("Hiding card");
+    // Logic for hiding card
   }
 
   onOpenModal() {
-    // console.log("Opening modal");
+    // Logic for opening modal
   }
 
   onCloseModal() {
-    // console.log("Closing modal");
+    // Logic for closing modal
   }
 
   display() {
@@ -162,8 +184,8 @@ export class Card {
   }
 }
 
-export function createCard(parentDiv) {
-  const card = new Card(parentDiv);
+export function createCard(parentDiv, options = {}) {
+  const card = new Card(parentDiv, options);
 
   // Add event listeners
   const hideButton = card.element.querySelector(".flex-button:nth-child(1)");
