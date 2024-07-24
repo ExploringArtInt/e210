@@ -9,10 +9,7 @@ export function createContent() {
   }
 
   const nvpCard = {
-    cardPaddingTop: 10,
-    cardMarginRight: 15,
-    zIndex: 100,
-    flexGrow: 1,
+    zIndex: 1,
   };
 
   console.groupCollapsed("Card");
