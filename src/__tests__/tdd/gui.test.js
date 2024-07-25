@@ -27,8 +27,8 @@ describe("GUI Functions", () => {
     const menuBar = createMenuBar(app);
 
     expect(menuBar).toBeTruthy();
-    expect(menuBar.id).toBe("menu-bar-1234");
-    expect(menuBar.className).toBe("menu-bar");
+    expect(menuBar.id).toBe("gui-menu-bar-1234");
+    expect(menuBar.className).toBe("gui-menu-bar");
     expect(app.contains(menuBar)).toBe(true);
   });
 
@@ -37,25 +37,25 @@ describe("GUI Functions", () => {
     const button = createButton(menuBar, "test-icon.svg", "Test Button");
 
     expect(button).toBeTruthy();
-    expect(button.id).toBe("flex-button-1234");
-    expect(button.className).toBe("flex-button");
-    expect(button.querySelector("img.button-icon").src).toContain("test-icon.svg");
-    expect(button.querySelector("span.button-text").textContent).toBe("Test Button");
+    expect(button.id).toBe("gui-button-1234");
+    expect(button.className).toBe("gui-button");
+    expect(button.querySelector("img.gui-button-icon").src).toContain("test-icon.svg");
+    expect(button.querySelector("span.gui-button-text").textContent).toBe("Test Button");
     expect(menuBar.contains(button)).toBe(true);
   });
 
   test("initializeButtons adds click event listeners to buttons", () => {
     document.body.innerHTML = `
-      <button class="flex-button"></button>
-      <button class="flex-button"></button>
-      <button class="flex-button"></button>
+      <button class="gui-button"></button>
+      <button class="gui-button"></button>
+      <button class="gui-button"></button>
     `;
 
     const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
 
     initializeButtons();
 
-    const buttons = document.querySelectorAll(".flex-button");
+    const buttons = document.querySelectorAll(".gui-button");
     buttons.forEach((button, index) => {
       button.click();
       expect(alertMock).toHaveBeenCalledWith(`Button ${index + 1} clicked!`);

@@ -188,8 +188,8 @@ export function createCard(parentDiv, options = {}) {
   const card = new Card(parentDiv, options);
 
   // Add event listeners
-  const hideButton = card.element.querySelector(".flex-button:nth-child(1)");
-  const openButton = card.element.querySelector(".flex-button:nth-child(2)");
+  const hideButton = card.element.querySelector(".gui-button:nth-child(1)");
+  const openButton = card.element.querySelector(".gui-button:nth-child(2)");
 
   hideButton.addEventListener("click", () => card.hide());
   openButton.addEventListener("click", () => card.openModal());

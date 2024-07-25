@@ -1,6 +1,5 @@
 /* styles.css */
 
-/* Font-face placed at top by convention. */
 @font-face {
     font-family: "Comfortaa Bold";
     src: url("assets/fonts/Comfortaa/comfortaa-Bold.ttf") format("truetype");
@@ -15,14 +14,6 @@
     font-style: normal;
 }
 
-/* selectors are alphabetized, making them easier find */
-#app {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100%;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -32,20 +23,22 @@ body {
     background-color: #f0f0f0;
 }
 
-.button-icon {
-    width: 40px;
-    height: 40px;
-    filter: invert(0%) brightness(100%);
-    transition: filter 0.3s ease;
+#app {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
 }
 
-.button-text {
-    text-align: center;
-    word-wrap: break-word;
-    max-width: 100%;
+.gui-menu-bar {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+    padding: 20px;
 }
 
-.flex-button {
+.gui-button {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -63,32 +56,46 @@ body {
     width: 100%;
 }
 
-.flex-button:focus {
+.gui-button:hover {
+    background-color: #606060;
+}
+
+.gui-button:focus {
     outline: 3px solid #4caf50;
     outline-offset: 2px;
     background-color: #707070;
 }
 
-.flex-button:focus:not(:focus-visible) {
+.gui-button:focus:not(:focus-visible) {
     outline: none;
 }
 
-.flex-button:focus-visible {
+.gui-button:focus-visible {
     outline: 3px solid #909090;
     outline-offset: 2px;
     background-color: #808080;
 }
 
-.flex-button:hover {
-    background-color: #606060;
+.gui-button-text {
+    text-align: center;
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
-.menu-bar {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 10px;
-    padding: 20px;
+.gui-button-icon {
+    width: 40px;
+    height: 40px;
+    filter: invert(0%) brightness(100%);
+    transition: filter 0.3s ease;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
 }
 
 .spinner {
@@ -110,19 +117,8 @@ body {
     filter: opacity(60%);
 }
 
-/* The animations and keyframes placed below selectors */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(-360deg);
-    }
-}
-
-/* media query responsive rules at the bottom by convention */
 @media (max-width: 600px) {
-    .menu-bar {
+    .gui-menu-bar {
         flex-direction: column;
     }
 }

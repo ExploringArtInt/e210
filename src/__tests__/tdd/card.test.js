@@ -183,8 +183,9 @@ describe("createCard", () => {
   });
 
   test.skip("createCard adds event listeners", () => {
-    const hideBtn = card.element.querySelector(".hide-btn");
-    const modalBtn = card.element.querySelector(".modal-btn");
+    card = createCard(parentDiv);
+    const hideBtn = card.element.querySelector(".gui-button:nth-child(1)");
+    const modalBtn = card.element.querySelector(".gui-button:nth-child(2)");
 
     const hideSpy = jest.spyOn(card, "hide");
     const openModalSpy = jest.spyOn(card, "openModal");
