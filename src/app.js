@@ -30,10 +30,10 @@ export class App {
     sessionKey = 123456789,
     msUntilTimeOut = 20000,
     routeURL = "/",
-    lightSourceX = 0,
-    lightSourceY = 0,
-    lightSourceBrightness = 0,
-    lightSourceBlur = 0,
+    lightSourceX = 5,
+    lightSourceY = 5,
+    lightSourceBrightness = 0.3,
+    lightSourceBlur = 15,
     cardPaddingTop = 0,
     cardPaddingRight = 0,
     cardPaddingBottom = 0,
@@ -62,6 +62,8 @@ export class App {
     this.cardMarginLeft = cardMarginLeft;
     this.appMaxWidth = appMaxWidth;
     this.appBreakWidth = appBreakWidth;
+
+    this.setCardBoxShadow();
 
     this.fsm = fsmPattern.createMachine("Start", {
       Start: {
@@ -165,6 +167,18 @@ export class App {
 
   onResumeApp() {
     // console.log("Resuming app");
+  }
+
+  setCardBoxShadow() {
+    const shadowX = this.lightSourceX;
+    const shadowY = this.lightSourceY;
+    const brightness = this.lightSourceBrightness;
+    const blur = this.lightSourceBlur;
+
+    const shadowColor = `rgba(0, 0, 0, ${brightness})`;
+    const boxShadow = `${shadowX}px ${shadowY}px ${blur}px 0 ${shadowColor}`;
+
+    document.documentElement.style.setProperty("--card-box-shadow", boxShadow);
   }
 }
 

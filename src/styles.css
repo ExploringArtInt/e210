@@ -34,9 +34,7 @@ body {
 .card {
     border-style: solid;
     border-radius: 25px;
-    box-shadow:
-        0 5px 5px 0 rgba(0, 0, 0, 0.3),
-        0 15px 15px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: var(--card-box-shadow);
     padding: 10px;
     margin: 10px;
     text-align: center;
