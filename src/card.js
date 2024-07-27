@@ -62,7 +62,7 @@ export class Card {
 
     this.element = this.createCardElement(parentDiv);
 
-    this.setAppStyles();
+    this.setCardStyles();
 
     this.fsm = fsmPattern.createMachine("Hidden", {
       Hidden: {
@@ -186,7 +186,7 @@ export class Card {
     this.fsm.transition("CloseModal");
   }
 
-  setAppStyles() {}
+  setCardStyles() {}
 }
 
 export function createCard(parentDiv, options = {}) {

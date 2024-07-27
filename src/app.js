@@ -26,24 +26,24 @@ State Action Table
 ***/
 
 export class App {
-  constructor({
-    sessionKey = 123456789,
-    msUntilTimeOut = 20000,
-    routeURL = "/",
-    lightSourceX = 5,
-    lightSourceY = 5,
-    lightSourceBrightness = 0.3,
-    lightSourceBlur = 15,
-    appMaxWidth = 1800,
-  } = {}) {
-    this.sessionKey = sessionKey;
-    this.msUntilTimeOut = msUntilTimeOut;
-    this.routeURL = routeURL;
-    this.lightSourceX = lightSourceX;
-    this.lightSourceY = lightSourceY;
-    this.lightSourceBrightness = lightSourceBrightness;
-    this.lightSourceBlur = lightSourceBlur;
-    this.appMaxWidth = appMaxWidth;
+  constructor(options = {}) {
+    // Define default values
+    const defaults = {
+      sessionKey: 123456789,
+      msUntilTimeOut: 20000,
+      routeURL: "/",
+      lightSourceX: 5,
+      lightSourceY: 5,
+      lightSourceBrightness: 0.3,
+      lightSourceBlur: 15,
+      appMaxWidth: 1800,
+    };
+
+    // Merge provided options with defaults
+    const config = { ...defaults, ...options };
+
+    // Assign merged config to instance properties
+    Object.assign(this, config);
 
     this.setAppStyles();
 
