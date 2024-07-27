@@ -55,7 +55,6 @@ describe("App", () => {
     expect(app.lightSourceBrightness).toBe(0);
     expect(app.lightSourceBlur).toBe(0);
     expect(app.appMaxWidth).toBe(0);
-    expect(app.appBreakWidth).toBe(0);
   });
 
   test("constructor initializes with custom values when all arguments are provided", () => {
@@ -68,7 +67,6 @@ describe("App", () => {
       lightSourceBrightness: 0.5,
       lightSourceBlur: 10,
       appMaxWidth: 1200,
-      appBreakWidth: 768,
     });
 
     expect(customApp.sessionKey).toBe(987654321);
@@ -79,7 +77,6 @@ describe("App", () => {
     expect(customApp.lightSourceBrightness).toBe(0.5);
     expect(customApp.lightSourceBlur).toBe(10);
     expect(customApp.appMaxWidth).toBe(1200);
-    expect(customApp.appBreakWidth).toBe(768);
   });
 
   test.skip("constructor initializes with mix of custom and default values when some arguments are provided", () => {
@@ -98,7 +95,6 @@ describe("App", () => {
     expect(partialCustomApp.lightSourceBrightness).toBe(0.7);
     expect(partialCustomApp.lightSourceBlur).toBe(0); // default
     expect(partialCustomApp.appMaxWidth).toBe(1000);
-    expect(partialCustomApp.appBreakWidth).toBe(0); // default
   });
 
   test("initial state is Start", () => {

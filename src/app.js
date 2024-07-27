@@ -34,8 +34,7 @@ export class App {
     lightSourceY = 5,
     lightSourceBrightness = 0.3,
     lightSourceBlur = 15,
-    appMaxWidth = 0,
-    appBreakWidth = 0,
+    appMaxWidth = 1800,
   } = {}) {
     this.sessionKey = sessionKey;
     this.msUntilTimeOut = msUntilTimeOut;
@@ -45,7 +44,6 @@ export class App {
     this.lightSourceBrightness = lightSourceBrightness;
     this.lightSourceBlur = lightSourceBlur;
     this.appMaxWidth = appMaxWidth;
-    this.appBreakWidth = appBreakWidth;
 
     this.setAppStyles();
 
@@ -164,9 +162,8 @@ export class App {
 
     document.documentElement.style.setProperty("--card-box-shadow", boxShadow);
 
-    // TBD
-    // appMaxWidth
-    // appBreakWidth
+    // document.documentElement.style.setProperty("--app-max-width", this.appMaxWidth);
+    document.documentElement.style.setProperty("--app-max-width", "1800px");
   }
 }
 

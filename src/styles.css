@@ -21,7 +21,7 @@
     flex-flow: row wrap;
     justify-content: center;
     margin: 10px 10px 10px 10px;
-    max-width: 1800px;
+    max-width: var(--app-max-width);
     padding: 10px 10px 10px 10px;
 }
 
@@ -103,6 +103,18 @@ body {
     padding: 20px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -132,6 +144,8 @@ body {
     width: 50px;
 }
 
+/* note: media query max-width value can not be changed with a CSS variable, see https://bholmes.dev/blog/alternative-to-css-variable-media-queries/
+*/
 @media (max-width: 600px) {
     .gui-menu-bar {
         flex-direction: column;
