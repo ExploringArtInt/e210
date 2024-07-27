@@ -34,23 +34,24 @@ export class Card {
 
     // Define default values
     const defaults = {
-      cardPaddingTop: 0,
-      cardPaddingRight: 0,
-      cardPaddingBottom: 0,
-      cardPaddingLeft: 0,
-      cardMarginTop: 0,
-      cardMarginRight: 0,
+      appBreakWidth: 0,
+      appMaxWidth: 0,
+      borderRadius: 0,
       cardMarginBottom: 0,
       cardMarginLeft: 0,
-      lastElementBeforeModal: 0,
-      zIndex: 0,
-      flexDirection: 0,
-      flexJustify: 0,
+      cardMarginRight: 0,
+      cardMarginTop: 0,
+      cardPaddingBottom: 0,
+      cardPaddingLeft: 0,
+      cardPaddingRight: 0,
+      cardPaddingTop: 0,
       flexAlign: 0,
       flexContent: 0,
+      flexDirection: 0,
       flexGrow: 0,
-      borderRadius: 0,
-      shadowZ: 0,
+      flexJustify: 0,
+      lastElementBeforeModal: 0,
+      zIndex: 0,
     };
 
     // Merge provided options with defaults
@@ -60,6 +61,8 @@ export class Card {
     Object.assign(this, config);
 
     this.element = this.createCardElement(parentDiv);
+
+    this.setAppStyles();
 
     this.fsm = fsmPattern.createMachine("Hidden", {
       Hidden: {
@@ -109,7 +112,7 @@ export class Card {
     cardContent.className = "card-content";
     cardContent.innerHTML = `
       <h2>Card Title</h2>
-      <p>Card content goes here.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ex gravida velit vulputate auctor. Sed vitae vehicula mi. Cras ut lorem a ex laoreet tristique. Phasellus justo dolor, dignissim ac dictum vitae, accumsan eget orci. Integer imperdiet tristique tortor at scelerisque. Sed tincidunt tincidunt dui, vitae pharetra lacus gravida id. Nam eget risus turpis. Ut a pretium mi, ut tincidunt ipsum. Nullam vehicula pulvinar urna et ultricies.</p>
     `;
 
     // Create the menu bar
@@ -182,6 +185,8 @@ export class Card {
   closeModal() {
     this.fsm.transition("CloseModal");
   }
+
+  setAppStyles() {}
 }
 
 export function createCard(parentDiv, options = {}) {

@@ -164,6 +164,7 @@ export class App {
 
     document.documentElement.style.setProperty("--card-box-shadow", boxShadow);
 
+    // TBD
     // appMaxWidth
     // appBreakWidth
   }
