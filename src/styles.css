@@ -21,7 +21,7 @@
     flex-flow: row wrap;
     justify-content: center;
     margin: 10px 10px 10px 10px;
-    max-width: var(--app-max-width);
+    max-width: 1800px;
     padding: 10px 10px 10px 10px;
 }
 
@@ -32,12 +32,13 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
 .card {
     border-radius: 25px;
     border-style: solid;
-    box-shadow: var(--card-box-shadow);
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.3);
     margin: 10px;
     max-width: 600px;
     padding: 10px;
@@ -144,8 +145,6 @@ p {
     width: 50px;
 }
 
-/* note: media query max-width value can not be changed with a CSS variable, see https://bholmes.dev/blog/alternative-to-css-variable-media-queries/
-*/
 @media (max-width: 600px) {
     .gui-menu-bar {
         flex-direction: column;

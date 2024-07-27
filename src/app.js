@@ -32,11 +32,6 @@ export class App {
       sessionKey: 123456789,
       msUntilTimeOut: 20000,
       routeURL: "/",
-      lightSourceX: 5,
-      lightSourceY: 5,
-      lightSourceBrightness: 0.3,
-      lightSourceBlur: 15,
-      appMaxWidth: 1800,
     };
 
     // Merge provided options with defaults
@@ -44,8 +39,6 @@ export class App {
 
     // Assign merged config to instance properties
     Object.assign(this, config);
-
-    this.setAppStyles();
 
     this.fsm = fsmPattern.createMachine("Start", {
       Start: {
@@ -149,21 +142,6 @@ export class App {
 
   onResumeApp() {
     // console.log("Resuming app");
-  }
-
-  setAppStyles() {
-    const shadowX = this.lightSourceX;
-    const shadowY = this.lightSourceY;
-    const brightness = this.lightSourceBrightness;
-    const blur = this.lightSourceBlur;
-
-    const shadowColor = `rgba(0, 0, 0, ${brightness})`;
-    const boxShadow = `${shadowX}px ${shadowY}px ${blur}px 0 ${shadowColor}`;
-
-    document.documentElement.style.setProperty("--card-box-shadow", boxShadow);
-
-    // document.documentElement.style.setProperty("--app-max-width", this.appMaxWidth);
-    document.documentElement.style.setProperty("--app-max-width", "1800px");
   }
 }
 

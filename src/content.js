@@ -10,7 +10,7 @@ export function createContent() {
 
   // card 1
   const nvpCard1 = {
-    zIndex: 1,
+    styleCSS: "border-radius: 0px;",
   };
 
   console.groupCollapsed("Card");
@@ -21,7 +21,7 @@ export function createContent() {
 
   // card 2
   const nvpCard2 = {
-    zIndex: 1,
+    styleCSS: "border-radius: 10px;",
   };
 
   console.groupCollapsed("Card");
@@ -32,7 +32,7 @@ export function createContent() {
 
   // card 3
   const nvpCard3 = {
-    zIndex: 1,
+    styleCSS: "border-radius: 20px;",
   };
 
   console.groupCollapsed("Card");
