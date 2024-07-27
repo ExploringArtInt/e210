@@ -54,14 +54,6 @@ describe("App", () => {
     expect(app.lightSourceY).toBe(0);
     expect(app.lightSourceBrightness).toBe(0);
     expect(app.lightSourceBlur).toBe(0);
-    expect(app.cardPaddingTop).toBe(0);
-    expect(app.cardPaddingRight).toBe(0);
-    expect(app.cardPaddingBottom).toBe(0);
-    expect(app.cardPaddingLeft).toBe(0);
-    expect(app.cardMarginTop).toBe(0);
-    expect(app.cardMarginRight).toBe(0);
-    expect(app.cardMarginBottom).toBe(0);
-    expect(app.cardMarginLeft).toBe(0);
     expect(app.appMaxWidth).toBe(0);
     expect(app.appBreakWidth).toBe(0);
   });
@@ -75,14 +67,6 @@ describe("App", () => {
       lightSourceY: 200,
       lightSourceBrightness: 0.5,
       lightSourceBlur: 10,
-      cardPaddingTop: 5,
-      cardPaddingRight: 10,
-      cardPaddingBottom: 5,
-      cardPaddingLeft: 10,
-      cardMarginTop: 15,
-      cardMarginRight: 20,
-      cardMarginBottom: 15,
-      cardMarginLeft: 20,
       appMaxWidth: 1200,
       appBreakWidth: 768,
     });
@@ -94,14 +78,6 @@ describe("App", () => {
     expect(customApp.lightSourceY).toBe(200);
     expect(customApp.lightSourceBrightness).toBe(0.5);
     expect(customApp.lightSourceBlur).toBe(10);
-    expect(customApp.cardPaddingTop).toBe(5);
-    expect(customApp.cardPaddingRight).toBe(10);
-    expect(customApp.cardPaddingBottom).toBe(5);
-    expect(customApp.cardPaddingLeft).toBe(10);
-    expect(customApp.cardMarginTop).toBe(15);
-    expect(customApp.cardMarginRight).toBe(20);
-    expect(customApp.cardMarginBottom).toBe(15);
-    expect(customApp.cardMarginLeft).toBe(20);
     expect(customApp.appMaxWidth).toBe(1200);
     expect(customApp.appBreakWidth).toBe(768);
   });
@@ -111,7 +87,6 @@ describe("App", () => {
       sessionKey: 987654321,
       routeURL: "/partial-custom",
       lightSourceBrightness: 0.7,
-      cardPaddingTop: 8,
       appMaxWidth: 1000,
     });
 
@@ -122,14 +97,6 @@ describe("App", () => {
     expect(partialCustomApp.lightSourceY).toBe(0); // default
     expect(partialCustomApp.lightSourceBrightness).toBe(0.7);
     expect(partialCustomApp.lightSourceBlur).toBe(0); // default
-    expect(partialCustomApp.cardPaddingTop).toBe(8);
-    expect(partialCustomApp.cardPaddingRight).toBe(0); // default
-    expect(partialCustomApp.cardPaddingBottom).toBe(0); // default
-    expect(partialCustomApp.cardPaddingLeft).toBe(0); // default
-    expect(partialCustomApp.cardMarginTop).toBe(0); // default
-    expect(partialCustomApp.cardMarginRight).toBe(0); // default
-    expect(partialCustomApp.cardMarginBottom).toBe(0); // default
-    expect(partialCustomApp.cardMarginLeft).toBe(0); // default
     expect(partialCustomApp.appMaxWidth).toBe(1000);
     expect(partialCustomApp.appBreakWidth).toBe(0); // default
   });

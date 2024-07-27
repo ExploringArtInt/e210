@@ -20,6 +20,8 @@
     align-items: flex-start;
     align-content: flex-start;
     flex-flow: row wrap;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
 }
 
 body {

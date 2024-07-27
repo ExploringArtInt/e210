@@ -34,14 +34,6 @@ export class App {
     lightSourceY = 5,
     lightSourceBrightness = 0.3,
     lightSourceBlur = 15,
-    cardPaddingTop = 0,
-    cardPaddingRight = 0,
-    cardPaddingBottom = 0,
-    cardPaddingLeft = 0,
-    cardMarginTop = 0,
-    cardMarginRight = 0,
-    cardMarginBottom = 0,
-    cardMarginLeft = 0,
     appMaxWidth = 0,
     appBreakWidth = 0,
   } = {}) {
@@ -52,18 +44,10 @@ export class App {
     this.lightSourceY = lightSourceY;
     this.lightSourceBrightness = lightSourceBrightness;
     this.lightSourceBlur = lightSourceBlur;
-    this.cardPaddingTop = cardPaddingTop;
-    this.cardPaddingRight = cardPaddingRight;
-    this.cardPaddingBottom = cardPaddingBottom;
-    this.cardPaddingLeft = cardPaddingLeft;
-    this.cardMarginTop = cardMarginTop;
-    this.cardMarginRight = cardMarginRight;
-    this.cardMarginBottom = cardMarginBottom;
-    this.cardMarginLeft = cardMarginLeft;
     this.appMaxWidth = appMaxWidth;
     this.appBreakWidth = appBreakWidth;
 
-    this.setCardBoxShadow();
+    this.setAppStyles();
 
     this.fsm = fsmPattern.createMachine("Start", {
       Start: {
@@ -169,7 +153,7 @@ export class App {
     // console.log("Resuming app");
   }
 
-  setCardBoxShadow() {
+  setAppStyles() {
     const shadowX = this.lightSourceX;
     const shadowY = this.lightSourceY;
     const brightness = this.lightSourceBrightness;
@@ -179,6 +163,9 @@ export class App {
     const boxShadow = `${shadowX}px ${shadowY}px ${blur}px 0 ${shadowColor}`;
 
     document.documentElement.style.setProperty("--card-box-shadow", boxShadow);
+
+    // appMaxWidth
+    // appBreakWidth
   }
 }
 
