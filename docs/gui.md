@@ -43,22 +43,68 @@
     - create appFSM to set state
 - Spinner
   - test delay function to verify it works
+- Menu - holds one or more buttons
+  - Button - click to request action
+    - Optional icon
+    - Optional text
+
+- App Basics
+  - fsm with one or more cards
+    - an app contains the entire DOM
+    - an app has a 2D light source for any 2D shadows
+    - an app has padding and margin for all cards within it
+    - an app has a responsive breakpoint and a maximum width
+
+- Card Basics
+  - a card has a z-index
+  - vertical and horizontal alignment via Flex
+  - a card can have a border
+    - a border has a corner radius starting at 0
+    - a border can have a 2D partically transcent shadow
+    - a card has padding and margin for all cards, menus, breadcrumbs, flows, tables and/or canvases within it
+
+- Tab supported across all interactive elements displayed in DOM, includng canvases
 
 ## NEXT
-- App - fsm with one or more cards
-      - an app contains the entire DOM
-      - an app contains a session
-        - session authenication of the user's identity
-        - session authorization of the access roles for that identity
-      - an app contains an inactivity timeout counter
-      - an app has a router that can parse URL parameters to a Page>Card>Flow
-      - an app has a 2D light source for any 2D shadows
-      - an app has padding and margin for all cards within it
-      - an app has a responsive breakpoint and a maximum width
-      - an app can have zero or one of its cards open as modal at a time
-        - a stack of modal card can be on a modal card without limit
-        - an app has a target for after the open modal closes
-- Card - fsm with zero or more cards, menus, breadcrumbs, flows, tables and/or canvases
+- GUI Elements
+  - Checkbox
+    - can be required or optional
+  - Toggle
+    - Radiobox
+    - can be required or optional
+  - Input Field
+    - Label
+    - Default value
+    - Mask
+    - Unmask Toggle
+    - ADA Aria data
+    - Error Indicator
+    - Error Text
+    - can be required or optional
+  - CrumbTrail - a set of one or more crumbs
+    - can optionally have a dataTree
+    - a crumb trail has a seperator between crumbs (/, |, >)
+    - Crumb - a single link back up the heirarchy
+
+- Top menu and crumbs using Simple HTML
+  - One or two split Cards
+
+App Features
+  - an app contains a session
+    - session authenication of the user's identity
+    - session authorization of the access roles for that identity
+  - an app contains an inactivity timeout counter
+  - an app has a router that can parse URL parameters to a Page>Card>Flow
+  - an app can have zero or one of its cards open as modal at a time
+    - a stack of modal card can be on a modal card without limit
+    - an app has a target for after the open modal closes
+
+- Card Features
+  - Each Card can contain one or more:
+    - HTML
+    - 2D Canvas
+    - 3D Canvas
+  - fsm with zero or more cards, menus, breadcrumbs, flows, tables and/or canvases
   - a card's states are hidden, normal, modal
   - a card can be modal, interaction and tabbing is trapped within card
     - close by hitting escape key
@@ -66,21 +112,8 @@
     - an card can have zero or one of its cards open as modal at a time
       - a stack of modal card can be on a modal card without limit
       - a card has a target for after the open modal closes
- - a card can be non-modal, interaction and tabbing continues within page
-  - a card has a z-index
-  - vertical and horizontal alignment via Flex
-  - a card can have a border
-    - a border has a corner radius starting at 0
-    - a border can have a 2D partically transcent shadow
-    - a card has padding and margin for all cards, menus, breadcrumbs, flows, tables and/or canvases within it
-- Menu - holds one or more buttons
-  - Button - click to request action
-    - Optional icon
-    - Optional text
-- CrumbTrail - a set of one or more crumbs
-  - can optionally have a dataTree
-  - a crumb trail has a seperator between crumbs (/, |, >)
-  - Crumb - a single link back up the heirarchy
+   - a card can be non-modal, interaction and tabbing continues within page
+
 - Flow - fsm with one or more steps
   - a flows's states are start, displayed, begun, cancelled, completed, removed
   - a flow containers a required role to access (authorization)
@@ -88,32 +121,22 @@
     - a steps's states are start, display, begun, incomplete, errors, completed, removed
     - Element
       - vertical and horizontal alignment via Flex
-      - Checkbox
-        - can be required or optional
-      - Toggle
-        - Radiobox
-        - can be required or optional
-      - Input Field
-        - Label
-        - Default value
-        - Mask
-        - Unmask Toggle
-        - ADA Aria data
-        - Error Indicator
-        - Error Text
-        - can be required or optional
+
 - Table - a display of cells in columns and rows
       - can optionally have a dataTree
       - can optionally be sorted
       - can optionally be paged
+
 - Canvas - a display of 2D and 3D elements
          - can optionally have interaction and tabbing that continues within page
          - can optionally have a dataTree
+
 - DataTree - a JSON data heirarchy
   - columns are attributes
   - rows are instances
   - cells are values
     - can optionally link to next level down in heirarchy
+
 - DataStore - persists zero or more dataTrees
   - api to local Mongo using NoSQL
   - api to Google Firebase using NoSqL
@@ -122,20 +145,7 @@
 - ADA Compliant
   - Tab and Select acrosss all GUIs within DOM
 - Responsive for different widths and heights
-- Unified Styling
-  - Do not use CSS if not supported across modes
 - Unified Content Scroll
   - Either no or one scroll bar displayed to access all content in DOM or Modal
-
-## Roadmap
-- Support Simple UX Contract Pattern
-  - All UI elements need to be dynamic via Javascript CRUD
-
-### Dev Demo
-- Top menu and crumbs using Simple HTML
-- One or two split divs
-- Each div can contain one or more:
-  - Div with HTML
-  - Div with 2D Canvas
-  - Div with 3D Canvas
-- Tab supported across all interactive elements displayed in DOM, includng canvases
+- Support Simple UX API Pattern
+  - All UI elements are dynamic via Javascript CRUD

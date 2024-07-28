@@ -35,6 +35,7 @@ body {
     width: 100%;
 }
 
+/* NOTE: Default .card is overwritten by parameter string that sets inline CSS. Very flexible, but warning if you looking here for why the CSS doesn't match in your browser. See values passed into Cart constructor */
 .card {
     border-radius: 25px;
     border-style: solid;

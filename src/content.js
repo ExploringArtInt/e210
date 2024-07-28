@@ -19,6 +19,7 @@ export function createContent() {
 
   const card1 = new Card(app, nvpCard1);
 
+  /*
   // card 2
   const nvpCard2 = {
     styleCSS: "border-radius: 10px;",
@@ -40,4 +41,6 @@ export function createContent() {
   console.groupEnd("Card");
 
   const card3 = new Card(app, nvpCard3);
+
+  */
 }

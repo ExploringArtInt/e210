@@ -1,14 +1,6 @@
 import { GuidUtils } from "./utilities.js";
 
-export function createMenuBar(parentDiv) {
-  const menuBarId = `gui-menu-bar-${GuidUtils.getLocalUniqueID()}`;
-  const menuBar = document.createElement("div");
-  menuBar.id = menuBarId;
-  menuBar.className = "gui-menu-bar";
-  parentDiv.appendChild(menuBar);
-  return menuBar;
-}
-
+// GUI Button
 export function createButton(menuBar, iconSrc, buttonText) {
   const buttonId = `gui-button-${GuidUtils.getLocalUniqueID()}`;
   const button = document.createElement("button");
@@ -29,7 +21,9 @@ export function createButton(menuBar, iconSrc, buttonText) {
   return button;
 }
 
+// TBD: pass in scope (app, card#, button#)
 export function initializeButtons() {
+  // TBD: scope to only initializeButton for scope passed in
   const buttons = document.querySelectorAll(".gui-button");
 
   buttons.forEach((button, index) => {
@@ -39,6 +33,67 @@ export function initializeButtons() {
   });
 }
 
+// GUI createForm
+export function createForm(parentDiv) {
+  const createFormId = `gui-form-${GuidUtils.getLocalUniqueID()}`;
+  const form = document.createElement("form");
+  form.id = createFormId;
+  form.className = "gui-form";
+  parentDiv.appendChild(form);
+  return form;
+}
+
+// GUI createInputCheckbox
+export function createInputCheckbox(form) {
+  const createInputCheckboxId = `gui-input-checkbox-${GuidUtils.getLocalUniqueID()}`;
+  const inputCheckbox = document.createElement("div"); // TBD
+  inputCheckbox.id = createInputCheckboxId;
+  inputCheckbox.className = "gui-input-checkbox";
+  form.appendChild(inputCheckbox);
+  return inputCheckbox;
+}
+
+// GUI createInputPassword
+export function createInputPassword(form) {
+  const createInputPasswordId = `gui-input-password-${GuidUtils.getLocalUniqueID()}`;
+  const inputPassword = document.createElement("div"); // TBD
+  inputPassword.id = createInputPasswordId;
+  inputPassword.className = "gui-input-password";
+  form.appendChild(inputPassword);
+  return inputPassword;
+}
+
+// GUI createInputRadioButton
+export function createInputRadioButton(form) {
+  const createInputRadioButtonId = `gui-input-radio-button-${GuidUtils.getLocalUniqueID()}`;
+  const inputRadioButton = document.createElement("div"); // TBD
+  inputRadioButton.id = createInputRadioButtonId;
+  inputRadioButton.className = "gui-input-radio-button";
+  form.appendChild(inputRadioButton);
+  return inputRadioButton;
+}
+
+// GUI createInputText
+export function createInputText(form) {
+  const createInputTextId = `gui-input-text-id-${GuidUtils.getLocalUniqueID()}`;
+  const inputTextId = document.createElement("div"); // TBD
+  inputTextId.id = createInputTextId;
+  inputTextId.className = "gui-input-text-id";
+  form.appendChild(inputTextId);
+  return inputTextId;
+}
+
+// GUI Menu
+export function createMenuBar(parentDiv) {
+  const menuBarId = `gui-menu-bar-${GuidUtils.getLocalUniqueID()}`;
+  const menuBar = document.createElement("div");
+  menuBar.id = menuBarId;
+  menuBar.className = "gui-menu-bar";
+  parentDiv.appendChild(menuBar);
+  return menuBar;
+}
+
+// GUI Spinner
 let spinnerInterval;
 
 export function createSpinner() {
@@ -76,3 +131,15 @@ export function deleteSpinner() {
     spinnerInterval = null;
   }
 }
+
+/* Template code for creating GUI elements
+// GUI TBD
+export function createTBD(parentDiv) {
+  const TBDId = `gui-TBD-${GuidUtils.getLocalUniqueID()}`;
+  const TBD = document.createElement("div");
+  TBD.id = TBDId;
+  TBD.className = "gui-TBD";
+  parentDiv.appendChild(TBD);
+  return TBD;
+}
+*/

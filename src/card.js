@@ -1,6 +1,6 @@
 import { fsmPattern } from "./patterns.js";
 import { GuidUtils } from "./utilities.js";
-import { createMenuBar, createButton } from "./gui.js";
+import { createButton, createMenuBar, createForm, createInputCheckbox, createInputPassword, createInputRadioButton, createInputText } from "./gui.js";
 
 /***
 
@@ -101,6 +101,13 @@ export class Card {
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ex gravida velit vulputate auctor. Sed vitae vehicula mi. Cras ut lorem a ex laoreet tristique. Phasellus justo dolor, dignissim ac dictum vitae, accumsan eget orci. Integer imperdiet tristique tortor at scelerisque. Sed tincidunt tincidunt dui, vitae pharetra lacus gravida id. Nam eget risus turpis. Ut a pretium mi, ut tincidunt ipsum. Nullam vehicula pulvinar urna et ultricies.</p>
     `;
 */
+
+    // Create the form
+    const form = createForm(card);
+    const inputCheckbox = createInputCheckbox(form);
+    const inputPassword = createInputPassword(form);
+    const inputRadioButton = createInputRadioButton(form);
+    const inputText = createInputText(form);
 
     // Create the menu bar
     const menuBar = createMenuBar(card);
