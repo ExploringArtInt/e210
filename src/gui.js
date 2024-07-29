@@ -44,12 +44,27 @@ export function createForm(parentDiv) {
 }
 
 // GUI createInputCheckbox
-export function createInputCheckbox(form) {
+export function createInputCheckbox(form, labelText, isChecked, isLabelFirst) {
   const createInputCheckboxId = `gui-input-checkbox-${GuidUtils.getLocalUniqueID()}`;
-  const inputCheckbox = document.createElement("div"); // TBD
+  const inputCheckbox = document.createElement("input");
   inputCheckbox.id = createInputCheckboxId;
   inputCheckbox.className = "gui-input-checkbox";
-  form.appendChild(inputCheckbox);
+  inputCheckbox.type = "checkbox";
+  inputCheckbox.checked = isChecked;
+
+  const labelCheckbox = document.createElement("label");
+  labelCheckbox.id = createInputCheckboxId;
+  labelCheckbox.className = "gui-input-checkbox-label";
+  labelCheckbox.for = inputCheckbox.id;
+  labelCheckbox.innerHTML = labelText;
+
+  if (isLabelFirst) {
+    form.appendChild(labelCheckbox);
+    form.appendChild(inputCheckbox);
+  } else {
+    form.appendChild(inputCheckbox);
+    form.appendChild(labelCheckbox);
+  }
   return inputCheckbox;
 }
 

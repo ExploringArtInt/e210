@@ -101,10 +101,12 @@ export class Card {
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ex gravida velit vulputate auctor. Sed vitae vehicula mi. Cras ut lorem a ex laoreet tristique. Phasellus justo dolor, dignissim ac dictum vitae, accumsan eget orci. Integer imperdiet tristique tortor at scelerisque. Sed tincidunt tincidunt dui, vitae pharetra lacus gravida id. Nam eget risus turpis. Ut a pretium mi, ut tincidunt ipsum. Nullam vehicula pulvinar urna et ultricies.</p>
     `;
 */
+    card.appendChild(cardContent);
 
     // Create the form
     const form = createForm(card);
-    const inputCheckbox = createInputCheckbox(form);
+    const inputCheckbox1 = createInputCheckbox(form, "Option 1", false, false);
+    const inputCheckbox2 = createInputCheckbox(form, "Option 2", true, true);
     const inputPassword = createInputPassword(form);
     const inputRadioButton = createInputRadioButton(form);
     const inputText = createInputText(form);
@@ -114,8 +116,6 @@ export class Card {
     createButton(menuBar, "./assets/svg/gui-white/hamburger-menu.svg", "Hide");
     createButton(menuBar, "./assets/svg/gui-white/save-arrow.svg", "Open");
 
-    // Append the menu bar and card content to the card
-    card.appendChild(cardContent);
     card.appendChild(menuBar);
 
     // Append the card to the parent div
