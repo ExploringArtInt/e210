@@ -105,10 +105,21 @@ export class Card {
 
     // Create the form
     const form = createForm(card);
-    const inputCheckbox1 = createInputCheckbox(form, "Option 1", false, false);
-    const inputCheckbox2 = createInputCheckbox(form, "Option 2", true, true);
+    const inputCheckbox1 = createInputCheckbox(form, "Check 1", false, false);
+
+    const inputCheckbox2 = createInputCheckbox(form, "Check 2", true, true);
+
     const inputPassword = createInputPassword(form);
-    const inputRadioButton = createInputRadioButton(form);
+
+    // radiobutton goes here
+    const inputRadioButton1 = createInputRadioButton(form, "RadioGroup1", "Radio 1", false, false);
+    const inputRadioButton2 = createInputRadioButton(form, "RadioGroup1", "Radio 2", false, false);
+    const inputRadioButton3 = createInputRadioButton(form, "RadioGroup1", "Radio 3", false, false);
+
+    // text goes here
+
+    // password goes here
+
     const inputText = createInputText(form);
 
     // Create the menu bar

@@ -5,14 +5,8 @@ Weeks 112-104 2024-1030
 - GUI elements
   - Form
 
-    - Input Checkbox
-      - can be required or optional
-
-    - Input Password
-      - toggle visible
-
-    - Input Radio Button
-      - can be required or optional
+    - gui-style-box
+      - pass in CSS
 
     - Input Text Field
       - Label
@@ -24,6 +18,7 @@ Weeks 112-104 2024-1030
       - Error Text
         - can be required or optional
       - Field validation
+        - Note: required field is in Steps
         - Rule using Regex
         - Rule using external service
           - AI safety
@@ -31,6 +26,9 @@ Weeks 112-104 2024-1030
         - Help message
       - Restrictions
         - see https://www.w3schools.com/html/html_form_input_types.asp
+
+    - Input Password
+      - toggle visible
 
 - Flow
   - FSM (Started, Completed, Cancelled, Saved, Resume, Reset)
@@ -42,6 +40,7 @@ Weeks 112-104 2024-1030
   - Form Submit and Reset not used in Flow
   - Continue
   - Step validation
+    - Required Checkbox, Radiobutton, Text, or Password
   - Cancel
 
 - Card support of 2D/3D Canvas

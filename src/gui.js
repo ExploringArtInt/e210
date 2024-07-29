@@ -53,7 +53,7 @@ export function createInputCheckbox(form, labelText, isChecked, isLabelFirst) {
   inputCheckbox.checked = isChecked;
 
   const labelCheckbox = document.createElement("label");
-  labelCheckbox.id = createInputCheckboxId;
+  labelCheckbox.id = inputCheckbox.id;
   labelCheckbox.className = "gui-input-checkbox-label";
   labelCheckbox.for = inputCheckbox.id;
   labelCheckbox.innerHTML = labelText;
@@ -79,12 +79,29 @@ export function createInputPassword(form) {
 }
 
 // GUI createInputRadioButton
-export function createInputRadioButton(form) {
+export function createInputRadioButton(form, radioGroupName, labelText, isChecked, isLabelFirst) {
+  console.debug("DEBUG 1");
   const createInputRadioButtonId = `gui-input-radio-button-${GuidUtils.getLocalUniqueID()}`;
-  const inputRadioButton = document.createElement("div"); // TBD
+  const inputRadioButton = document.createElement("input");
   inputRadioButton.id = createInputRadioButtonId;
   inputRadioButton.className = "gui-input-radio-button";
-  form.appendChild(inputRadioButton);
+  inputRadioButton.name = radioGroupName;
+  inputRadioButton.type = "radio";
+  inputRadioButton.checked = isChecked;
+
+  const labelRadio = document.createElement("label");
+  labelRadio.id = inputRadioButton.id;
+  labelRadio.className = "gui-input-radio-label";
+  labelRadio.for = inputRadioButton.id;
+  labelRadio.innerHTML = labelText;
+
+  if (isLabelFirst) {
+    form.appendChild(labelRadio);
+    form.appendChild(inputRadioButton);
+  } else {
+    form.appendChild(inputRadioButton);
+    form.appendChild(labelRadio);
+  }
   return inputRadioButton;
 }
 
