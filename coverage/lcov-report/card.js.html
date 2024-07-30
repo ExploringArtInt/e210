@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/51</span>
+                <span class='fraction'>0/53</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/49</span>
+                <span class='fraction'>0/51</span>
             </div>
         
             
@@ -272,7 +272,13 @@
 <a name='L207'></a><a href='#L207'>207</a>
 <a name='L208'></a><a href='#L208'>208</a>
 <a name='L209'></a><a href='#L209'>209</a>
-<a name='L210'></a><a href='#L210'>210</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -379,20 +385,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -483,7 +495,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { fsmPattern } from "./patterns.js";
 import { GuidUtils } from "./utilities.js";
-import { createButton, createMenuBar, createForm, createInputCheckbox, createInputPassword, createInputRadioButton, createInputText } from "./gui.js";
+import { createButton, createDivider, createMenuBar, createForm, createInputCheckbox, createInputPassword, createInputRadioButton, createInputText } from "./gui.js";
 &nbsp;
 /***
 &nbsp;
@@ -588,20 +600,26 @@ export class Card {
 &nbsp;
     // Create the form
     const form = <span class="cstat-no" title="statement not covered" >createForm(card);</span>
-    const inputCheckbox1 = <span class="cstat-no" title="statement not covered" >createInputCheckbox(form, "Check 1", false, false);</span>
 &nbsp;
-    const inputCheckbox2 = <span class="cstat-no" title="statement not covered" >createInputCheckbox(form, "Check 2", true, true);</span>
+    const divider1 = <span class="cstat-no" title="statement not covered" >createDivider(form, "flex-direction: row;");</span>
+    // const divider1 = createDivider(form, "");
 &nbsp;
-    const inputPassword = <span class="cstat-no" title="statement not covered" >createInputPassword(form);</span>
+    const inputCheckbox1 = <span class="cstat-no" title="statement not covered" >createInputCheckbox(divider1, "Check 1", false, false);</span>
+&nbsp;
+    const inputCheckbox2 = <span class="cstat-no" title="statement not covered" >createInputCheckbox(divider1, "Check 200", true, true);</span>
 &nbsp;
     // radiobutton goes here
-    const inputRadioButton1 = <span class="cstat-no" title="statement not covered" >createInputRadioButton(form, "RadioGroup1", "Radio 1", false, false);</span>
-    const inputRadioButton2 = <span class="cstat-no" title="statement not covered" >createInputRadioButton(form, "RadioGroup1", "Radio 2", false, false);</span>
-    const inputRadioButton3 = <span class="cstat-no" title="statement not covered" >createInputRadioButton(form, "RadioGroup1", "Radio 3", false, false);</span>
+    const divider2 = <span class="cstat-no" title="statement not covered" >createDivider(form, "flex-direction: row;");</span>
+    // const divider2 = createDivider(form, "");
+&nbsp;
+    const inputRadioButton1 = <span class="cstat-no" title="statement not covered" >createInputRadioButton(divider2, "RadioGroup1", "Radio 1", false, false);</span>
+    const inputRadioButton2 = <span class="cstat-no" title="statement not covered" >createInputRadioButton(divider2, "RadioGroup1", "Radio 200", false, false);</span>
+    const inputRadioButton3 = <span class="cstat-no" title="statement not covered" >createInputRadioButton(divider2, "RadioGroup1", "Radio 30000", false, false);</span>
 &nbsp;
     // text goes here
 &nbsp;
     // password goes here
+    const inputPassword = <span class="cstat-no" title="statement not covered" >createInputPassword(divider2);</span>
 &nbsp;
     const inputText = <span class="cstat-no" title="statement not covered" >createInputText(form);</span>
 &nbsp;
@@ -697,7 +715,7 @@ export function <span class="fstat-no" title="function not covered" >createCard(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-29T13:07:19.235Z
+                at 2024-07-30T00:55:51.053Z
             </div>
         <script src="prettify.js"></script>
         <script>

@@ -57,6 +57,7 @@ export function createForm(parentElement) {
 // GUI createInputCheckbox
 export function createInputCheckbox(parentElement, labelText, isChecked, isLabelFirst) {
   const createInputCheckboxId = `gui-input-checkbox-${GuidUtils.getLocalUniqueID()}`;
+
   const inputCheckbox = document.createElement("input");
   inputCheckbox.id = createInputCheckboxId;
   inputCheckbox.className = "gui-input-checkbox";
@@ -64,23 +65,23 @@ export function createInputCheckbox(parentElement, labelText, isChecked, isLabel
   inputCheckbox.checked = isChecked;
 
   const labelCheckbox = document.createElement("label");
-  labelCheckbox.id = inputCheckbox.id;
   labelCheckbox.className = "gui-input-checkbox-label";
-  labelCheckbox.for = inputCheckbox.id;
-  labelCheckbox.innerHTML = labelText;
+  labelCheckbox.htmlFor = inputCheckbox.id;
 
   const itemCheckbox = document.createElement("div");
-  itemCheckbox.id = inputCheckbox.id;
   itemCheckbox.className = "gui-input-checkbox-item";
-  parentElement.appendChild(itemCheckbox);
 
   if (isLabelFirst) {
-    itemCheckbox.appendChild(labelCheckbox);
-    itemCheckbox.appendChild(inputCheckbox);
+    labelCheckbox.appendChild(document.createTextNode(labelText));
+    labelCheckbox.appendChild(inputCheckbox);
   } else {
-    itemCheckbox.appendChild(inputCheckbox);
-    itemCheckbox.appendChild(labelCheckbox);
+    labelCheckbox.appendChild(inputCheckbox);
+    labelCheckbox.appendChild(document.createTextNode(labelText));
   }
+
+  itemCheckbox.appendChild(labelCheckbox);
+  parentElement.appendChild(itemCheckbox);
+
   return itemCheckbox;
 }
 
@@ -90,6 +91,7 @@ export function createInputPassword(parentElement) {
   const inputPassword = document.createElement("div"); // TBD
   inputPassword.id = createInputPasswordId;
   inputPassword.className = "gui-input-password";
+  inputPassword.type = "password";
   parentElement.appendChild(inputPassword);
   return inputPassword;
 }
@@ -98,6 +100,7 @@ export function createInputPassword(parentElement) {
 export function createInputRadioButton(parentElement, radioGroupName, labelText, isChecked, isLabelFirst) {
   console.debug("DEBUG 1");
   const createInputRadioButtonId = `gui-input-radio-button-${GuidUtils.getLocalUniqueID()}`;
+
   const inputRadioButton = document.createElement("input");
   inputRadioButton.id = createInputRadioButtonId;
   inputRadioButton.className = "gui-input-radio-button";
@@ -106,23 +109,22 @@ export function createInputRadioButton(parentElement, radioGroupName, labelText,
   inputRadioButton.checked = isChecked;
 
   const labelRadio = document.createElement("label");
-  labelRadio.id = inputRadioButton.id;
   labelRadio.className = "gui-input-radio-label";
-  labelRadio.for = inputRadioButton.id;
-  labelRadio.innerHTML = labelText;
+  labelRadio.htmlFor = createInputRadioButtonId;
 
   const itemRadio = document.createElement("div");
-  itemRadio.id = inputRadioButton.id;
-  itemRadio.className = "gui-input-checkbox-item";
-  parentElement.appendChild(itemRadio);
+  itemRadio.className = "gui-input-radio-item";
 
   if (isLabelFirst) {
-    itemRadio.appendChild(labelRadio);
-    itemRadio.appendChild(inputRadioButton);
+    labelRadio.appendChild(document.createTextNode(labelText));
+    labelRadio.appendChild(inputRadioButton);
   } else {
-    itemRadio.appendChild(inputRadioButton);
-    itemRadio.appendChild(labelRadio);
+    labelRadio.appendChild(inputRadioButton);
+    labelRadio.appendChild(document.createTextNode(labelText));
   }
+
+  itemRadio.appendChild(labelRadio);
+  parentElement.appendChild(itemRadio);
 
   return itemRadio;
 }
@@ -133,6 +135,7 @@ export function createInputText(parentElement) {
   const inputTextId = document.createElement("div"); // TBD
   inputTextId.id = createInputTextId;
   inputTextId.className = "gui-input-text-id";
+  inputPassword.type = "text";
   parentElement.appendChild(inputTextId);
   return inputTextId;
 }
@@ -193,6 +196,7 @@ export function createTBD(parentElement) {
   const TBD = document.createElement("div");
   TBD.id = TBDId;
   TBD.className = "gui-TBD";
+  TBD.type = "TBD";
   parentElement.appendChild(TBD);
   return TBD;
 }

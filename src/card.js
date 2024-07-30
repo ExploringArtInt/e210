@@ -106,18 +106,18 @@ export class Card {
     // Create the form
     const form = createForm(card);
 
-    const divider1 = createDivider(form, "flex-direction: row;");
-    // const divider1 = createDivider(form, "");
+    // const divider1 = createDivider(form, "flex-direction: row;");
+    const divider1 = createDivider(form, "");
 
-    const inputCheckbox1 = createInputCheckbox(divider1, "Check 1", false, false);
+    const inputCheckbox1 = createInputCheckbox(divider1, "Check 1", true, true);
 
-    const inputCheckbox2 = createInputCheckbox(divider1, "Check 200", true, true);
+    const inputCheckbox2 = createInputCheckbox(divider1, "Check 200", false, false);
 
     // radiobutton goes here
-    const divider2 = createDivider(form, "flex-direction: row;");
-    // const divider2 = createDivider(form, "");
+    // const divider2 = createDivider(form, "flex-direction: row;");
+    const divider2 = createDivider(form, "");
 
-    const inputRadioButton1 = createInputRadioButton(divider2, "RadioGroup1", "Radio 1", false, false);
+    const inputRadioButton1 = createInputRadioButton(divider2, "RadioGroup1", "Radio 1", true, true);
     const inputRadioButton2 = createInputRadioButton(divider2, "RadioGroup1", "Radio 200", false, false);
     const inputRadioButton3 = createInputRadioButton(divider2, "RadioGroup1", "Radio 30000", false, false);
 
