@@ -132,12 +132,12 @@ export function createInputRadioButton(parentElement, radioGroupName, labelText,
 // GUI createInputText
 export function createInputText(parentElement) {
   const createInputTextId = `gui-input-text-id-${GuidUtils.getLocalUniqueID()}`;
-  const inputTextId = document.createElement("div"); // TBD
-  inputTextId.id = createInputTextId;
-  inputTextId.className = "gui-input-text-id";
-  inputPassword.type = "text";
-  parentElement.appendChild(inputTextId);
-  return inputTextId;
+  const inputText = document.createElement("div"); // TBD
+  inputText.id = createInputTextId;
+  inputText.className = "gui-input-text-id";
+  inputText.type = "text";
+  parentElement.appendChild(inputText);
+  return inputText;
 }
 
 // GUI Menu
