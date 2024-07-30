@@ -1,7 +1,7 @@
 import { GuidUtils } from "./utilities.js";
 
 // GUI Button
-export function createButton(menuBar, iconSrc, buttonText) {
+export function createButton(parentElement, iconSrc, buttonText) {
   const buttonId = `gui-button-${GuidUtils.getLocalUniqueID()}`;
   const button = document.createElement("button");
   button.id = buttonId;
@@ -17,7 +17,7 @@ export function createButton(menuBar, iconSrc, buttonText) {
   textSpan.textContent = buttonText;
   button.appendChild(textSpan);
 
-  menuBar.appendChild(button);
+  parentElement.appendChild(button);
   return button;
 }
 
@@ -33,18 +33,29 @@ export function initializeButtons() {
   });
 }
 
+// GUI Divider
+export function createDivider(parentElement, styleCSS) {
+  const dividerId = `gui-divider-${GuidUtils.getLocalUniqueID()}`;
+  const divider = document.createElement("div");
+  divider.id = dividerId;
+  divider.className = "gui-divider";
+  divider.style = styleCSS;
+  parentElement.appendChild(divider);
+  return divider;
+}
+
 // GUI createForm
-export function createForm(parentDiv) {
+export function createForm(parentElement) {
   const createFormId = `gui-form-${GuidUtils.getLocalUniqueID()}`;
   const form = document.createElement("form");
   form.id = createFormId;
   form.className = "gui-form";
-  parentDiv.appendChild(form);
+  parentElement.appendChild(form);
   return form;
 }
 
 // GUI createInputCheckbox
-export function createInputCheckbox(form, labelText, isChecked, isLabelFirst) {
+export function createInputCheckbox(parentElement, labelText, isChecked, isLabelFirst) {
   const createInputCheckboxId = `gui-input-checkbox-${GuidUtils.getLocalUniqueID()}`;
   const inputCheckbox = document.createElement("input");
   inputCheckbox.id = createInputCheckboxId;
@@ -58,28 +69,33 @@ export function createInputCheckbox(form, labelText, isChecked, isLabelFirst) {
   labelCheckbox.for = inputCheckbox.id;
   labelCheckbox.innerHTML = labelText;
 
+  const itemCheckbox = document.createElement("div");
+  itemCheckbox.id = inputCheckbox.id;
+  itemCheckbox.className = "gui-input-checkbox-item";
+  parentElement.appendChild(itemCheckbox);
+
   if (isLabelFirst) {
-    form.appendChild(labelCheckbox);
-    form.appendChild(inputCheckbox);
+    itemCheckbox.appendChild(labelCheckbox);
+    itemCheckbox.appendChild(inputCheckbox);
   } else {
-    form.appendChild(inputCheckbox);
-    form.appendChild(labelCheckbox);
+    itemCheckbox.appendChild(inputCheckbox);
+    itemCheckbox.appendChild(labelCheckbox);
   }
-  return inputCheckbox;
+  return itemCheckbox;
 }
 
 // GUI createInputPassword
-export function createInputPassword(form) {
+export function createInputPassword(parentElement) {
   const createInputPasswordId = `gui-input-password-${GuidUtils.getLocalUniqueID()}`;
   const inputPassword = document.createElement("div"); // TBD
   inputPassword.id = createInputPasswordId;
   inputPassword.className = "gui-input-password";
-  form.appendChild(inputPassword);
+  parentElement.appendChild(inputPassword);
   return inputPassword;
 }
 
 // GUI createInputRadioButton
-export function createInputRadioButton(form, radioGroupName, labelText, isChecked, isLabelFirst) {
+export function createInputRadioButton(parentElement, radioGroupName, labelText, isChecked, isLabelFirst) {
   console.debug("DEBUG 1");
   const createInputRadioButtonId = `gui-input-radio-button-${GuidUtils.getLocalUniqueID()}`;
   const inputRadioButton = document.createElement("input");
@@ -95,33 +111,39 @@ export function createInputRadioButton(form, radioGroupName, labelText, isChecke
   labelRadio.for = inputRadioButton.id;
   labelRadio.innerHTML = labelText;
 
+  const itemRadio = document.createElement("div");
+  itemRadio.id = inputRadioButton.id;
+  itemRadio.className = "gui-input-checkbox-item";
+  parentElement.appendChild(itemRadio);
+
   if (isLabelFirst) {
-    form.appendChild(labelRadio);
-    form.appendChild(inputRadioButton);
+    itemRadio.appendChild(labelRadio);
+    itemRadio.appendChild(inputRadioButton);
   } else {
-    form.appendChild(inputRadioButton);
-    form.appendChild(labelRadio);
+    itemRadio.appendChild(inputRadioButton);
+    itemRadio.appendChild(labelRadio);
   }
-  return inputRadioButton;
+
+  return itemRadio;
 }
 
 // GUI createInputText
-export function createInputText(form) {
+export function createInputText(parentElement) {
   const createInputTextId = `gui-input-text-id-${GuidUtils.getLocalUniqueID()}`;
   const inputTextId = document.createElement("div"); // TBD
   inputTextId.id = createInputTextId;
   inputTextId.className = "gui-input-text-id";
-  form.appendChild(inputTextId);
+  parentElement.appendChild(inputTextId);
   return inputTextId;
 }
 
 // GUI Menu
-export function createMenuBar(parentDiv) {
+export function createMenuBar(parentElement) {
   const menuBarId = `gui-menu-bar-${GuidUtils.getLocalUniqueID()}`;
   const menuBar = document.createElement("div");
   menuBar.id = menuBarId;
   menuBar.className = "gui-menu-bar";
-  parentDiv.appendChild(menuBar);
+  parentElement.appendChild(menuBar);
   return menuBar;
 }
 
@@ -166,12 +188,12 @@ export function deleteSpinner() {
 
 /* Template code for creating GUI elements
 // GUI TBD
-export function createTBD(parentDiv) {
+export function createTBD(parentElement) {
   const TBDId = `gui-TBD-${GuidUtils.getLocalUniqueID()}`;
   const TBD = document.createElement("div");
   TBD.id = TBDId;
   TBD.className = "gui-TBD";
-  parentDiv.appendChild(TBD);
+  parentElement.appendChild(TBD);
   return TBD;
 }
 */

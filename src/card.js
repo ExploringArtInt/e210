@@ -1,6 +1,6 @@
 import { fsmPattern } from "./patterns.js";
 import { GuidUtils } from "./utilities.js";
-import { createButton, createMenuBar, createForm, createInputCheckbox, createInputPassword, createInputRadioButton, createInputText } from "./gui.js";
+import { createButton, createDivider, createMenuBar, createForm, createInputCheckbox, createInputPassword, createInputRadioButton, createInputText } from "./gui.js";
 
 /***
 
@@ -105,20 +105,26 @@ export class Card {
 
     // Create the form
     const form = createForm(card);
-    const inputCheckbox1 = createInputCheckbox(form, "Check 1", false, false);
 
-    const inputCheckbox2 = createInputCheckbox(form, "Check 2", true, true);
+    const divider1 = createDivider(form, "flex-direction: row;");
+    // const divider1 = createDivider(form, "");
 
-    const inputPassword = createInputPassword(form);
+    const inputCheckbox1 = createInputCheckbox(divider1, "Check 1", false, false);
+
+    const inputCheckbox2 = createInputCheckbox(divider1, "Check 200", true, true);
 
     // radiobutton goes here
-    const inputRadioButton1 = createInputRadioButton(form, "RadioGroup1", "Radio 1", false, false);
-    const inputRadioButton2 = createInputRadioButton(form, "RadioGroup1", "Radio 2", false, false);
-    const inputRadioButton3 = createInputRadioButton(form, "RadioGroup1", "Radio 3", false, false);
+    const divider2 = createDivider(form, "flex-direction: row;");
+    // const divider2 = createDivider(form, "");
+
+    const inputRadioButton1 = createInputRadioButton(divider2, "RadioGroup1", "Radio 1", false, false);
+    const inputRadioButton2 = createInputRadioButton(divider2, "RadioGroup1", "Radio 200", false, false);
+    const inputRadioButton3 = createInputRadioButton(divider2, "RadioGroup1", "Radio 30000", false, false);
 
     // text goes here
 
     // password goes here
+    const inputPassword = createInputPassword(divider2);
 
     const inputText = createInputText(form);
 

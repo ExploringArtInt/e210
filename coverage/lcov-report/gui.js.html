@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.56% </span>
+                <span class="strong">41.05% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>39/82</span>
+                <span class='fraction'>39/95</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>4/10</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.56% </span>
+                <span class="strong">41.05% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>39/82</span>
+                <span class='fraction'>39/95</span>
             </div>
         
             
@@ -223,7 +223,24 @@
 <a name='L158'></a><a href='#L158'>158</a>
 <a name='L159'></a><a href='#L159'>159</a>
 <a name='L160'></a><a href='#L160'>160</a>
-<a name='L161'></a><a href='#L161'>161</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -310,6 +327,23 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -438,7 +472,7 @@ export function <span class="fstat-no" title="function not covered" >createInput
 <span class="cstat-no" title="statement not covered" >  inputCheckbox.checked = isChecked;</span>
 &nbsp;
   const labelCheckbox = <span class="cstat-no" title="statement not covered" >document.createElement("label");</span>
-<span class="cstat-no" title="statement not covered" >  labelCheckbox.id = createInputCheckboxId;</span>
+<span class="cstat-no" title="statement not covered" >  labelCheckbox.id = inputCheckbox.id;</span>
 <span class="cstat-no" title="statement not covered" >  labelCheckbox.className = "gui-input-checkbox-label";</span>
 <span class="cstat-no" title="statement not covered" >  labelCheckbox.for = inputCheckbox.id;</span>
 <span class="cstat-no" title="statement not covered" >  labelCheckbox.innerHTML = labelText;</span>
@@ -464,12 +498,29 @@ export function <span class="fstat-no" title="function not covered" >createInput
 }
 &nbsp;
 // GUI createInputRadioButton
-export function <span class="fstat-no" title="function not covered" >createInputRadioButton(</span>form) {
+export function <span class="fstat-no" title="function not covered" >createInputRadioButton(</span>form, radioGroupName, labelText, isChecked, isLabelFirst) {
+<span class="cstat-no" title="statement not covered" >  console.debug("DEBUG 1");</span>
   const createInputRadioButtonId = <span class="cstat-no" title="statement not covered" >`gui-input-radio-button-${GuidUtils.getLocalUniqueID()}`;</span>
-  const inputRadioButton = <span class="cstat-no" title="statement not covered" >document.createElement("div");</span> // TBD
+  const inputRadioButton = <span class="cstat-no" title="statement not covered" >document.createElement("input");</span>
 <span class="cstat-no" title="statement not covered" >  inputRadioButton.id = createInputRadioButtonId;</span>
 <span class="cstat-no" title="statement not covered" >  inputRadioButton.className = "gui-input-radio-button";</span>
-<span class="cstat-no" title="statement not covered" >  form.appendChild(inputRadioButton);</span>
+<span class="cstat-no" title="statement not covered" >  inputRadioButton.name = radioGroupName;</span>
+<span class="cstat-no" title="statement not covered" >  inputRadioButton.type = "radio";</span>
+<span class="cstat-no" title="statement not covered" >  inputRadioButton.checked = isChecked;</span>
+&nbsp;
+  const labelRadio = <span class="cstat-no" title="statement not covered" >document.createElement("label");</span>
+<span class="cstat-no" title="statement not covered" >  labelRadio.id = inputRadioButton.id;</span>
+<span class="cstat-no" title="statement not covered" >  labelRadio.className = "gui-input-radio-label";</span>
+<span class="cstat-no" title="statement not covered" >  labelRadio.for = inputRadioButton.id;</span>
+<span class="cstat-no" title="statement not covered" >  labelRadio.innerHTML = labelText;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (isLabelFirst) {</span>
+<span class="cstat-no" title="statement not covered" >    form.appendChild(labelRadio);</span>
+<span class="cstat-no" title="statement not covered" >    form.appendChild(inputRadioButton);</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    form.appendChild(inputRadioButton);</span>
+<span class="cstat-no" title="statement not covered" >    form.appendChild(labelRadio);</span>
+  }
 <span class="cstat-no" title="statement not covered" >  return inputRadioButton;</span>
 }
 &nbsp;
@@ -550,7 +601,7 @@ export function createTBD(parentDiv) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-29T11:36:59.951Z
+                at 2024-07-29T13:07:19.235Z
             </div>
         <script src="prettify.js"></script>
         <script>

@@ -5,7 +5,7 @@ Weeks 112-104 2024-1030
 - GUI elements
   - Form
 
-    - gui-style-box
+    - gui-divider
       - pass in CSS
 
     - Input Text Field
