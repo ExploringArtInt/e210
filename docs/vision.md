@@ -5,14 +5,17 @@ Weeks 112-104 2024-1030
 - GUI elements
   - Form
 
-    - gui-divider
-      - pass in CSS
-
     - Input Text Field
       - Label
       - Default value
       - Mask
-      - Unmask Toggle
+        - all
+        - up to last 4
+        - 2nd and up to character (e.g. "@")
+      - Unmask Checkbox
+        - Checkbox
+        - Eye open and closed
+        - Toggle switch
       - ADA Aria data
       - Error Indicator
       - Error Text

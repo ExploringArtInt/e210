@@ -138,6 +138,19 @@ body {
     margin-bottom: 0.2em;
 }
 
+.gui-input-text-wrapper {
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+}
+
 h1,
 h2,
 h3,

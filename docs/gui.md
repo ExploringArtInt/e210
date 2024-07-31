@@ -65,13 +65,16 @@
 
 - Tab supported across all interactive elements displayed in DOM, includng canvases
 
-## NEXT
 - GUI Elements
   - Checkbox
     - can be required or optional
   - Toggle
     - Radiobox
     - can be required or optional
+  - gui-divider
+    - pass in CSS
+
+## NEXT
   - Input Field
     - Label
     - Default value
@@ -81,6 +84,7 @@
     - Error Indicator
     - Error Text
     - can be required or optional
+
   - CrumbTrail - a set of one or more crumbs
     - can optionally have a dataTree
     - a crumb trail has a seperator between crumbs (/, |, >)

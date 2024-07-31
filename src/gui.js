@@ -130,14 +130,82 @@ export function createInputRadioButton(parentElement, radioGroupName, labelText,
 }
 
 // GUI createInputText
-export function createInputText(parentElement) {
-  const createInputTextId = `gui-input-text-id-${GuidUtils.getLocalUniqueID()}`;
-  const inputText = document.createElement("div"); // TBD
-  inputText.id = createInputTextId;
-  inputText.className = "gui-input-text-id";
+export function createInputText(parentElement, options = {}) {
+  const { label = "Text Input", placeholder = "Enter text", required = false, pattern = null, errorMessage = "Invalid input", minLength = null, maxLength = null } = options;
+
+  const createInputTextId = `gui-input-text-${GuidUtils.getLocalUniqueID()}`;
+  const createInputTextErrorId = `${createInputTextId}-error`;
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "gui-input-text-wrapper";
+
+  const labelElement = document.createElement("label");
+  labelElement.htmlFor = createInputTextId;
+  labelElement.className = "gui-input-text-label";
+  labelElement.textContent = label;
+  if (required) {
+    const requiredSpan = document.createElement("span");
+    requiredSpan.className = "gui-input-required";
+    requiredSpan.setAttribute("aria-hidden", "true");
+    requiredSpan.textContent = " *";
+    labelElement.appendChild(requiredSpan);
+  }
+
+  const inputText = document.createElement("input");
   inputText.type = "text";
-  parentElement.appendChild(inputText);
-  return inputText;
+  inputText.id = createInputTextId;
+  inputText.className = "gui-input-text";
+  inputText.placeholder = placeholder;
+  inputText.required = required;
+  if (pattern) inputText.pattern = pattern;
+  if (minLength !== null) inputText.minLength = minLength;
+  if (maxLength !== null) inputText.maxLength = maxLength;
+
+  const errorElement = document.createElement("div");
+  errorElement.id = createInputTextErrorId;
+  errorElement.className = "gui-input-text-error";
+  errorElement.setAttribute("aria-live", "polite");
+  errorElement.hidden = true;
+
+  wrapper.appendChild(labelElement);
+  wrapper.appendChild(inputText);
+  wrapper.appendChild(errorElement);
+
+  const validateInput = () => {
+    let isValid = true;
+    let validationMessage = "";
+
+    if (required && inputText.value.trim() === "") {
+      isValid = false;
+      validationMessage = "This field is required";
+    } else if (pattern && !new RegExp(pattern).test(inputText.value)) {
+      isValid = false;
+      validationMessage = errorMessage;
+    } else if (minLength !== null && inputText.value.length < minLength) {
+      isValid = false;
+      validationMessage = `Minimum length is ${minLength} characters`;
+    } else if (maxLength !== null && inputText.value.length > maxLength) {
+      isValid = false;
+      validationMessage = `Maximum length is ${maxLength} characters`;
+    }
+
+    if (!isValid) {
+      inputText.setAttribute("aria-invalid", "true");
+      inputText.setAttribute("aria-describedby", createInputTextErrorId);
+      errorElement.textContent = validationMessage;
+      errorElement.hidden = false;
+    } else {
+      inputText.removeAttribute("aria-invalid");
+      inputText.removeAttribute("aria-describedby");
+      errorElement.hidden = true;
+    }
+  };
+
+  inputText.addEventListener("input", validateInput);
+  inputText.addEventListener("blur", validateInput);
+
+  parentElement.appendChild(wrapper);
+  return wrapper;
 }
 
 // GUI Menu

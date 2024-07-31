@@ -123,11 +123,18 @@ export class Card {
     const inputRadioButton3 = createInputRadioButton(divider2, "RadioGroup1", "Radio 30000", false, false);
 
     // text goes here
+    createInputText(form, {
+      label: "Username",
+      placeholder: "Enter your username",
+      required: true,
+      pattern: "^[a-zA-Z0-9_]{3,20}$",
+      errorMessage: "Username must be 3-20 characters and can only contain letters, numbers, and underscores",
+      minLength: 3,
+      maxLength: 20,
+    });
 
     // password goes here
     const inputPassword = createInputPassword(divider2);
-
-    const inputText = createInputText(form);
 
     // Create the menu bar
     const menuBar = createMenuBar(card);
