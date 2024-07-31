@@ -1,21 +1,27 @@
 import { GuidUtils } from "./utilities.js";
 
 // GUI Button
-export function createButton(parentElement, iconSrc, buttonText) {
+export function createButton(parentElement, options = {}) {
+  const { iconSrc = null, buttonText = null } = options;
+
   const buttonId = `gui-button-${GuidUtils.getLocalUniqueID()}`;
   const button = document.createElement("button");
   button.id = buttonId;
   button.className = "gui-button";
 
-  const icon = document.createElement("img");
-  icon.src = iconSrc;
-  icon.className = "gui-button-icon";
-  button.appendChild(icon);
+  if (iconSrc != null) {
+    const icon = document.createElement("img");
+    icon.src = iconSrc;
+    icon.className = "gui-button-icon";
+    button.appendChild(icon);
+  }
 
-  const textSpan = document.createElement("span");
-  textSpan.className = "gui-button-text";
-  textSpan.textContent = buttonText;
-  button.appendChild(textSpan);
+  if (buttonText != null) {
+    const textSpan = document.createElement("span");
+    textSpan.className = "gui-button-text";
+    textSpan.textContent = buttonText;
+    button.appendChild(textSpan);
+  }
 
   parentElement.appendChild(button);
   return button;
@@ -259,7 +265,9 @@ export function deleteSpinner() {
 
 /* Template code for creating GUI elements
 // GUI TBD
-export function createTBD(parentElement) {
+export function createTBD(parentElement, options = {}) {
+  const { optionTBD = null } = options;
+
   const TBDId = `gui-TBD-${GuidUtils.getLocalUniqueID()}`;
   const TBD = document.createElement("div");
   TBD.id = TBDId;

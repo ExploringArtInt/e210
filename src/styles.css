@@ -141,13 +141,15 @@ body {
 .gui-input-text-wrapper {
     input[type="text"],
     select {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
+        display: inline-block;
+        font-family: "Comfortaa Medium", sans-serif;
+        font-size: 1em;
+        margin: 8px 0;
+        padding: 12px 20px;
+        width: 100%;
     }
 }
 

@@ -74,16 +74,24 @@
   - gui-divider
     - pass in CSS
 
-## NEXT
-  - Input Field
+  - Input Text
     - Label
-    - Default value
-    - Mask
-    - Unmask Toggle
     - ADA Aria data
     - Error Indicator
     - Error Text
     - can be required or optional
+
+
+## NEXT
+  - Input Text
+    - Row or Column parameter
+      - Row align Label to left
+    - Default value
+    - Mask
+    - Unmask Toggle
+
+  - Input Checkbox, Input RadioButton, other GUI create elements
+    - refactor default values similar to Input Text
 
   - CrumbTrail - a set of one or more crumbs
     - can optionally have a dataTree
