@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1722424353478" clover="3.2.0">
-  <project timestamp="1722424353479" name="All files">
-    <metrics statements="329" coveredstatements="118" conditionals="92" coveredconditionals="30" methods="77" coveredmethods="34" elements="498" coveredelements="182" complexity="0" loc="329" ncloc="329" packages="1" files="8" classes="8"/>
+<coverage generated="1722427780315" clover="3.2.0">
+  <project timestamp="1722427780315" name="All files">
+    <metrics statements="329" coveredstatements="135" conditionals="92" coveredconditionals="32" methods="77" coveredmethods="35" elements="498" coveredelements="202" complexity="0" loc="329" ncloc="329" packages="1" files="8" classes="8"/>
     <file name="a_excellence.js" path="/Users/Richard/Documents/CAI/Code/e210/src/a_excellence.js">
       <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
       <line num="13" count="1" type="stmt"/>
@@ -117,24 +117,24 @@
       <line num="20" count="0" type="stmt"/>
     </file>
     <file name="gui.js" path="/Users/Richard/Documents/CAI/Code/e210/src/gui.js">
-      <metrics statements="163" coveredstatements="25" conditionals="51" coveredconditionals="4" methods="15" coveredmethods="6"/>
-      <line num="5" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="7" count="0" type="stmt"/>
-      <line num="8" count="0" type="stmt"/>
-      <line num="9" count="0" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="13" count="0" type="stmt"/>
-      <line num="14" count="0" type="stmt"/>
-      <line num="15" count="0" type="stmt"/>
-      <line num="16" count="0" type="stmt"/>
-      <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="20" count="0" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="22" count="0" type="stmt"/>
-      <line num="23" count="0" type="stmt"/>
-      <line num="26" count="0" type="stmt"/>
-      <line num="27" count="0" type="stmt"/>
+      <metrics statements="163" coveredstatements="42" conditionals="51" coveredconditionals="6" methods="15" coveredmethods="7"/>
+      <line num="5" count="1" type="cond" truecount="0" falsecount="2"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="12" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="21" count="1" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
+      <line num="23" count="1" type="stmt"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="27" count="1" type="stmt"/>
       <line num="33" count="1" type="stmt"/>
       <line num="35" count="1" type="stmt"/>
       <line num="36" count="3" type="stmt"/>

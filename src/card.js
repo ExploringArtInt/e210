@@ -141,20 +141,20 @@ export class Card {
     /*
     createButton(menuBar, {
       iconSrc: "./assets/svg/gui-white/hamburger-menu.svg",
-      buttonText: "Hide",
+      label: "Hide",
     });
     createButton(menuBar, {
       iconSrc: "./assets/svg/gui-white/save-arrow.svg",
-      buttonText: "Open",
+      label: "Open",
     });
     */
     createButton(menuBar, {
       iconSrc: "./assets/svg/gui-white/hamburger-menu.svg",
-      buttonText: null,
+      label: null,
     });
     createButton(menuBar, {
       iconSrc: null,
-      buttonText: "Open",
+      label: "Open",
     });
 
     card.appendChild(menuBar);

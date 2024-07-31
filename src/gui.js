@@ -2,7 +2,7 @@ import { GuidUtils } from "./utilities.js";
 
 // GUI Button
 export function createButton(parentElement, options = {}) {
-  const { iconSrc = null, buttonText = null } = options;
+  const { iconSrc = null, label = null } = options;
 
   const buttonId = `gui-button-${GuidUtils.getLocalUniqueID()}`;
   const button = document.createElement("button");
@@ -16,10 +16,10 @@ export function createButton(parentElement, options = {}) {
     button.appendChild(icon);
   }
 
-  if (buttonText != null) {
+  if (label != null) {
     const textSpan = document.createElement("span");
     textSpan.className = "gui-button-text";
-    textSpan.textContent = buttonText;
+    textSpan.textContent = label;
     button.appendChild(textSpan);
   }
 
