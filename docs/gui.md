@@ -84,14 +84,11 @@
 
 ## NEXT
   - Input Text
-    - Row or Column parameter
+    - Row or Column CSS class
       - Row align Label to left
     - Default value
     - Mask
     - Unmask Toggle
-
-  - Input Checkbox, Input RadioButton, other GUI create elements
-    - refactor default values similar to Input Text
 
   - CrumbTrail - a set of one or more crumbs
     - can optionally have a dataTree

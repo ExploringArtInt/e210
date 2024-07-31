@@ -109,6 +109,10 @@ body {
     width: 80%;
 }
 
+.gui-divider.row {
+    flex-direction: row;
+}
+
 .gui-input-checkbox {
     height: 25px;
     width: 25px;

@@ -41,13 +41,17 @@ export function initializeButtons() {
 
 // GUI Divider
 export function createDivider(parentElement, options = {}) {
-  const { styleCSS = null } = options;
+  const { styleClass = null, styleCSS = null } = options;
 
   const dividerId = `gui-divider-${GuidUtils.getLocalUniqueID()}`;
   const divider = document.createElement("div");
   divider.id = dividerId;
-  divider.className = "gui-divider";
 
+  if (styleClass != null) {
+    divider.className = "gui-divider " + styleClass;
+  } else {
+    divider.className = "gui-divider";
+  }
   if (styleCSS != null) {
     divider.style = styleCSS;
   }

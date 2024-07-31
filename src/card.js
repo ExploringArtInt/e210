@@ -106,8 +106,7 @@ export class Card {
     // Create the form
     const form = createForm(card);
 
-    const divider1 = createDivider(form, { styleCSS: "flex-direction: row;" });
-    // const divider1 = createDivider(form, {}});
+    const divider1 = createDivider(form, { styleClass: "row", styleCSS: null });
 
     const inputCheckbox1 = createInputCheckbox(divider1, { labelText: "Check 1", isChecked: true, isLabelFirst: true });
 
@@ -115,14 +114,11 @@ export class Card {
 
     const inputCheckbox3 = createInputCheckbox(divider1, { labelText: "Check 30000" });
 
-    const divider2 = createDivider(form, { styleCSS: "flex-direction: row;" });
-    // const divider2 = createDivider(form, {});
+    const divider2 = createDivider(form, { styleClass: "row", styleCSS: null });
 
     const inputRadioButton1 = createInputRadioButton(divider2, { radioGroupName: "RadioGroup1", labelText: "Radio 1", isLabelFirst: true });
     const inputRadioButton2 = createInputRadioButton(divider2, { radioGroupName: "RadioGroup1", labelText: "Radio 200" });
     const inputRadioButton3 = createInputRadioButton(divider2, { radioGroupName: "RadioGroup1", labelText: "Radio 30000" });
-
-    // { radioGroupName = "NOT_SET", labelText: = null, isChecked: = false, isLabelFirst: = false }
 
     // text goes here
     createInputText(form, {
