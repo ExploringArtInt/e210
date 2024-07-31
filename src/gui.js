@@ -40,12 +40,17 @@ export function initializeButtons() {
 }
 
 // GUI Divider
-export function createDivider(parentElement, styleCSS) {
+export function createDivider(parentElement, options = {}) {
+  const { styleCSS = null } = options;
+
   const dividerId = `gui-divider-${GuidUtils.getLocalUniqueID()}`;
   const divider = document.createElement("div");
   divider.id = dividerId;
   divider.className = "gui-divider";
-  divider.style = styleCSS;
+
+  if (styleCSS != null) {
+    divider.style = styleCSS;
+  }
   parentElement.appendChild(divider);
   return divider;
 }
@@ -61,7 +66,10 @@ export function createForm(parentElement) {
 }
 
 // GUI createInputCheckbox
-export function createInputCheckbox(parentElement, labelText, isChecked, isLabelFirst) {
+export function createInputCheckbox(parentElement, options = {}) {
+  const { labelText = null, isChecked = false, isLabelFirst = false } = options;
+
+  const { iconSrc = null, label = null } = options;
   const createInputCheckboxId = `gui-input-checkbox-${GuidUtils.getLocalUniqueID()}`;
 
   const inputCheckbox = document.createElement("input");
@@ -77,7 +85,9 @@ export function createInputCheckbox(parentElement, labelText, isChecked, isLabel
   const itemCheckbox = document.createElement("div");
   itemCheckbox.className = "gui-input-checkbox-item";
 
-  if (isLabelFirst) {
+  if (labelText == null) {
+    labelCheckbox.appendChild(inputCheckbox);
+  } else if (isLabelFirst) {
     labelCheckbox.appendChild(document.createTextNode(labelText));
     labelCheckbox.appendChild(inputCheckbox);
   } else {
@@ -103,7 +113,9 @@ export function createInputPassword(parentElement) {
 }
 
 // GUI createInputRadioButton
-export function createInputRadioButton(parentElement, radioGroupName, labelText, isChecked, isLabelFirst) {
+export function createInputRadioButton(parentElement, options = {}) {
+  const { radioGroupName = "NOT_SET", labelText = null, isChecked = false, isLabelFirst = false } = options;
+
   console.debug("DEBUG 1");
   const createInputRadioButtonId = `gui-input-radio-button-${GuidUtils.getLocalUniqueID()}`;
 
@@ -121,7 +133,9 @@ export function createInputRadioButton(parentElement, radioGroupName, labelText,
   const itemRadio = document.createElement("div");
   itemRadio.className = "gui-input-radio-item";
 
-  if (isLabelFirst) {
+  if (labelText == null) {
+    labelRadio.appendChild(inputRadioButton);
+  } else if (isLabelFirst) {
     labelRadio.appendChild(document.createTextNode(labelText));
     labelRadio.appendChild(inputRadioButton);
   } else {
