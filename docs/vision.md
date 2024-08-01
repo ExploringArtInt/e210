@@ -6,6 +6,7 @@ Weeks 112-104 2024-1030
   - Form
 
     - Input Text Field
+      - Error Indicator
       - Default value
       - Mask
         - all
@@ -15,7 +16,6 @@ Weeks 112-104 2024-1030
         - Checkbox
         - Eye open and closed
         - Toggle switch
-      - Error Indicator
 
     - Input Password
       - toggle visible

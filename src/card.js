@@ -1,6 +1,6 @@
 import { fsmPattern } from "./patterns.js";
 import { GuidUtils } from "./utilities.js";
-import { createButton, createDivider, createMenuBar, createForm, createInputCheckbox, createInputPassword, createInputRadioButton, createInputText } from "./gui.js";
+import { createButton, createContent, createDivider, createMenuBar, createForm, createInputCheckbox, createInputPassword, createInputRadioButton, createInputText } from "./gui.js";
 
 /***
 
@@ -89,41 +89,48 @@ export class Card {
     card.className = "card hidden";
     card.style = this.styleCSS;
 
+    // Content title
+    const divider1 = createDivider(card, { styleClass: null, styleCSS: "margin-top: 1.5em; margin-bottom: 0px;" });
+
+    const contentHTML1 = `<h2>Card Title</h2>`;
+
+    const content1 = createContent(divider1, { contentHTML: contentHTML1, styleClass: null, styleCSS: "width: 100%;" });
+
+    // Content text
+    const divider2 = createDivider(card, { styleClass: null, styleCSS: "text-align: left;" });
+
     // Create the card content
-    const cardContent = document.createElement("div");
-    cardContent.className = "card-content";
-    cardContent.innerHTML = `
-      <h2>Card Title</h2>
+    const contentHTML2 = `
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>`;
     /*
-    cardContent.innerHTML = `
-      <h2>Card Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ex gravida velit vulputate auctor. Sed vitae vehicula mi. Cras ut lorem a ex laoreet tristique. Phasellus justo dolor, dignissim ac dictum vitae, accumsan eget orci. Integer imperdiet tristique tortor at scelerisque. Sed tincidunt tincidunt dui, vitae pharetra lacus gravida id. Nam eget risus turpis. Ut a pretium mi, ut tincidunt ipsum. Nullam vehicula pulvinar urna et ultricies.</p>
-    `;
+  const contentHTML2 = `
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eleifend ex gravida velit vulputate auctor. Sed vitae vehicula mi. Cras ut lorem a ex laoreet tristique. Phasellus justo dolor, dignissim ac dictum vitae, accumsan eget orci. Integer imperdiet tristique tortor at scelerisque. Sed tincidunt tincidunt dui, vitae pharetra lacus gravida id. Nam eget risus turpis. Ut a pretium mi, ut tincidunt ipsum. Nullam vehicula pulvinar urna et ultricies.</p>
+  `;
 */
-    card.appendChild(cardContent);
+
+    const content2 = createContent(divider2, { contentHTML: contentHTML2, styleClass: null, styleCSS: null });
 
     // Create the form
     const form = createForm(card);
 
-    const divider1 = createDivider(form, { styleClass: "row", styleCSS: null });
-
-    const inputCheckbox1 = createInputCheckbox(divider1, { labelText: "Check 1", isChecked: true, isLabelFirst: true });
-
-    const inputCheckbox2 = createInputCheckbox(divider1, { labelText: "Check 200" });
-
-    const inputCheckbox3 = createInputCheckbox(divider1, { labelText: "Check 30000" });
-
-    const divider2 = createDivider(form, { styleClass: "row", styleCSS: null });
-
-    const inputRadioButton1 = createInputRadioButton(divider2, { radioGroupName: "RadioGroup1", labelText: "Radio 1", isLabelFirst: true });
-    const inputRadioButton2 = createInputRadioButton(divider2, { radioGroupName: "RadioGroup1", labelText: "Radio 200" });
-    const inputRadioButton3 = createInputRadioButton(divider2, { radioGroupName: "RadioGroup1", labelText: "Radio 30000" });
-
     const divider3 = createDivider(form, { styleClass: "row", styleCSS: null });
 
+    const inputCheckbox1 = createInputCheckbox(divider3, { labelText: "Check 1", isChecked: true, isLabelFirst: false });
+
+    const inputCheckbox2 = createInputCheckbox(divider3, { labelText: "Check 200" });
+
+    const inputCheckbox3 = createInputCheckbox(divider3, { labelText: "Check 30000" });
+
+    const divider4 = createDivider(form, { styleClass: "row", styleCSS: null });
+
+    const inputRadioButton1 = createInputRadioButton(divider4, { radioGroupName: "RadioGroup1", labelText: "Radio 1", isLabelFirst: false });
+    const inputRadioButton2 = createInputRadioButton(divider4, { radioGroupName: "RadioGroup1", labelText: "Radio 200" });
+    const inputRadioButton3 = createInputRadioButton(divider4, { radioGroupName: "RadioGroup1", labelText: "Radio 30000" });
+
+    const divider5 = createDivider(form, { styleClass: "row", styleCSS: null });
+
     // text goes here
-    createInputText(divider3, {
+    createInputText(divider5, {
       label: "Username",
       placeholder: "Enter your username",
       required: true,
@@ -139,15 +146,15 @@ export class Card {
     // Create the menu bar
     const menuBar = createMenuBar(card);
     /*
-    createButton(menuBar, {
-      iconSrc: "./assets/svg/gui-white/hamburger-menu.svg",
-      label: "Hide",
-    });
-    createButton(menuBar, {
-      iconSrc: "./assets/svg/gui-white/save-arrow.svg",
-      label: "Open",
-    });
-    */
+  createButton(menuBar, {
+    iconSrc: "./assets/svg/gui-white/hamburger-menu.svg",
+    label: "Hide",
+  });
+  createButton(menuBar, {
+    iconSrc: "./assets/svg/gui-white/save-arrow.svg",
+    label: "Open",
+  });
+  */
     createButton(menuBar, {
       iconSrc: "./assets/svg/gui-white/hamburger-menu.svg",
       label: null,

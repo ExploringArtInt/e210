@@ -39,6 +39,29 @@ export function initializeButtons() {
   });
 }
 
+// GUI Content
+export function createContent(parentElement, options = {}) {
+  const { contentHTML = null, styleClass = null, styleCSS = null } = options;
+
+  const contentId = `gui-content-${GuidUtils.getLocalUniqueID()}`;
+  const content = document.createElement("div");
+  content.id = contentId;
+  if (styleClass != null) {
+    content.className = "gui-content " + styleClass;
+  } else {
+    content.className = "gui-content";
+  }
+  if (styleCSS != null) {
+    content.style = styleCSS;
+  }
+
+  if (contentHTML != null) {
+    content.innerHTML = contentHTML;
+  }
+  parentElement.appendChild(content);
+  return content;
+}
+
 // GUI Divider
 export function createDivider(parentElement, options = {}) {
   const { styleClass = null, styleCSS = null } = options;

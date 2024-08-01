@@ -10,7 +10,7 @@ export function createContent() {
 
   // card 1
   const nvpCard1 = {
-    styleCSS: "border-radius: 0px;",
+    styleCSS: "border-radius: 15px;",
   };
 
   console.groupCollapsed("Card");
