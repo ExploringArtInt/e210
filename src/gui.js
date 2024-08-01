@@ -171,7 +171,6 @@ export function createInputText(parentElement, options = {}) {
     const requiredSpan = document.createElement("span");
     requiredSpan.className = "gui-input-required";
     requiredSpan.setAttribute("aria-hidden", "true");
-    requiredSpan.textContent = " *";
     labelElement.appendChild(requiredSpan);
   }
 

@@ -143,6 +143,7 @@ body {
 }
 
 .gui-input-text-wrapper {
+    text-align: left;
     input[type="text"],
     select {
         border: 1px solid #ccc;
@@ -154,6 +155,15 @@ body {
         margin: 8px 0;
         padding: 12px 20px;
         width: 100%;
+    }
+}
+div.row .gui-input-text-wrapper {
+    label {
+        margin-right: 10px;
+    }
+    input[type="text"],
+    select {
+        width: auto;
     }
 }
 

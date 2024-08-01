@@ -6,7 +6,6 @@ Weeks 112-104 2024-1030
   - Form
 
     - Input Text Field
-      - Label
       - Default value
       - Mask
         - all
@@ -16,19 +15,7 @@ Weeks 112-104 2024-1030
         - Checkbox
         - Eye open and closed
         - Toggle switch
-      - ADA Aria data
       - Error Indicator
-      - Error Text
-        - can be required or optional
-      - Field validation
-        - Note: required field is in Steps
-        - Rule using Regex
-        - Rule using external service
-          - AI safety
-        - Error message
-        - Help message
-      - Restrictions
-        - see https://www.w3schools.com/html/html_form_input_types.asp
 
     - Input Password
       - toggle visible
@@ -45,6 +32,10 @@ Weeks 112-104 2024-1030
   - Step validation
     - Required Checkbox, Radiobutton, Text, or Password
   - Cancel
+
+  - Card Modal
+    - Help message, click out to continue
+    - Required checkbox and confirm or cancel, no clickout
 
 - Card support of 2D/3D Canvas
 

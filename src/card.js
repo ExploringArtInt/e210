@@ -120,8 +120,10 @@ export class Card {
     const inputRadioButton2 = createInputRadioButton(divider2, { radioGroupName: "RadioGroup1", labelText: "Radio 200" });
     const inputRadioButton3 = createInputRadioButton(divider2, { radioGroupName: "RadioGroup1", labelText: "Radio 30000" });
 
+    const divider3 = createDivider(form, { styleClass: "row", styleCSS: null });
+
     // text goes here
-    createInputText(form, {
+    createInputText(divider3, {
       label: "Username",
       placeholder: "Enter your username",
       required: true,
