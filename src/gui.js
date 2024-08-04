@@ -2,14 +2,22 @@ import { GuidUtils } from "./utilities.js";
 
 // GUI Button
 export function createButton(parentElement, options = {}) {
-  const { iconSrc = null, label = null } = options;
+  const { iconSrc = null, label = null, isLabelFirst = false, styleClass = null, styleCSS = null } = options;
 
   const buttonId = `gui-button-${GuidUtils.getLocalUniqueID()}`;
   const button = document.createElement("button");
   button.id = buttonId;
-  button.className = "gui-button";
 
-  if (iconSrc != null) {
+  if (styleClass != null) {
+    button.className = "gui-button " + styleClass;
+  } else {
+    button.className = "gui-button";
+  }
+  if (styleCSS != null) {
+    button.style = styleCSS;
+  }
+
+  if (iconSrc != null && isLabelFirst != null && isLabelFirst != true) {
     const icon = document.createElement("img");
     icon.src = iconSrc;
     icon.className = "gui-button-icon";
@@ -21,6 +29,13 @@ export function createButton(parentElement, options = {}) {
     textSpan.className = "gui-button-text";
     textSpan.textContent = label;
     button.appendChild(textSpan);
+  }
+
+  if (iconSrc != null && isLabelFirst == true) {
+    const icon = document.createElement("img");
+    icon.src = iconSrc;
+    icon.className = "gui-button-icon";
+    button.appendChild(icon);
   }
 
   parentElement.appendChild(button);

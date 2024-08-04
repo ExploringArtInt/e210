@@ -2,11 +2,57 @@
 
 ### 2026-0928 Steps
 Weeks 112-104 2024-1030
+
+- Auth
+
 - GUI elements
   - Form
 
     - Input Text Field
+      - optional help content displayed in modal
+        - circle ? icon button
+          - button next to field
+          - button after error message
       - Error Indicator
+      - Intent Entity Constraint
+        - a GUI Input Text field has a set of Constraints
+        - A Constraint can be
+          - Front-end (field level)
+          - Back-end (step-level)
+            - to be build later
+          - Design enough in front-end to support
+        - In addition to gui (HTML/DOM devices), constrains can be used to support a wide number of device channels (mobile, SMS, chat, 3DUX)
+      - Validate Constraint
+        - on key
+        - on field exit
+        - on Step exit
+      - Constraint
+        - Types:
+          - Pattern Constraints (Regex): Ensuring the entity matches a specific regular expression pattern, such as a phone number format.
+            - Exact match
+            - Case insensitive - change case to lowercase
+            - Whitespace insensitive - remove whitespace
+            - Common abbreviation replacement (" Dr. " for Drive or Doctor, depending on context)
+          - Type Constraints (Regex): Ensuring the entity is of a specific type, such as an integer, a string, a date, etc.
+          - Format Constraints (Regex): "YYYY-MM-DD" or an email address in the format "user@example.com".
+          - Range Constraints (Regex): Ensuring numerical entities fall within a specific range/
+          - Value Constraints (value): Ensuring the entity matches
+            - Set of values, such as days of the week ("Monday", "Tuesday", etc.)
+            - Known value stored in a SOR
+
+      Dependency Constraints: Ensuring the entity is valid in the context of other entities, such as a return date that must be after the departure date in a travel booking.
+
+        - a front-end constraint has validation rule
+        - pass array into createInputText
+        - refactor into rules
+          - pattern regex
+          - required  (possible to do in regex?)
+          - minLength (possible to do in regex?)
+          - maxLength (possible to do in regex?)
+        - constraints have
+          - pattern
+          - error message
+          - optional help content displayed in modal
       - Default value
       - Mask
         - all
@@ -15,7 +61,9 @@ Weeks 112-104 2024-1030
       - Unmask Checkbox
         - Checkbox
         - Eye open and closed
+          - build to use anywhere in card
         - Toggle switch
+          - build to use anywhere in card
 
     - Input Password
       - toggle visible
@@ -63,6 +111,18 @@ Weeks 98-90 2025-0205
   - Azure
 - Authenication - Who
 - Authorization - What
+  - Roles
+    - OAuth integration
+    - A role has a set of Intents
+- Intent
+  - Business Process
+    - An intent has one and only one Business Process or can an Intent belong to many Business Process?
+  - Set of Sub-intents
+    - Pay Amount Owed requires ability to See Amount Owed
+  - Set of Intent Entities
+    - Intent Entities have Constraints
+      - These are validation rules that define the criteria  the extracted entity must meet to be considered valid.
+      - Constraints ensure that the data is accurate, appropriate, and usable for the intended Business Process.
 - Business Process
   - Auth flow
   - Maker/Checker flow
@@ -93,38 +153,140 @@ Weeks 69-60 2025-0903
 - Simulation
   - 2D Simulator
   - 3D Simulator
-  - Gamification
+  - Various simulators to support Reality Shows evaluation simulators
+  - Reality Show Gamification
 - Using GenAI to generate Simulator Lessons
 - Using GenAI to gamify Lessons
 
-Weeks 59-40 2026-0121
-- Learning Content Core Certificate (22%)
-  - How to work with GenAI
-    - Simple ways that work really well
-    - Complex ways that create chaos
-    - What GenAI brings to the process
-    - What you bring to the process
+Weeks 59-57 2025-0924
+- Reality Show Learning Format
+
+  - Core Game Engine
+    - Design and implement UI/UX system
+    - Create save/load functionality
+    - Create login authentication/authorization functionality
+    - Develop the base game framework
+    - Implement game state management
+
+Weeks 56-52 2025-1029
+- Character Creation and Customization
+  - Design character creation interface
+  - Implement skill and attribute system
+  - Create character backstory generator
+  - Develop character appearance customization
+
+Weeks 51-49 2025-1119
+- Show Selection and Onboarding
+  - Create show selection interface
+  - Implement show-specific tutorial systems
+  - Design and create show introductions
+  - Develop contestant profile system
+
+Weeks 48-46 2025-1210
+- Challenge System
+  - Design generic challenge framework
+  - Implement show-specific challenge types
+  - Create challenge difficulty scaling system
+  - Develop time management mechanics for challenges
+
+Weeks 45-41 2026-0114 (time for holidays)
+- Team Dynamics
+  - Implement team formation mechanics
+  - Create team communication system
+  - Develop team conflict resolution mechanics
+  - Design and implement team performance metrics
+
+Weeks 40-38 2026-0204
+- Judging and Evaluation System
+  - Create AI judge behavior system
+  - Implement human judge personality traits
+  - Develop scoring and ranking system
+  - Create feedback and critique generation system
+
+Weeks 37-35 2026-0225
+- Player Skills and Growth
+  - Implement skill progression system
+  - Create learning and practice mechanics
+  - Develop mentorship and coaching system
+  - Design and implement specialty skill trees for each show
+
+Weeks 34-32 2026-0318
+- Load Show-Specific Data
+  - Design flexible data structure for show-specific information
+  - Implement data loading system for show details
+  - Create content management system for show-specific challenges
+  - Develop dynamic UI adaptation based on loaded show data
+
+Weeks 31-29 2026-0408
+- AI Contestants and NPCs
+  - Design AI contestant behavior system
+  - Implement NPC interaction mechanics
+  - Create dynamic relationships between characters
+  - Develop AI contestant skill progression
+
+Weeks 28-26 2026-0429
+- Multiplayer and Community Features
+  - Develop online multiplayer functionality
+  - Create leaderboards and ranking systems
+  - Implement player-vs-player challenge modes
+  - Design and create community events and competitions
+
+Weeks 25-23 2026-0520
+- Audio and Visual Production
+  - Design and implement show-specific visual styles
+  - Create dynamic sound effects and music system
+  - Develop character voice acting system
+  - Implement cutscene and storyline presentation mechanics
+
+Weeks 22-20 2026-0610
+- Replayability and Procedural Generation
+  - Create procedurally generated challenges
+  - Implement dynamic difficulty adjustment
+  - Develop alternate storylines and outcomes
+  - Create randomized events and twists
+
+Weeks 19-17 2026-0701
+- Analytics and Metrics
+  - Implement player performance tracking
+  - Create in-game analytics dashboard
+  - Develop strategy suggestion system
+  - Design and implement achievement system
+
+Week 16 2026-0708
+- E210 Core Certificate (22%)
   - Application Development (6%)
-    - Learning and Leveraging Best Practices
-    - Excellence Driven Development
-    - Build the course from scratch using GenAI
-    - Build the course trained on repo
+
+Week 15 2026-0715
   - Security and Ethics (4%)
+
+Week 14 2026-0722
   - Learning (12%)
 
-Weeks 39-20 2026-0610
-- Learning Content Business Certificate (37%)
+Week 13 2026-0728
+- E210 Business Certificate (37%)
   - Business Process (9%)
-    - Vision and Transformation
+
+Week 12 2026-0805
   - Marketing and Sales (17%)
+
+Week 11 2026-0812
   - Capital Growth (11%)
 
- Weeks 19-Launch 2026-1028
- - Learning Content Global Certificate (35%)
+Week 10 2026-0819
+ - E210 Global Certificate (35%)
   - Infrastructure (3%)
+
+Week 9 2026-0826
   - Life and Health (10%)
+
+Week 8 2026-0902
   - Custom Production (10%)
+
+Week 7 2026-0909
   - Logistics (12%)
+
+Weeks 6-1 -Launch 2026-1028
+  - Final Testing
 
 Launch Goals
  - Scalable infrastructure

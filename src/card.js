@@ -145,23 +145,25 @@ export class Card {
 
     // Create the menu bar
     const menuBar = createMenuBar(card);
-    /*
-  createButton(menuBar, {
-    iconSrc: "./assets/svg/gui-white/hamburger-menu.svg",
-    label: "Hide",
-  });
-  createButton(menuBar, {
-    iconSrc: "./assets/svg/gui-white/save-arrow.svg",
-    label: "Open",
-  });
-  */
+
     createButton(menuBar, {
       iconSrc: "./assets/svg/gui-white/hamburger-menu.svg",
-      label: null,
+      label: "Hide",
     });
     createButton(menuBar, {
-      iconSrc: null,
+      iconSrc: "./assets/svg/gui-white/save-arrow.svg",
       label: "Open",
+    });
+    createButton(menuBar, {
+      iconSrc: "./assets/svg/gui-white/help.svg",
+      label: null,
+      styleClass: "circle-button",
+    });
+
+    createButton(menuBar, {
+      iconSrc: null,
+      label: "?",
+      styleClass: "circle-button",
     });
 
     card.appendChild(menuBar);
