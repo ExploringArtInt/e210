@@ -268,16 +268,6 @@ export function createInputText(parentElement, options = {}) {
   return wrapper;
 }
 
-// GUI Menu
-export function createMenuBar(parentElement) {
-  const menuBarId = `gui-menu-bar-${GuidUtils.getLocalUniqueID()}`;
-  const menuBar = document.createElement("div");
-  menuBar.id = menuBarId;
-  menuBar.className = "gui-menu-bar";
-  parentElement.appendChild(menuBar);
-  return menuBar;
-}
-
 // GUI Spinner
 let spinnerInterval;
 

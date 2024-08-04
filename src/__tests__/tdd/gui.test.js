@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import "jest-canvas-mock";
-import { initializeButtons, createMenuBar, createButton, createSpinner, deleteSpinner } from "../../gui.js";
+import { initializeButtons, createButton, createSpinner, deleteSpinner } from "../../gui.js";
 import { GuidUtils } from "../../utilities.js";
 
 jest.mock("../../utilities.js", () => ({
@@ -20,16 +20,6 @@ describe("GUI Functions", () => {
 
   afterEach(() => {
     jest.useRealTimers();
-  });
-
-  test("createMenuBar creates a menu bar with correct ID and class", () => {
-    const app = document.getElementById("app");
-    const menuBar = createMenuBar(app);
-
-    expect(menuBar).toBeTruthy();
-    expect(menuBar.id).toBe("gui-menu-bar-1234");
-    expect(menuBar.className).toBe("gui-menu-bar");
-    expect(app.contains(menuBar)).toBe(true);
   });
 
   test("createButton creates a button with correct structure and content", () => {
