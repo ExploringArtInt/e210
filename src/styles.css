@@ -55,7 +55,6 @@ body {
     color: white;
     cursor: pointer;
     display: flex;
-    flex: 1;
     flex-direction: column;
     font-size: 1em;
     justify-content: center;
@@ -74,11 +73,9 @@ body {
     width: auto;
     .gui-button-icon {
         height: 1em;
-        flex: auto;
         width: 1em;
     }
     .gui-button-text {
-        flex: auto;
         font-size: 24px;
         width: 1.2em;
     }

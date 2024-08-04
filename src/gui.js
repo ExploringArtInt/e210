@@ -158,7 +158,6 @@ export function createInputPassword(parentElement) {
 export function createInputRadioButton(parentElement, options = {}) {
   const { radioGroupName = "NOT_SET", labelText = null, isChecked = false, isLabelFirst = false } = options;
 
-  console.debug("DEBUG 1");
   const createInputRadioButtonId = `gui-input-radio-button-${GuidUtils.getLocalUniqueID()}`;
 
   const inputRadioButton = document.createElement("input");
