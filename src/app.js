@@ -1,5 +1,5 @@
 import { fsmPattern } from "./patterns.js";
-import { initializeButtons, createSpinner, deleteSpinner } from "./gui.js";
+import { activateButtons, createSpinner, deleteSpinner } from "./gui.js";
 import { createContent } from "./content.js";
 
 /***
@@ -113,7 +113,7 @@ export class App {
   onCreatePage() {
     // console.log("Creating page");
     createContent();
-    initializeButtons();
+    activateButtons();
   }
 
   enterIdleState() {

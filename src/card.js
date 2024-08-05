@@ -148,23 +148,17 @@ export class Card {
       styleClass: "menu-bar",
     });
 
-    createButton(menuBar, {
+    const button1 = createButton(menuBar, {
       iconSrc: "./assets/svg/gui-white/hamburger-menu.svg",
       label: "Hide",
     });
-    createButton(menuBar, {
+    const button2 = createButton(menuBar, {
       iconSrc: "./assets/svg/gui-white/save-arrow.svg",
       label: "Open",
     });
-    createButton(menuBar, {
+    const button3 = createButton(menuBar, {
       iconSrc: "./assets/svg/gui-white/help.svg",
       label: null,
-      styleClass: "circle-button",
-    });
-
-    createButton(menuBar, {
-      iconSrc: null,
-      label: "?",
       styleClass: "circle-button",
     });
 

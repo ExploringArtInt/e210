@@ -3,16 +3,17 @@
 ### 2026-0928 Steps
 Weeks 112-104 2024-1030
 
-- Auth
-
 - GUI elements
+  - test in Safari and resolve any issues
   - Form
-
     - Input Text Field
       - optional help content displayed in modal
         - circle ? icon button
           - button next to field
           - button after error message
+      - move button activate from app to gui
+        - figure out how to activate hidden buttons
+        - add scope of parentElement to activateButton
       - Error Indicator
       - Intent Entity Constraint
         - a GUI Input Text field has a set of Constraints
@@ -103,6 +104,7 @@ Weeks 103-99 2024-1204
   - can optionally have a dataTree
   - a crumb trail has a seperator between crumbs (/, |, >)
   - Crumb - a single link back up the heirarchy
+- Retest in Safari and resolve any issues
 
 Weeks 98-90 2025-0205
 - Simple, safe, and free Cloud integrations
@@ -129,10 +131,15 @@ Weeks 98-90 2025-0205
   - Registration/Login/FUIP flows
 
 Weeks 89-80 2025-0416
-- SCORM Support
-  - SCORM Import
-  - SCORM Export
-  - Using GenAI to generate SCORM Lessions
+- xAPI 2.0 Support
+  - RESTful JSON actor verb object
+  - xAPI Gamification and Simulation Lession
+  - xAPI Import
+  - xAPI Export
+  - Using GenAI to generate xAPI Lessions
+- Dashboards integrating with xAPI
+  - xAPI Hello World in Moodle
+  - xAPI Hello World in Drupal
 - Training
   - Lesson flow
   - CRUD Roles
@@ -157,6 +164,7 @@ Weeks 69-60 2025-0903
   - Reality Show Gamification
 - Using GenAI to generate Simulator Lessons
 - Using GenAI to gamify Lessons
+- Retest in Safari and resolve any issues
 
 Weeks 59-57 2025-0924
 - Reality Show Learning Format

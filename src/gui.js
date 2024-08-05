@@ -42,8 +42,9 @@ export function createButton(parentElement, options = {}) {
   return button;
 }
 
-// TBD: pass in scope (app, card#, button#)
-export function initializeButtons() {
+// TBD: pass in scope (parentElement)
+export function // TBD: pass in scope (parentElement)
+activateButtons() {
   // TBD: scope to only initializeButton for scope passed in
   const buttons = document.querySelectorAll(".gui-button");
 
@@ -53,6 +54,9 @@ export function initializeButtons() {
     });
   });
 }
+
+// TBD: pass in scope (parentElement)
+export function inactivateButtons() {}
 
 // GUI Content
 export function createContent(parentElement, options = {}) {
@@ -217,6 +221,17 @@ export function createInputText(parentElement, options = {}) {
   inputText.className = "gui-input-text";
   inputText.placeholder = placeholder;
   inputText.required = required;
+
+  const helpTextModalButton = createButton(parentElement, {
+    iconSrc: null,
+    label: "?",
+    styleClass: "circle-button",
+  });
+
+  wrapper.appendChild(labelElement);
+  wrapper.appendChild(inputText);
+  wrapper.appendChild(helpTextModalButton);
+
   if (pattern) inputText.pattern = pattern;
   if (minLength !== null) inputText.minLength = minLength;
   if (maxLength !== null) inputText.maxLength = maxLength;
@@ -227,8 +242,6 @@ export function createInputText(parentElement, options = {}) {
   errorElement.setAttribute("aria-live", "polite");
   errorElement.hidden = true;
 
-  wrapper.appendChild(labelElement);
-  wrapper.appendChild(inputText);
   wrapper.appendChild(errorElement);
 
   const validateInput = () => {
@@ -254,6 +267,12 @@ export function createInputText(parentElement, options = {}) {
       inputText.setAttribute("aria-describedby", createInputTextErrorId);
       errorElement.textContent = validationMessage;
       errorElement.hidden = false;
+      const helpErrorModalButton = createButton(parentElement, {
+        iconSrc: null,
+        label: "?",
+        styleClass: "circle-button",
+      });
+      errorElement.appendChild(helpErrorModalButton);
     } else {
       inputText.removeAttribute("aria-invalid");
       inputText.removeAttribute("aria-describedby");
@@ -306,18 +325,3 @@ export function deleteSpinner() {
     spinnerInterval = null;
   }
 }
-
-/* Template code for creating GUI elements
-// GUI TBD
-export function createTBD(parentElement, options = {}) {
-  const { optionTBD = null } = options;
-
-  const TBDId = `gui-TBD-${GuidUtils.getLocalUniqueID()}`;
-  const TBD = document.createElement("div");
-  TBD.id = TBDId;
-  TBD.className = "gui-TBD";
-  TBD.type = "TBD";
-  parentElement.appendChild(TBD);
-  return TBD;
-}
-*/
