@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import "jest-canvas-mock";
-import { initializeButtons, createButton, createSpinner, deleteSpinner } from "../../gui.js";
+import { activateButtons, createButton, createSpinner, deleteSpinner } from "../../gui.js";
 import { GuidUtils } from "../../utilities.js";
 
 jest.mock("../../utilities.js", () => ({
@@ -34,7 +34,7 @@ describe("GUI Functions", () => {
     expect(menuBar.contains(button)).toBe(true);
   });
 
-  test("initializeButtons adds click event listeners to buttons", () => {
+  test("activateButtons adds click event listeners to buttons", () => {
     document.body.innerHTML = `
       <button class="gui-button"></button>
       <button class="gui-button"></button>
@@ -43,7 +43,7 @@ describe("GUI Functions", () => {
 
     const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});
 
-    initializeButtons();
+    activateButtons();
 
     const buttons = document.querySelectorAll(".gui-button");
     buttons.forEach((button, index) => {
