@@ -3,15 +3,15 @@
 ### 2026-0928 Steps
 Weeks 112-104 2024-1030
 
-- Steps
+- Step
   - FSM (Displayed, Field Error, Step Error, Completed, Cancelled, RequestMade, ResponseReceived)
     - Field Error is front-end validation
     - Step Error (e.g., page-level error) is back-end validation
   - Form Submit and Reset not used in Flow
   - Continue
+  - Cancel
   - Step validation
     - Required Checkbox, Radiobutton, Text, or Password
-  - Cancel
 
  - Entity Input
     - FSM
@@ -24,23 +24,21 @@ Weeks 112-104 2024-1030
       - Checkbox
       - Radiobutton
       - Text
-    - An Input Text Field has zero, one or many Constraints
 
-    - move button activate from app to gui
-      - add when Input Text active, remove when inactive
+    - An Entity Input has zero, one or many Constraints
+
+    - refactor when buttons are activated from app to gui
+      - add when Entity Input active, remove when inactive
       - figure out how to activate hidden buttons
       - add scope of parentElement to activateButton
 
     - Error Indicator
 
-    - Intent Entity Constraint
-      - a GUI Input Text field has a set of Constraints
-      - A Constraint can be
-        - Front-end (field level)
-        - Back-end (step-level)
-          - to be build later
-        - Design enough in front-end to support
-      - In addition to gui (HTML/DOM devices), constrains can be used to support a wide number of device channels (mobile, SMS, chat, 3D-UX)
+    - Entity Constraint
+       - A Constraint can be
+        - Front-end (field level error)
+        - Back-end (step level error)
+      - In addition to gui (HTML/DOM devices), Entity Constraints can be used to support various device channels (mobile, SMS, chat, 3D-UX)
 
     - Validate Constraint
       - on key

@@ -1,3 +1,6 @@
+import { createStep } from "./step.js";
+import { createEntityInput } from "./entityInput.js";
+
 import { Card, createCard } from "./card.js";
 import { createButton } from "./gui.js";
 
@@ -7,6 +10,15 @@ export function createContent() {
     console.error("App container not found");
     return;
   }
+
+  // step
+  const firstStep = createStep(app);
+
+  const entityInput = createEntityInput(firstStep, {
+    type: "text",
+    label: "Username",
+    placeholder: "Enter your username",
+  });
 
   // card 1
   const nvpCard1 = {
