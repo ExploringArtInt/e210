@@ -1,5 +1,6 @@
 import { createStep } from "./step.js";
 import { createEntityInput } from "./entityInput.js";
+import { Constraint, ConstraintSet, ConstraintPatterns } from "./constraint.js";
 
 import { Card, createCard } from "./card.js";
 import { createButton } from "./gui.js";
@@ -19,6 +20,19 @@ export function createContent() {
     label: "Username",
     placeholder: "Enter your username",
   });
+
+  // Create a constraint set for an entity input
+  const constraintSet = new ConstraintSet();
+
+  // Add constraints
+  constraintSet.addConstraint(new Constraint(ConstraintPatterns.Required));
+  constraintSet.addConstraint(new Constraint(ConstraintPatterns.Type.Email));
+
+  // Test input
+  const isValid = constraintSet.testAll("user@example.com");
+
+  // Get errors if any
+  const errors = constraintSet.getErrors();
 
   // card 1
   const nvpCard1 = {

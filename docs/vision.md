@@ -3,76 +3,55 @@
 ### 2026-0928 Steps
 Weeks 112-104 2024-1030
 
-- Step
-  - FSM (Displayed, Field Error, Step Error, Completed, Cancelled, RequestMade, ResponseReceived)
-    - Field Error is front-end validation
-    - Step Error (e.g., page-level error) is back-end validation
-  - Form Submit and Reset not used in Flow
-  - Continue
-  - Cancel
-  - Step validation
-    - Required Checkbox, Radiobutton, Text, or Password
+- Constraint
 
- - Entity Input
-    - FSM
-      - inactive untouched or valid - gray
-      - active untouched invalid - black
-      - active valid - green
-      - inactive invalid or active touched invalid - red and error message
-
-    - Input types
-      - Checkbox
-      - Radiobutton
-      - Text
-
-    - An Entity Input has zero, one or many Constraints
-
-    - refactor when buttons are activated from app to gui
-      - add when Entity Input active, remove when inactive
-      - figure out how to activate hidden buttons
-      - add scope of parentElement to activateButton
-
-    - Error Indicator
-
-    - Entity Constraint
-       - A Constraint can be
-        - Front-end (field level error)
-        - Back-end (step level error)
-      - In addition to gui (HTML/DOM devices), Entity Constraints can be used to support various device channels (mobile, SMS, chat, 3D-UX)
-
-    - Validate Constraint
-      - on key
+  - constraint has
+    - hasError flag
+      - on keyup
       - on field exit
-      - on Step exit
+    - regex pattern
+    - error message
+    - help title
+    - help message
 
-    - Constraint
-      - Types:
-        - Pattern Constraints (Regex): Ensuring the entity matches a specific regular expression pattern, such as a phone number format.
-          - Exact match
-          - Case insensitive - change case to lowercase
-          - Whitespace insensitive - remove whitespace
-          - Common abbreviation replacement (" Dr. " for Drive or Doctor, depending on context)
-        - Type Constraints (Regex): Ensuring the entity is of a specific type, such as an integer, a string, a date, etc.
-        - Format Constraints (Regex): "YYYY-MM-DD" or an email address in the format "user@example.com".
-        - Range Constraints (Regex): Ensuring numerical entities fall within a specific range/
-        - Value Constraints (value): Ensuring the entity matches
-          - Set of values, such as days of the week ("Monday", "Tuesday", etc.)
-          - Known value stored in a SOR
+    - an entityInput can have many constraints
+
+    - Example Constraints:
+      - Required: Can not be null or whitespace
+      - Pattern: Ensuring the entity matches a specific regular expression pattern, such as a phone number format.
+        - Exact match
+        - Case insensitive - change case to lowercase
+        - Whitespace insensitive - remove whitespace
+        - Common abbreviation replacement (" Dr. " for Drive or Doctor, depending on context)
+      - Type: Ensuring the entity is of a specific type, such as an integer, a string, a date, etc.
+      - Format: "YYYY-MM-DD" or an email address in the format "user@example.com".
+      - Range: Ensuring numerical entities fall within a specific range
+
+    Backend integration
+      - Value Constraints (value): Ensuring the entity matches
+        - Set of values, such as days of the week ("Monday", "Tuesday", etc.)
+        - Known value stored in a SOR
 
     Dependency Constraints: Ensuring the entity is valid in the context of other entities, such as a return date that must be after the departure date in a travel booking.
 
-      - a front-end constraint has validation rule
-      - pass array into createInputText
-      - refactor into rules
-        - pattern regex
-        - required  (possible to do in regex?)
-        - minLength (possible to do in regex?)
-        - maxLength (possible to do in regex?)
-      - constraints have
-        - pattern
-        - error message
-        - optional help content displayed in modal
-    - Default value
+  - A Constraint can be
+    - Front-end (field level error)
+    - Back-end (step level error)
+  - In addition to gui (HTML/DOM devices), Entity Constraints can be used to support various device channels (mobile, SMS, chat, 3D-UX)
+
+ - Entity Input
+
+  - Can have a default value
+
+  - refactor when buttons are activated from app to gui
+    - add when Entity Input active, remove when inactive
+    - figure out how to activate hidden buttons
+    - add scope of parentElement to activateButton
+
+  - Error Indicator
+
+  - Input Password
+    - toggle visible
     - Mask
       - all
       - up to last 4
@@ -84,9 +63,6 @@ Weeks 112-104 2024-1030
       - Toggle switch
         - build to use anywhere in card
 
-  - Input Password
-    - toggle visible
-
   - Card Modal
     - Help message, click out to continue
     - Required checkbox and confirm or cancel, no clickout
@@ -96,6 +72,9 @@ Weeks 112-104 2024-1030
 - Header, Side, 2D/3D Canvas, Footer
 - App Features
 - Card Fetures
+- Step Features
+- Entity Input Features
+
 
 Weeks 103-99 2024-1204
 - Dev Front-end
