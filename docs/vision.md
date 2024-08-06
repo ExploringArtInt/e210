@@ -3,77 +3,8 @@
 ### 2026-0928 Steps
 Weeks 112-104 2024-1030
 
-- GUI elements
-  - test in Safari and resolve any issues
-  - Form
-    - Input Text Field
-      - optional help content displayed in modal
-        - circle ? icon button
-          - button next to field
-          - button after error message
-      - move button activate from app to gui
-        - figure out how to activate hidden buttons
-        - add scope of parentElement to activateButton
-      - Error Indicator
-      - Intent Entity Constraint
-        - a GUI Input Text field has a set of Constraints
-        - A Constraint can be
-          - Front-end (field level)
-          - Back-end (step-level)
-            - to be build later
-          - Design enough in front-end to support
-        - In addition to gui (HTML/DOM devices), constrains can be used to support a wide number of device channels (mobile, SMS, chat, 3DUX)
-      - Validate Constraint
-        - on key
-        - on field exit
-        - on Step exit
-      - Constraint
-        - Types:
-          - Pattern Constraints (Regex): Ensuring the entity matches a specific regular expression pattern, such as a phone number format.
-            - Exact match
-            - Case insensitive - change case to lowercase
-            - Whitespace insensitive - remove whitespace
-            - Common abbreviation replacement (" Dr. " for Drive or Doctor, depending on context)
-          - Type Constraints (Regex): Ensuring the entity is of a specific type, such as an integer, a string, a date, etc.
-          - Format Constraints (Regex): "YYYY-MM-DD" or an email address in the format "user@example.com".
-          - Range Constraints (Regex): Ensuring numerical entities fall within a specific range/
-          - Value Constraints (value): Ensuring the entity matches
-            - Set of values, such as days of the week ("Monday", "Tuesday", etc.)
-            - Known value stored in a SOR
-
-      Dependency Constraints: Ensuring the entity is valid in the context of other entities, such as a return date that must be after the departure date in a travel booking.
-
-        - a front-end constraint has validation rule
-        - pass array into createInputText
-        - refactor into rules
-          - pattern regex
-          - required  (possible to do in regex?)
-          - minLength (possible to do in regex?)
-          - maxLength (possible to do in regex?)
-        - constraints have
-          - pattern
-          - error message
-          - optional help content displayed in modal
-      - Default value
-      - Mask
-        - all
-        - up to last 4
-        - 2nd and up to character (e.g. "@")
-      - Unmask Checkbox
-        - Checkbox
-        - Eye open and closed
-          - build to use anywhere in card
-        - Toggle switch
-          - build to use anywhere in card
-
-    - Input Password
-      - toggle visible
-
-- Flow
-  - FSM (Started, Completed, Cancelled, Saved, Resume, Reset)
-
 - Steps
-  - FSM (Displayed, Field Error, Step Error, Completed)
+  - FSM (Displayed, Field Error, Step Error, Completed, Cancelled, RequestMade, ResponseReceived)
     - Field Error is front-end validation
     - Step Error (e.g., page-level error) is back-end validation
   - Form Submit and Reset not used in Flow
@@ -81,6 +12,82 @@ Weeks 112-104 2024-1030
   - Step validation
     - Required Checkbox, Radiobutton, Text, or Password
   - Cancel
+
+ - Entity Input
+    - FSM
+      - inactive untouched or valid - gray
+      - active untouched invalid - black
+      - active valid - green
+      - inactive invalid or active touched invalid - red and error message
+
+    - Input types
+      - Checkbox
+      - Radiobutton
+      - Text
+    - An Input Text Field has zero, one or many Constraints
+
+    - move button activate from app to gui
+      - add when Input Text active, remove when inactive
+      - figure out how to activate hidden buttons
+      - add scope of parentElement to activateButton
+
+    - Error Indicator
+
+    - Intent Entity Constraint
+      - a GUI Input Text field has a set of Constraints
+      - A Constraint can be
+        - Front-end (field level)
+        - Back-end (step-level)
+          - to be build later
+        - Design enough in front-end to support
+      - In addition to gui (HTML/DOM devices), constrains can be used to support a wide number of device channels (mobile, SMS, chat, 3D-UX)
+
+    - Validate Constraint
+      - on key
+      - on field exit
+      - on Step exit
+
+    - Constraint
+      - Types:
+        - Pattern Constraints (Regex): Ensuring the entity matches a specific regular expression pattern, such as a phone number format.
+          - Exact match
+          - Case insensitive - change case to lowercase
+          - Whitespace insensitive - remove whitespace
+          - Common abbreviation replacement (" Dr. " for Drive or Doctor, depending on context)
+        - Type Constraints (Regex): Ensuring the entity is of a specific type, such as an integer, a string, a date, etc.
+        - Format Constraints (Regex): "YYYY-MM-DD" or an email address in the format "user@example.com".
+        - Range Constraints (Regex): Ensuring numerical entities fall within a specific range/
+        - Value Constraints (value): Ensuring the entity matches
+          - Set of values, such as days of the week ("Monday", "Tuesday", etc.)
+          - Known value stored in a SOR
+
+    Dependency Constraints: Ensuring the entity is valid in the context of other entities, such as a return date that must be after the departure date in a travel booking.
+
+      - a front-end constraint has validation rule
+      - pass array into createInputText
+      - refactor into rules
+        - pattern regex
+        - required  (possible to do in regex?)
+        - minLength (possible to do in regex?)
+        - maxLength (possible to do in regex?)
+      - constraints have
+        - pattern
+        - error message
+        - optional help content displayed in modal
+    - Default value
+    - Mask
+      - all
+      - up to last 4
+      - 2nd and up to character (e.g. "@")
+    - Unmask Checkbox
+      - Checkbox
+      - Eye open and closed
+        - build to use anywhere in card
+      - Toggle switch
+        - build to use anywhere in card
+
+  - Input Password
+    - toggle visible
 
   - Card Modal
     - Help message, click out to continue
@@ -116,7 +123,32 @@ Weeks 98-90 2025-0205
   - Roles
     - OAuth integration
     - A role has a set of Intents
+
+- Flow
+  - FSM (Started, Completed, Cancelled, Saved, Resume, Reset)
+
 - Intent
+  - Pattern: Entity to Intent Orchestrator (E2I0) pattern
+    - Similar patterns: Command, Command Query Responsibility Segregration (CQRS), Backend for Frontend (BFF)
+    - Similar Frameworks: Flux (machine learning written in Julia)
+  - How it works:
+    - User indictes their Intent in the front-end
+      - Menus in a GUI, Text input in a SMS or Chat
+    - Back-end verifies the User has the authority to perform that Intent
+    - Back-end makes request to front-end to gather Intent Entities required to perform that Intent
+      - Intent Entities
+        - Only exist on the back-end
+        - Entity Inputs are gathered in the front-end
+        - Both front-end and back-end confirm Entity Inputs meet Constraints before Intent Entity is updated with Entity Input value
+      - Simple UX Contract
+        - In a Card display a Flow
+        - A Flow has one or more Steps
+        - A Step has a GUI Form with one or more Entity Inputs
+        - An Entity Input has
+          - None or one Info Section
+          - A GUI Input Elements (e.g., Text, Checkbox)
+          - Zero or many Constraints
+
   - Business Process
     - An intent has one and only one Business Process or can an Intent belong to many Business Process?
   - Set of Sub-intents
@@ -125,6 +157,7 @@ Weeks 98-90 2025-0205
     - Intent Entities have Constraints
       - These are validation rules that define the criteria  the extracted entity must meet to be considered valid.
       - Constraints ensure that the data is accurate, appropriate, and usable for the intended Business Process.
+
 - Business Process
   - Auth flow
   - Maker/Checker flow
