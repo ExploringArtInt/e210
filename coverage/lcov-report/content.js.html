@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">30.76% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/16</span>
+                <span class='fraction'>4/13</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">30.76% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/16</span>
+                <span class='fraction'>4/13</span>
             </div>
         
             
@@ -110,7 +110,18 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -137,14 +148,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -159,7 +181,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createStep } from "./step.js";
 import { createEntityInput } from "./entityInput.js";
-import { Constraint, ConstraintSet, ConstraintPatterns } from "./constraint.js";
+import { createConstraint, ConstraintPatterns } from "./constraint.js";
 &nbsp;
 import { Card, createCard } from "./card.js";
 import { createButton } from "./gui.js";
@@ -180,18 +202,29 @@ export function createContent() {
     placeholder: "Enter your username",
   });
 &nbsp;
-  // Create a constraint set for an entity input
-  const constraintSet = <span class="cstat-no" title="statement not covered" >new ConstraintSet();</span>
+  // Create a composite constraint
+  const emailConstraint = <span class="cstat-no" title="statement not covered" >createConstraint({</span>
+    constraints: [createConstraint(ConstraintPatterns.Required), createConstraint(ConstraintPatterns.Type.Email)],
+    errorMessage: "Please enter a valid email address",
+    helpTitle: "Email Input",
+    helpMessage: "Enter a valid email address (e.g., user@example.com)",
+  });
 &nbsp;
-  // Add constraints
-<span class="cstat-no" title="statement not covered" >  constraintSet.addConstraint(new Constraint(ConstraintPatterns.Required));</span>
-<span class="cstat-no" title="statement not covered" >  constraintSet.addConstraint(new Constraint(ConstraintPatterns.Type.Email));</span>
-&nbsp;
-  // Test input
-  const isValid = <span class="cstat-no" title="statement not covered" >constraintSet.testAll("user@example.com");</span>
-&nbsp;
-  // Get errors if any
-  const errors = <span class="cstat-no" title="statement not covered" >constraintSet.getErrors();</span>
+  // Create a complex composite constraint
+  const formConstraint = <span class="cstat-no" title="statement not covered" >createConstraint({</span>
+    constraints: [
+      {
+        constraints: [ConstraintPatterns.Required, ConstraintPatterns.Type.Email],
+        errorMessage: "Invalid email",
+      },
+      {
+        constraints: [ConstraintPatterns.Required, ConstraintPatterns.ExactPattern(/^[a-zA-Z0-9_]{3,20}$/)],
+        errorMessage: "Invalid username",
+      },
+      ConstraintPatterns.Type.Integer,
+    ],
+    errorMessage: "Form validation failed",
+  });
 &nbsp;
   // card 1
   const nvpCard1 = <span class="cstat-no" title="statement not covered" >{</span>
@@ -211,7 +244,7 @@ export function createContent() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-07T11:58:00.846Z
+                at 2024-08-07T13:14:51.734Z
             </div>
         <script src="prettify.js"></script>
         <script>

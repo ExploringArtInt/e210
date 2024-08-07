@@ -1,33 +1,14 @@
 // constrain.js
 
 /***
-  Provides a flexible way to define and apply constraints to entity inputs.
+Uses the Composite design pattern with three components, forming a tree-like structure:
+  - base (root) component
+  - leaf components are the end objects (no children). They represent a single, indivisible constraint.
+  - composite (branch) can contain other constraints (both simple and composite)
+***/
 
- Key Components:
- 1. Constraint: A class representing a single validation rule.
- 2. ConstraintSet: A class for managing multiple constraints for an entity input.
- 3. ConstraintPatterns: Predefined patterns for common validation scenarios.
-
- How to use:
- 1. Import the necessary classes and patterns:
-    import { Constraint, ConstraintSet, ConstraintPatterns } from './constrain.js';
-
- 2. Create a ConstraintSet for your entity input:
-    const constraintSet = new ConstraintSet();
-
- 3. Add constraints to the set:
-    constraintSet.addConstraint(new Constraint(ConstraintPatterns.Required));
-    constraintSet.addConstraint(new Constraint(ConstraintPatterns.Type.Email));
-
- 4. Test input against all constraints:
-    const isValid = constraintSet.testAll("user@example.com");
-
- 5. Get error messages if validation fails:
-    const errors = constraintSet.getErrors();
-
- ***/
-
-class Constraint {
+// base (root) component: interface for all elements in composition
+class ConstraintComponent {
   constructor(options = {}) {
     const defaults = {
       isAccepted: false,
@@ -42,6 +23,26 @@ class Constraint {
   }
 
   test(value) {
+    throw new Error("test method must be implemented by subclasses");
+  }
+
+  testAll(value) {
+    return this.test(value);
+  }
+
+  getErrors() {
+    return this.isAccepted ? [] : [this.errorMessage];
+  }
+}
+
+// Leaf component
+class SimpleConstraint extends ConstraintComponent {
+  constructor(options = {}) {
+    super(options);
+    this.pattern = options.pattern || "";
+  }
+
+  test(value) {
     if (typeof this.pattern === "function") {
       this.isAccepted = this.pattern(value);
     } else {
@@ -51,8 +52,10 @@ class Constraint {
   }
 }
 
-class ConstraintSet {
-  constructor() {
+// Composite (branch) component
+class CompositeConstraint extends ConstraintComponent {
+  constructor(options = {}) {
+    super(options);
     this.constraints = [];
   }
 
@@ -60,12 +63,27 @@ class ConstraintSet {
     this.constraints.push(constraint);
   }
 
+  test(value) {
+    this.isAccepted = this.constraints.every((constraint) => constraint.test(value));
+    return this.isAccepted;
+  }
+
   testAll(value) {
-    return this.constraints.every((constraint) => constraint.test(value));
+    return this.constraints.every((constraint) => constraint.testAll(value));
   }
 
   getErrors() {
-    return this.constraints.filter((constraint) => !constraint.isAccepted).map((constraint) => constraint.errorMessage);
+    const errors = this.constraints.flatMap((constraint) => constraint.getErrors());
+    return errors.length > 0 ? errors : super.getErrors();
+  }
+}
+
+// Factory function to create constraints
+function createConstraint(options) {
+  if (options.constraints) {
+    return new CompositeConstraint(options);
+  } else {
+    return new SimpleConstraint(options);
   }
 }
 
@@ -135,4 +153,4 @@ const ConstraintPatterns = {
   }),
 };
 
-export { Constraint, ConstraintSet, ConstraintPatterns };
+export { createConstraint, CompositeConstraint, ConstraintPatterns };

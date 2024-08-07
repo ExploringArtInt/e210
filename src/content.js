@@ -1,6 +1,6 @@
 import { createStep } from "./step.js";
 import { createEntityInput } from "./entityInput.js";
-import { Constraint, ConstraintSet, ConstraintPatterns } from "./constraint.js";
+import { createConstraint, ConstraintPatterns } from "./constraint.js";
 
 import { Card, createCard } from "./card.js";
 import { createButton } from "./gui.js";
@@ -21,18 +21,29 @@ export function createContent() {
     placeholder: "Enter your username",
   });
 
-  // Create a constraint set for an entity input
-  const constraintSet = new ConstraintSet();
+  // Create a composite constraint
+  const emailConstraint = createConstraint({
+    constraints: [createConstraint(ConstraintPatterns.Required), createConstraint(ConstraintPatterns.Type.Email)],
+    errorMessage: "Please enter a valid email address",
+    helpTitle: "Email Input",
+    helpMessage: "Enter a valid email address (e.g., user@example.com)",
+  });
 
-  // Add constraints
-  constraintSet.addConstraint(new Constraint(ConstraintPatterns.Required));
-  constraintSet.addConstraint(new Constraint(ConstraintPatterns.Type.Email));
-
-  // Test input
-  const isValid = constraintSet.testAll("user@example.com");
-
-  // Get errors if any
-  const errors = constraintSet.getErrors();
+  // Create a complex composite constraint
+  const formConstraint = createConstraint({
+    constraints: [
+      {
+        constraints: [ConstraintPatterns.Required, ConstraintPatterns.Type.Email],
+        errorMessage: "Invalid email",
+      },
+      {
+        constraints: [ConstraintPatterns.Required, ConstraintPatterns.ExactPattern(/^[a-zA-Z0-9_]{3,20}$/)],
+        errorMessage: "Invalid username",
+      },
+      ConstraintPatterns.Type.Integer,
+    ],
+    errorMessage: "Form validation failed",
+  });
 
   // card 1
   const nvpCard1 = {

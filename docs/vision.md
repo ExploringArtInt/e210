@@ -171,8 +171,19 @@
   - Global Cities report
 
 *** Weeks 74-70 2025-0625 ***
+- Before rebuild
+  - All green unit tests for coverage and completeness
+  - All green functional tests for coverage and completeness
 
 - *** Complete Rebuild from Scatch***
+  - Rebuilt to align to existing unit and functional tests
+    - Only fix existing defects, no refactoring interfaces or test
+
+  - Rebuild code and tests, complete freedom to refactor and innovate
+
+- After rebuild
+  - All green unit tests for coverage and completeness
+  - All green functional tests for coverage and completeness
 
 *** Weeks 69-60 2025-0903 ***
 - Simulation
