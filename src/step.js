@@ -39,7 +39,11 @@ State Action Table
 ***/
 
 export class Step {
-  constructor(parentElement) {
+  constructor(parentElement, options = {}) {
+    const defaults = {};
+    const mergedOptions = { ...defaults, ...options };
+    Object.assign(this, mergedOptions);
+
     this.parentElement = parentElement;
     this.stepId = `step-${GuidUtils.getLocalUniqueID()}`;
     this.element = this.createStepElement();

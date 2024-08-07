@@ -28,22 +28,17 @@ State Action Table
 ***/
 
 export class Card {
-  constructor(parentDiv, options = {}) {
-    this.parentDiv = parentDiv;
-    this.cardId = `card-${GuidUtils.getLocalUniqueID()}`;
-
-    // Define default values
+  constructor(parentElement, options = {}) {
     const defaults = {
       styleCSS: "",
     };
+    const mergedOptions = { ...defaults, ...options };
+    Object.assign(this, mergedOptions);
 
-    // Merge provided options with defaults
-    const config = { ...defaults, ...options };
+    this.parentElement = parentElement;
+    this.cardId = `card-${GuidUtils.getLocalUniqueID()}`;
 
-    // Assign merged config to instance properties
-    Object.assign(this, config);
-
-    this.element = this.createCardElement(parentDiv);
+    this.element = this.createCardElement(parentElement);
 
     this.fsm = fsmPattern.createMachine("Hidden", {
       Hidden: {
@@ -78,8 +73,8 @@ export class Card {
     });
   }
 
-  createCardElement(parentDiv) {
-    if (!parentDiv) {
+  createCardElement(parentElement) {
+    if (!parentElement) {
       console.error("parent container not found");
       return;
     }
@@ -165,7 +160,7 @@ export class Card {
     card.appendChild(menuBar);
 
     // Append the card to the parent div
-    parentDiv.appendChild(card);
+    parentElement.appendChild(card);
 
     return card;
   }
@@ -227,8 +222,8 @@ export class Card {
   }
 }
 
-export function createCard(parentDiv, options = {}) {
-  const card = new Card(parentDiv, options);
+export function createCard(parentElement, options = {}) {
+  const card = new Card(parentElement, options);
 
   // Add event listeners
   const hideButton = card.element.querySelector(".gui-button:nth-child(1)");

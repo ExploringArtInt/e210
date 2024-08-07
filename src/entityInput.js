@@ -61,9 +61,12 @@ Input types:
 
 export class EntityInput {
   constructor(parentElement, options = {}) {
+    const defaults = {};
+    const mergedOptions = { ...defaults, ...options };
+    Object.assign(this, mergedOptions);
+
     this.parentElement = parentElement;
     this.inputId = `entity-input-${GuidUtils.getLocalUniqueID()}`;
-    this.options = options;
     this.element = null;
 
     this.fsm = fsmPattern.createMachine("Start", {

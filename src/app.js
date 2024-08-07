@@ -27,18 +27,13 @@ State Action Table
 
 export class App {
   constructor(options = {}) {
-    // Define default values
     const defaults = {
       sessionKey: 123456789,
       msUntilTimeOut: 20000,
       routeURL: "/",
     };
-
-    // Merge provided options with defaults
-    const config = { ...defaults, ...options };
-
-    // Assign merged config to instance properties
-    Object.assign(this, config);
+    const mergedOptions = { ...defaults, ...options };
+    Object.assign(this, mergedOptions);
 
     this.fsm = fsmPattern.createMachine("Start", {
       Start: {

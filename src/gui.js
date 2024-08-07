@@ -115,7 +115,6 @@ export function createForm(parentElement) {
 export function createInputCheckbox(parentElement, options = {}) {
   const { labelText = null, isChecked = false, isLabelFirst = false } = options;
 
-  const { iconSrc = null, label = null } = options;
   const createInputCheckboxId = `gui-input-checkbox-${GuidUtils.getLocalUniqueID()}`;
 
   const inputCheckbox = document.createElement("input");

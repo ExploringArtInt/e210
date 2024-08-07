@@ -302,12 +302,7 @@
 <a name='L237'></a><a href='#L237'>237</a>
 <a name='L238'></a><a href='#L238'>238</a>
 <a name='L239'></a><a href='#L239'>239</a>
-<a name='L240'></a><a href='#L240'>240</a>
-<a name='L241'></a><a href='#L241'>241</a>
-<a name='L242'></a><a href='#L242'>242</a>
-<a name='L243'></a><a href='#L243'>243</a>
-<a name='L244'></a><a href='#L244'>244</a>
-<a name='L245'></a><a href='#L245'>245</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L240'></a><a href='#L240'>240</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -339,17 +334,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -581,22 +571,17 @@ State Action Table
 ***/
 &nbsp;
 export class Card {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor(parentDiv, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
-<span class="cstat-no" title="statement not covered" >    this.parentDiv = parentDiv;</span>
-<span class="cstat-no" title="statement not covered" >    this.cardId = `card-${GuidUtils.getLocalUniqueID()}`;</span>
-&nbsp;
-    // Define default values
+<span class="fstat-no" title="function not covered" >  co</span>nstructor(parentElement, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
     const defaults = <span class="cstat-no" title="statement not covered" >{</span>
       styleCSS: "",
     };
+    const mergedOptions = <span class="cstat-no" title="statement not covered" >{ ...defaults, ...options };</span>
+<span class="cstat-no" title="statement not covered" >    Object.assign(this, mergedOptions);</span>
 &nbsp;
-    // Merge provided options with defaults
-    const config = <span class="cstat-no" title="statement not covered" >{ ...defaults, ...options };</span>
+<span class="cstat-no" title="statement not covered" >    this.parentElement = parentElement;</span>
+<span class="cstat-no" title="statement not covered" >    this.cardId = `card-${GuidUtils.getLocalUniqueID()}`;</span>
 &nbsp;
-    // Assign merged config to instance properties
-<span class="cstat-no" title="statement not covered" >    Object.assign(this, config);</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    this.element = this.createCardElement(parentDiv);</span>
+<span class="cstat-no" title="statement not covered" >    this.element = this.createCardElement(parentElement);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    this.fsm = fsmPattern.createMachine("Hidden", {</span>
       Hidden: {
@@ -631,8 +616,8 @@ export class Card {
     });
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  cr</span>eateCardElement(parentDiv) {
-<span class="cstat-no" title="statement not covered" >    if (!parentDiv) {</span>
+<span class="fstat-no" title="function not covered" >  cr</span>eateCardElement(parentElement) {
+<span class="cstat-no" title="statement not covered" >    if (!parentElement) {</span>
 <span class="cstat-no" title="statement not covered" >      console.error("parent container not found");</span>
 <span class="cstat-no" title="statement not covered" >      return;</span>
     }
@@ -718,7 +703,7 @@ export class Card {
 <span class="cstat-no" title="statement not covered" >    card.appendChild(menuBar);</span>
 &nbsp;
     // Append the card to the parent div
-<span class="cstat-no" title="statement not covered" >    parentDiv.appendChild(card);</span>
+<span class="cstat-no" title="statement not covered" >    parentElement.appendChild(card);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return card;</span>
   }
@@ -780,8 +765,8 @@ export class Card {
   }
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >createCard(</span>parentDiv, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
-  const card = <span class="cstat-no" title="statement not covered" >new Card(parentDiv, options);</span>
+export function <span class="fstat-no" title="function not covered" >createCard(</span>parentElement, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+  const card = <span class="cstat-no" title="statement not covered" >new Card(parentElement, options);</span>
 &nbsp;
   // Add event listeners
   const hideButton = <span class="cstat-no" title="statement not covered" >card.element.querySelector(".gui-button:nth-child(1)");</span>
@@ -802,7 +787,7 @@ export function <span class="fstat-no" title="function not covered" >createCard(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-06T22:39:11.066Z
+                at 2024-08-07T11:58:00.846Z
             </div>
         <script src="prettify.js"></script>
         <script>

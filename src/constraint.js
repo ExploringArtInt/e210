@@ -28,13 +28,17 @@
  ***/
 
 class Constraint {
-  constructor(options) {
-    this.isAccepted = false;
-    this.testOnKeyUp = options.testOnKeyUp || false;
-    this.pattern = options.pattern;
-    this.errorMessage = options.errorMessage || "Input does not meet the required format";
-    this.helpTitle = options.helpTitle || "Input Help";
-    this.helpMessage = options.helpMessage || "Please enter a valid input";
+  constructor(options = {}) {
+    const defaults = {
+      isAccepted: false,
+      testOnKeyUp: false,
+      pattern: "",
+      errorMessage: "Input does not meet the required format",
+      helpTitle: "Input Help",
+      helpMessage: "Please enter a valid input",
+    };
+    const mergedOptions = { ...defaults, ...options };
+    Object.assign(this, mergedOptions);
   }
 
   test(value) {
