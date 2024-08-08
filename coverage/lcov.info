@@ -466,7 +466,7 @@ FN:47,activateButtons
 FN:51,(anonymous_2)
 FN:52,(anonymous_3)
 FN:59,inactivateButtons
-FN:62,createContent
+FN:62,createElement
 FN:85,createDivider
 FN:105,createForm
 FN:115,createInputCheckbox
@@ -483,7 +483,7 @@ FNDA:1,activateButtons
 FNDA:3,(anonymous_2)
 FNDA:3,(anonymous_3)
 FNDA:0,inactivateButtons
-FNDA:0,createContent
+FNDA:0,createElement
 FNDA:0,createDivider
 FNDA:0,createForm
 FNDA:0,createInputCheckbox

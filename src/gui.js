@@ -58,27 +58,27 @@ activateButtons() {
 // TBD: pass in scope (parentElement)
 export function inactivateButtons() {}
 
-// GUI Content
-export function createContent(parentElement, options = {}) {
-  const { contentHTML = null, styleClass = null, styleCSS = null } = options;
+// GUI Element
+export function createElement(parentElement, options = {}) {
+  const { elementHTML = null, styleClass = null, styleCSS = null } = options;
 
-  const contentId = `gui-content-${GuidUtils.getLocalUniqueID()}`;
-  const content = document.createElement("div");
-  content.id = contentId;
+  const elementId = `gui-element-${GuidUtils.getLocalUniqueID()}`;
+  const element = document.createElement("div");
+  element.id = elementId;
   if (styleClass != null) {
-    content.className = "gui-content " + styleClass;
+    element.className = "gui-element " + styleClass;
   } else {
-    content.className = "gui-content";
+    element.className = "gui-element";
   }
   if (styleCSS != null) {
-    content.style = styleCSS;
+    element.style = styleCSS;
   }
 
-  if (contentHTML != null) {
-    content.innerHTML = contentHTML;
+  if (elementHTML != null) {
+    element.innerHTML = elementHTML;
   }
-  parentElement.appendChild(content);
-  return content;
+  parentElement.appendChild(element);
+  return element;
 }
 
 // GUI Divider
