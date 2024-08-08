@@ -3,93 +3,121 @@
 ### 2026-0928 Steps
 *** Weeks 116-112 2024-0904 ***
 
-- Facade Pattern:
-  - Constraint object
-    - ConstraintCheckbox object is a Constaint
-    - ConstraintRadio object is a Constaint
-    - ConstraintText object is a Constaint
+- from gui.js move guiSpinner into guiSpinner.js. Create guiSpinner.test.js and update gui.test.js
 
-- What are alternatives patterns in JavaScript?
+- move guiDivider into guiDivider.js. Create guiDivider.test.js and update gui.test.js
 
-- Step with a Card
-  - A Step has a Card
-    - A Step has a set of Entity Inputs
-    - An Entity Input has:
-      - a GUI element
-      - a set of Constraints
+- move guiForm into guiForm.js. Create guiForm.test.js and update gui.test.js
 
-    - Entity Input for Text
-      - Constrain for Text must match pattern
-    - Entity Input for Checkbox
-      - Constrain for Checkbox must be checked
-    - Entity Input for Radio set
-      - Constrain for Radio Set one must be selected
+- remove guiInputPassword (add back later after refactoring)
 
-- Error Message from option
+- create gui radio group and fix ADA issues
 
- - Entity Input
-  - Optional default value
+- rename gui.js to guiInput.js and gui.test.js to gui.test.js
 
+- refactor guiInput to use Composite Pattern
+  - guiInputCheckbox is a leaf
+  - guiInputRadioGroup is a leaf
+  - guiInputText is a leaf
+
+- refactorConstraint to use Composite Pattern
+  - constraintCheckbox is a leaf
+  - constraintRadioGroup is a leaf
+  - constraintText is a leaf
+
+- refactor Entity Input to use Composite Pattern
+  - entityInputText is a leaf
+    - is constructed with a guiInputText
+    - Optional constraint for Text must match pattern
+  - entityInputCheckbox is a leaf
+    - is constructed with a guiInputCheckbox
+    - Optional constraint for Checkbox must be checked
+  - entityInputRadioGroup is a leaf
+    - is constructed with a guiInputRadioGroup
+    - Optional constraint for Radio Group one must be selected
+
+- An Entity Input
+  - can be contructed with Default Value
+
+  - Error Message from option
+
+- Entity Input
   - refactor when help buttons are activated from app to gui
     - add when Entity Input active, remove when inactive
     - figure out how to activate hidden buttons
     - add scope of parentElement to activateButton
 
-  - Help Text and Message in help button modal
+- Help Text and Message in help button modal
 
-  - Error Message to
-
-  - Input Password
-    - toggle visible
-    - Mask
-      - all
-      - up to last 4
-      - 2nd and up to character (e.g. "@")
-    - Unmask Checkbox
-      - Checkbox
-      - Eye open and closed
-        - build to use anywhere in card
-      - Toggle switch
-        - build to use anywhere in card
+- Input Password
+  - toggle visible
+  - Mask
+    - all
+    - up to last 4
+    - 2nd and up to character (e.g. "@")
+  - Unmask Checkbox
+    - Checkbox
+    - Eye open and closed
+      - build to use anywhere in card
+    - Toggle switch
+      - build to use anywhere in card
 
   - Card Modal
     - Help message, click out to continue
     - Required checkbox and confirm or cancel, no clickout
 
-- Card support of 2D/3D Canvas
+*** Weeks 111-108 2024-1002 ***
+- Card Composite Pattern
+  - root
+    - Card Component (root)
+  - leaves
+    - Card 2D Header (leaf)
+    - Card 2D Step (leaf)
+    - Card 2D Modal (leaf)
+    - Card 2D Controls (leaf)
+    - Card 2D Canvas (leaf)
+    - Card 3D Canvas (leaf)
+    - Card 2D Footer (leaf)
+  - branch
+    - Card Composite (branch)
 
-- Header, Side, 2D/3D Canvas, Footer
+- A Step
+  - can have a Card added to it
+  - can have a set of Entity Inputs added to it
+
 - App Features
 - Card Fetures
 - Step Features
 - Entity Input Features
 
-*** Weeks 111-108 2024-1002 ***
 - Dev Front-end
-  - Table
-  - DataTree
-  - DataStore front-end
+  - Card Component leaves
+    - Card 2D DataTable (leaf)
+    - Card 2D DataTree (leaf)
+    - Card 2D DataStore front-end (leaf)
 - Dev Back-end
   - DataStore back-end
   - Local Mongo in Node.js
 
 *** Weeks 107-104 2024-1030 ***
-- CrumbTrail - a set of one or more crumbs
+- GUI Menu
+  - CrumbTrail - a set of one or more crumbs
   - can optionally have a dataTree
   - a crumb trail has a seperator between crumbs (/, |, >)
   - Crumb - a single link back up the heirarchy
 - Retest in Safari and resolve any issues
 
- - Constraint Backend integration
+- Constraint Backend integration
   - Value Constraints (value): Ensuring the entity matches
-    - Set of values, such as days of the week ("Monday", "Tuesday", etc.)
-    - Known value stored in a SOR
+  - Set of values, such as days of the week ("Monday", "Tuesday", etc.)
+  - Known value stored in a SOR
 
-  Dependency Constraints: Ensuring the entity is valid in the context of other entities, such as a return date that must be after the departure date in a travel booking.
+  Dependency Constraints: Ensuring the entity is valid in the context of other entities, such as a return date that must be after the departure date.
 
 - A Constraint can be
   - Front-end (field level error)
   - Back-end (step level error)
+
 - In addition to gui (HTML/DOM devices), Entity Constraints can be used to support various device channels (mobile, SMS, chat, 3D-UX)
 
 *** Weeks 103-99 2024-1204 ***
@@ -102,7 +130,6 @@
   - Roles
     - OAuth integration
     - A role has a set of Intents
-
 
 *** Weeks 98-90 2025-0205 ***
 - Flow
@@ -174,28 +201,41 @@
 - Before rebuild
   - All green unit tests for coverage and completeness
   - All green functional tests for coverage and completeness
+  - Generate Gherkin User Stories from code
+  - Generate Epics from User Stories
+  - Generate Journeys from Epics
 
-- *** Complete Rebuild from Scatch***
+- *** Complete Rebuild from Testing Foundation ***
   - Rebuilt to align to existing unit and functional tests
     - Only fix existing defects, no refactoring interfaces or test
 
-  - Rebuild code and tests, complete freedom to refactor and innovate
+- *** Complete Rebuild from Agile Scope ***
+  - Rebuild code and tests, freedom to refactor and innovate within Agile scope
+    - Rebuild based on Journeys, Epics, and Stories
+
+- *** Complete Rebuild from Scatch***
+  - Rebuild code and tests, freedom to refactor and innovate without limits
 
 - After rebuild
   - All green unit tests for coverage and completeness
   - All green functional tests for coverage and completeness
 
-*** Weeks 69-60 2025-0903 ***
-- Simulation
-  - 2D Simulator
-  - 3D Simulator
+*** Weeks (TBD 3 WEEKS) ***
+- 2D Simulator
   - Various simulators to support Reality Shows evaluation simulators
-  - Reality Show Gamification
 - Using GenAI to generate Simulator Lessons
-- Using GenAI to gamify Lessons
+
+*** Weeks (TBD 3 WEEKS) ***
+- 3D Simulator
+  - Various simulators to support Reality Shows evaluation simulators
+- Using GenAI to generate Simulator Lessons
+
+*** Weeks (TBD 3 WEEKS) ***
+- Reality Show Gamification
+  - Using GenAI to gamify Lessons
 - Retest in Safari and resolve any issues
 
-*** Weeks 59-57 2025-0924 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Reality Show Learning Format
 
   - Core Game Engine
@@ -205,118 +245,141 @@
     - Develop the base game framework
     - Implement game state management
 
-*** Weeks 56-52 2025-1029 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Character Creation and Customization
   - Design character creation interface
   - Implement skill and attribute system
   - Create character backstory generator
   - Develop character appearance customization
 
-*** Weeks 51-49 2025-1119 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Show Selection and Onboarding
   - Create show selection interface
   - Implement show-specific tutorial systems
   - Design and create show introductions
   - Develop contestant profile system
 
-*** Weeks 48-46 2025-1210 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Challenge System
   - Design generic challenge framework
   - Implement show-specific challenge types
   - Create challenge difficulty scaling system
   - Develop time management mechanics for challenges
 
-*** Weeks 45-41 2026-0114 (time for holidays) ***
+*** Weeks (TBD 3 WEEKS) ***
 - Team Dynamics
   - Implement team formation mechanics
   - Create team communication system
   - Develop team conflict resolution mechanics
   - Design and implement team performance metrics
 
-*** Weeks 40-38 2026-0204 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Judging and Evaluation System
   - Create AI judge behavior system
   - Implement human judge personality traits
   - Develop scoring and ranking system
   - Create feedback and critique generation system
 
-*** Weeks 37-35 2026-0225 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Player Skills and Growth
   - Implement skill progression system
   - Create learning and practice mechanics
   - Develop mentorship and coaching system
   - Design and implement specialty skill trees for each show
 
-*** Weeks 34-32 2026-0318 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Load Show-Specific Data
   - Design flexible data structure for show-specific information
   - Implement data loading system for show details
   - Create content management system for show-specific challenges
   - Develop dynamic UI adaptation based on loaded show data
 
-*** Weeks 31-29 2026-0408 ***
+*** Weeks (TBD 3 WEEKS) ***
 - AI Contestants and NPCs
   - Design AI contestant behavior system
   - Implement NPC interaction mechanics
   - Create dynamic relationships between characters
   - Develop AI contestant skill progression
 
-*** Weeks 28-26 2026-0429 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Multiplayer and Community Features
   - Develop online multiplayer functionality
   - Create leaderboards and ranking systems
   - Implement player-vs-player challenge modes
   - Design and create community events and competitions
 
-*** Weeks 25-23 2026-0520 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Audio and Visual Production
   - Design and implement show-specific visual styles
   - Create dynamic sound effects and music system
   - Develop character voice acting system
   - Implement cutscene and storyline presentation mechanics
 
-*** Weeks 22-20 2026-0610 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Replayability and Procedural Generation
   - Create procedurally generated challenges
   - Implement dynamic difficulty adjustment
   - Develop alternate storylines and outcomes
   - Create randomized events and twists
 
-*** Weeks 19-17 2026-0701 ***
+*** Weeks (TBD 3 WEEKS) ***
 - Analytics and Metrics
   - Implement player performance tracking
   - Create in-game analytics dashboard
   - Develop strategy suggestion system
   - Design and implement achievement system
 
-*** Week 16 2026-0708 ***
+*** Weeks (TBD 4 WEEKS) ***
+- Before rebuild
+  - All green unit tests for coverage and completeness
+  - All green functional tests for coverage and completeness
+  - Generate Gherkin User Stories from code
+  - Generate Epics from User Stories
+  - Generate Journeys from Epics
+
+- *** Complete Rebuild from Testing Foundation ***
+  - Rebuilt to align to existing unit and functional tests
+    - Only fix existing defects, no refactoring interfaces or test
+
+- *** Complete Rebuild from Agile Scope ***
+  - Rebuild code and tests, freedom to refactor and innovate within Agile scope
+    - Rebuild based on Journeys, Epics, and Stories
+
+- *** Complete Rebuild from Scatch***
+  - Rebuild code and tests, freedom to refactor and innovate without limits
+
+- After rebuild
+  - All green unit tests for coverage and completeness
+  - All green functional tests for coverage and completeness
+
+*** Week (TBD 4 WEEKS) ***
   - Application Development (6%)
 
-*** Week 15 2026-0715 ***
+*** Week (TBD 2 WEEKS) ***
   - Security and Ethics (4%)
 
-*** Week 14 2026-0722 ***
+*** Week (TBD 2 WEEKS) ***
   - Learning (12%)
 
-*** Week 13 2026-0728 ***
+*** Week (TBD 2 WEEKS) ***
   - Business Process (9%)
 
-*** Week 12 2026-0805 ***
+*** Week (TBD 2 WEEKS) ***
   - Marketing and Sales (17%)
 
-*** Week 11 2026-0812 ***
+*** Week (TBD 2 WEEKS) ***
   - Capital Growth (11%)
 
-*** Week 10 2026-0819 ***
+*** Week (TBD 2 WEEKS) ***
   - Infrastructure (3%)
 
-*** Week 9 2026-0826 ***
+*** Week (TBD 2 WEEKS) ***
   - Life and Health (10%)
 
-*** Week 8 2026-0902 ***
+*** Week (TBD 2 WEEKS) ***
   - Custom Production (10%)
 
-*** Week 7 2026-0909 ***
+*** Week (TBD 2 WEEKS) ***
   - Logistics (12%)
 
 *** Weeks 6-1 -Launch 2026-1028 ***
