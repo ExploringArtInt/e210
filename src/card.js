@@ -1,6 +1,6 @@
 import { fsmPattern } from "./patterns.js";
 import { GuidUtils } from "./utilities.js";
-import { createButton, createContent, createDivider, createForm, createInputCheckbox, createInputPassword, createInputRadioButton, createInputText } from "./gui.js";
+import { createButton, createContent, createDivider, createForm, createInputCheckbox, createInputRadioButton, createInputText } from "./gui.js";
 
 /***
 
@@ -134,9 +134,6 @@ export class Card {
       minLength: 3,
       maxLength: 20,
     });
-
-    // password goes here
-    const inputPassword = createInputPassword(divider2);
 
     // Create the menu bar
     const menuBar = createDivider(card, {

@@ -3,22 +3,12 @@
 ### 2026-0928 Steps
 *** Weeks 116-112 2024-0904 ***
 
-- from gui.js move guiSpinner into guiSpinner.js. Create guiSpinner.test.js and update gui.test.js
-
-- move guiDivider into guiDivider.js. Create guiDivider.test.js and update gui.test.js
-
-- move guiForm into guiForm.js. Create guiForm.test.js and update gui.test.js
+- rename gui.js createContent to create
+  - TBD - what should this be named
 
 - remove guiInputPassword (add back later after refactoring)
 
 - create gui radio group and fix ADA issues
-
-- rename gui.js to guiInput.js and gui.test.js to gui.test.js
-
-- refactor guiInput to use Composite Pattern
-  - guiInputCheckbox is a leaf
-  - guiInputRadioGroup is a leaf
-  - guiInputText is a leaf
 
 - refactorConstraint to use Composite Pattern
   - constraintCheckbox is a leaf
@@ -35,6 +25,11 @@
   - entityInputRadioGroup is a leaf
     - is constructed with a guiInputRadioGroup
     - Optional constraint for Radio Group one must be selected
+
+  - refactor guiInput into Entity Input
+    - guiInputCheckbox is part of entityInputCheckbox
+    - guiInputRadioGroup is part of entityInputRadioGroup
+    - guiInputText is part of entityInputText
 
 - An Entity Input
   - can be contructed with Default Value

@@ -146,17 +146,6 @@ export function createInputCheckbox(parentElement, options = {}) {
   return itemCheckbox;
 }
 
-// GUI createInputPassword
-export function createInputPassword(parentElement) {
-  const createInputPasswordId = `gui-input-password-${GuidUtils.getLocalUniqueID()}`;
-  const inputPassword = document.createElement("div"); // TBD
-  inputPassword.id = createInputPasswordId;
-  inputPassword.className = "gui-input-password";
-  inputPassword.type = "password";
-  parentElement.appendChild(inputPassword);
-  return inputPassword;
-}
-
 // GUI createInputRadioButton
 export function createInputRadioButton(parentElement, options = {}) {
   const { radioGroupName = "NOT_SET", labelText = null, isChecked = false, isLabelFirst = false } = options;
