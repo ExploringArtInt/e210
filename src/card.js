@@ -38,7 +38,7 @@ export class Card {
     this.parentElement = parentElement;
     this.cardId = `card-${GuidUtils.getLocalUniqueID()}`;
 
-    this.element = this.createCardElement(parentElement);
+    this.element = this.createExampleCard(parentElement);
 
     this.fsm = fsmPattern.createMachine("Hidden", {
       Hidden: {
@@ -73,7 +73,7 @@ export class Card {
     });
   }
 
-  createCardElement(parentElement) {
+  createExampleCard(parentElement) {
     if (!parentElement) {
       console.error("parent container not found");
       return;

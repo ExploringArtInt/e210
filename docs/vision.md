@@ -3,12 +3,17 @@
 ### 2026-0928 Steps
 *** Weeks 116-112 2024-0904 ***
 
-- rename gui.js createContent to create
-  - TBD - what should this be named
-
-- remove guiInputPassword (add back later after refactoring)
-
 - create gui radio group and fix ADA issues
+
+- refact content.js
+  - From
+    - step
+    - entityInput
+    - card
+  - To
+    - Step has a Card
+    - Step has a set of entityInputs
+      - an entityInput is displayed on the Step's Card
 
 - refactorConstraint to use Composite Pattern
   - constraintCheckbox is a leaf

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723160115787" clover="3.2.0">
-  <project timestamp="1723160115787" name="All files">
+<coverage generated="1723164009081" clover="3.2.0">
+  <project timestamp="1723164009081" name="All files">
     <metrics statements="453" coveredstatements="172" conditionals="170" coveredconditionals="53" methods="174" coveredmethods="61" elements="797" coveredelements="286" complexity="0" loc="453" ncloc="453" packages="1" files="9" classes="9"/>
     <file name="app.js" path="/Users/Richard/Documents/CAI/Code/e210/src/app.js">
       <metrics statements="14" coveredstatements="8" conditionals="3" coveredconditionals="2" methods="17" coveredmethods="5"/>
